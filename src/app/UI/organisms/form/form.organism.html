@@ -1,0 +1,51 @@
+<form class="add-excercise-form">
+  <div class="title-input-fields-and-button-box">
+    <ui-title-letter-spacing [text]="'Add exercise'"></ui-title-letter-spacing>
+    <div class="title-input-fields-and-button-box__input-fields-and-button-box">
+      <ui-input-autocomplete
+        [data]="matAutocompleteData"
+      ></ui-input-autocomplete>
+
+      <ui-input-form-field
+        [placeholder]="inputFormFields[0].placeholder"
+        [matLabel]="inputFormFields[0].matLabel"
+        [appereance]="inputFormFields[0].appereance"
+      ></ui-input-form-field>
+      <div>
+        <ui-title-and-checkbox
+          [checkboxData]="checkboxsesField"
+        ></ui-title-and-checkbox>
+        <ui-title-and-radio-button
+          *ngFor="let data of radioButtonsFieldData"
+          [radioButtonsData]="data"
+        ></ui-title-and-radio-button>
+      </div>
+
+      <ng-container *ngFor="let formField of formFields">
+        <ui-form-field
+          *ngIf="formField.isOpen"
+          [formField]="formField"
+          (emitClickEvent)="changeFormField()"
+        ></ui-form-field>
+      </ng-container>
+
+      <div class="rpe-and-break-box">
+        <ui-input-form-field
+          [placeholder]="inputFormFields[1].placeholder"
+          [matLabel]="inputFormFields[1].matLabel"
+          [appereance]="inputFormFields[1].appereance"
+        ></ui-input-form-field>
+        <ui-input-form-field
+          [placeholder]="inputFormFields[2].placeholder"
+          [matLabel]="inputFormFields[2].matLabel"
+          [appereance]="inputFormFields[2].appereance"
+        ></ui-input-form-field>
+      </div>
+
+      <button class="add-ex-button" mat-raised-button color="accent">
+        Add Ex +
+      </button>
+      <ui-close-button (emitEvent)="emitButtonEvent.emit()"></ui-close-button>
+    </div>
+  </div>
+</form>

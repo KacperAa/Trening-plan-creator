@@ -1,0 +1,51 @@
+<table
+  mat-table
+  [dataSource]="dataSource"
+  multiTemplateDataRows
+  class="mat-elevation-z8"
+>
+  <ng-container *ngFor="let column of columns" matColumnDef="{{ column }}">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef=" let row">
+      {{ row[column.toLowerCase()] }}
+      <ng-container *ngFor="let icon of row.icons">
+        <button
+          (click)="emitRow.emit(row)"
+          *ngIf="column === icon.column"
+          mat-icon-button
+        >
+          <mat-icon>{{ icon.icon}}</mat-icon>
+        </button></ng-container
+      >
+    </td>
+  </ng-container>
+  <!--   ............................................................................ -->
+
+  <ng-container *ngIf="isClicableRows" matColumnDef="expandedDetail">
+    <td [attr.colspan]="columns.length" mat-cell *matCellDef="let element">
+      <div [@detailExpand]="getAnimationState(element)">
+        <ng-container *ngIf="getAnimationState(element) === 'expanded'">
+          <ui-radio-buttons-and-chart
+            [radioButtonsData]="radioButtonsData"
+          ></ui-radio-buttons-and-chart>
+        </ng-container>
+      </div>
+    </td>
+  </ng-container>
+  <!--   ............................................................................ -->
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr
+    [ngClass]="{ 'row-if-clicable-rows': isClicableRows}"
+    mat-row
+    *matRowDef="let row; columns: columns"
+    (click)="expandRow(row)"
+  ></tr>
+  <ng-container *ngIf="isClicableRows">
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="detail-row"
+    ></tr
+  ></ng-container>
+</table>

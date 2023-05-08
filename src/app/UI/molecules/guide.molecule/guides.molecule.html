@@ -1,0 +1,12 @@
+<a (mousedown)="matCardDown()" (mouseup)="matCardUp()"
+  ><mat-card [@matCardAnimation]="matCardState" class="mat-card">
+    <mat-card-title>{{ guide.title }}</mat-card-title>
+    <div
+      [ngStyle]="{
+        'background-color': guide.footerColor
+      }"
+      class="mat-card__border"
+    ></div>
+    <mat-card-content>{{ guide.content }}</mat-card-content>
+  </mat-card></a
+>

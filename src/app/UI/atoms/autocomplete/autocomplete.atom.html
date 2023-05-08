@@ -1,0 +1,5 @@
+<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+  <mat-option *ngFor="let option of keyOptionsFound | async" [value]="option">
+    {{ option }}
+  </mat-option>
+</mat-autocomplete>

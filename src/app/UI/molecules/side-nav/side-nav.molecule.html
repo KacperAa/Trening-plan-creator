@@ -1,0 +1,12 @@
+<nav class="container">
+  <button
+    *ngFor="let text of buttonsText; let i = index"
+    [@markButton]="getAnimationState(text)"
+    [ngStyle]="i === 0 ? {'border-radius': '10px 0 0 0'}: null"
+    (click)="selectOption(text);emitSelectedOption.emit(selectedOption) "
+    class="button"
+    mat-button
+  >
+    {{ text }}
+  </button>
+</nav>

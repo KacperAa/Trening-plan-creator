@@ -1,0 +1,14 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{ data.matLabel }}</mat-label>
+  <input
+    type="text"
+    placeholder="{{ data.placeholder }}"
+    matInput
+    [formControl]="data.formControl"
+    [matAutocomplete]="autocomplete"
+  />
+  <ui-autocomplete
+    (emitAutocompleteRef)="autocomplete = $event"
+    [keyOptionsFound]="keyOptionsFound"
+  ></ui-autocomplete>
+</mat-form-field>

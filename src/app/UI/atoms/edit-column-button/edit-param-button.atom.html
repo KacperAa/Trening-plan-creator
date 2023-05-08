@@ -1,0 +1,8 @@
+<button
+  (click)="openDialog()"
+  class="edit-param-button"
+  *ngIf="column !== 'Close'"
+  mat-icon-button
+>
+  {{ row[column.toLowerCase()] }}
+</button>

@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+
+  .profile-card {
+    margin-top: 1%;
+  }
+}

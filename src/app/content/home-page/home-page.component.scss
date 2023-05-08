@@ -1,0 +1,17 @@
+.articles-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 10vh 0 10vh 0;
+  color: gray;
+  border-bottom: 1px solid rgb(201, 200, 200);
+}
+
+.guides-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+  padding: 10vh 0 10vh 0;
+}

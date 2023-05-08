@@ -1,0 +1,18 @@
+<div class="container">
+  <ui-title-letter-spacing
+    [text]="title"
+    [fontSize]="'22px'"
+  ></ui-title-letter-spacing>
+  <ui-input-form-field
+    *ngFor="let data of inputsData"
+    [matLabel]="data.matLabel"
+    [placeholder]="data.placeholder"
+    [appereance]="data.appereance"
+  ></ui-input-form-field>
+  <button *ngFor="let text of buttonsText" mat-button color="primary">
+    {{text}}
+  </button>
+  <div class="text-box">
+    <h4 *ngFor="let text of referencesText" class="text-box__text">{{text}}</h4>
+  </div>
+</div>

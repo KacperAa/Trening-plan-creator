@@ -1,0 +1,15 @@
+tr.detail-row {
+  height: 0;
+}
+
+tr.detail-row:hover {
+  background-color: #ebeaea;
+}
+
+.row-if-clicable-rows td {
+  border-bottom-width: 0;
+}
+
+.row-if-clicable-rows:hover {
+  background-color: #dcdcdc !important;
+}

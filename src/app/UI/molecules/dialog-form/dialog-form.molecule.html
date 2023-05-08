@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 mat-dialog-title>
+    {{ data.title }} {{ data.inputValue }} {{ data.unit }}
+  </h1>
+  <ui-close-button (emitEvent)="closeDialog()"></ui-close-button>
+  <div mat-dialog-content>
+    <ui-input-ng-model
+      [placeholder]="data.placeholder"
+      [inputValue]="data.inputValue"
+      (emitInputValue)="data.inputValue = $event"
+    ></ui-input-ng-model>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.inputValue" cdkFocusInitial>
+      Accept
+    </button>
+  </div>
+</div>

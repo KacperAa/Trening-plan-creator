@@ -1,0 +1,20 @@
+<div class="container">
+  <ui-page-information-bar [header]="'Create Plan'"></ui-page-information-bar>
+  <div class="trening-plan-creator-form">
+    <app-trening-plan-creator-form></app-trening-plan-creator-form>
+  </div>
+  <div class="trening-days-box">
+    <app-trening-day
+      *ngFor="let day of daysOfWeek"
+      [dayOfWeek]="day"
+      (emitEvent)="openAddExForm()"
+    ></app-trening-day>
+  </div>
+  <button class="create-plan-button" mat-raised-button color="accent">
+    Create your trening plan
+  </button>
+  <ui-form
+    *ngIf="isAddExerciseFormOpened"
+    (emitButtonEvent)="closeExForm()"
+  ></ui-form>
+</div>

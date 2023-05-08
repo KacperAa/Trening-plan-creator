@@ -1,0 +1,24 @@
+.hamburger-nav-container {
+  color: rgb(63, 61, 61);
+  background-color: #fffff0;
+  -webkit-box-shadow: 2px 5px 20px -6px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 2px 5px 20px -6px rgba(66, 68, 90, 1);
+  box-shadow: 2px 5px 20px -6px rgba(66, 68, 90, 1);
+  border-radius: 0 0 12px 0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+
+  .menu-tree {
+    font-size: 11px;
+    height: 25px;
+    display: flex;
+    border-bottom: 1px solid rgb(207, 204, 204);
+  }
+
+  .social-media-adress-box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

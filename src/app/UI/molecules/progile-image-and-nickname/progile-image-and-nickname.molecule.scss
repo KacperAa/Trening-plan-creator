@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .image-and-text {
+    display: flex;
+    align-items: center;
+  }
+  .text-box {
+    padding-left: 20px;
+  }
+}

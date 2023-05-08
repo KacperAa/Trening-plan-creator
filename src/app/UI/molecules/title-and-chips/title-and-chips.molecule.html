@@ -1,0 +1,5 @@
+<ui-italic-title [title]="title"></ui-italic-title>
+<mat-chip-listbox (change)="chipChange.emit($event)">
+  <mat-chip-option [selected]="true" color="accent">Regular</mat-chip-option>
+  <mat-chip-option color="accent">Elastic</mat-chip-option>
+</mat-chip-listbox>

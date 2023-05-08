@@ -1,0 +1,42 @@
+<div class="container">
+  <ui-bolt-title
+    [title]="optionsPage.title"
+    [fontSize]="'22px'"
+  ></ui-bolt-title>
+  <div class="edit-profile-field">
+    <ui-edit-image
+      *ngIf="optionsPage.form.editImageData !== null"
+      [data]="optionsPage.form.editImageData"
+    ></ui-edit-image>
+
+    <ui-textarea-and-title
+      *ngIf="optionsPage.form.textArea !== null"
+      [data]="optionsPage.form.textArea"
+    ></ui-textarea-and-title>
+
+    <ui-title-letter-spacing
+      *ngIf="optionsPage.form.inputs?.title !== null"
+      [text]="optionsPage.form.inputs?.title"
+      [fontSize]="'15px'"
+    ></ui-title-letter-spacing>
+
+    <ui-input-and-title
+      *ngFor="let input of optionsPage.form.inputs?.inputsData"
+      [data]="input"
+    ></ui-input-and-title>
+
+    <ui-autocomplete-and-title
+      *ngIf="optionsPage.form.autocomplete !== null"
+      [data]="optionsPage.form.autocomplete"
+    ></ui-autocomplete-and-title>
+
+    <ng-container *ngIf="optionsPage.form.sliders !== null">
+      <mat-slide-toggle *ngFor="let slider of optionsPage.form.sliders"
+        >{{slider.text}}</mat-slide-toggle
+      ></ng-container
+    >
+    <button *ngIf="optionsPage.form.button !== null" mat-button color="primary">
+      {{optionsPage.form.button}}
+    </button>
+  </div>
+</div>

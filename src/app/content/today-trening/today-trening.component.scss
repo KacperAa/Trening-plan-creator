@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10%;
+  padding: 10px 0;
+
+  .data-bar-and-form {
+    width: 60%;
+    margin: 2% 0 2%;
+  }
+}

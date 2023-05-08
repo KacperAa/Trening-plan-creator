@@ -1,0 +1,11 @@
+.inputs-and-button-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__inputs {
+    display: flex;
+    gap: 5px;
+  }
+}

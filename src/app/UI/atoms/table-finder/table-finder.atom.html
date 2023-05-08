@@ -1,0 +1,11 @@
+<div class="container">
+  <mat-form-field [appearance]="appereance">
+    <mat-label>{{matLabel}}</mat-label>
+    <input
+      matInput
+      (keyup)="emitInputValue.emit(input.value)"
+      placeholder="{{placeholder}}"
+      #input
+    />
+  </mat-form-field>
+</div>

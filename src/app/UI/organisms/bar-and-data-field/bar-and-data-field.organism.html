@@ -1,0 +1,15 @@
+<div class="container">
+  <ui-text-and-icon-button
+    [text]="barAndDateFieldData.date"
+    [dateFormat]="barAndDateFieldData.dateFormat"
+    [matIcon]=" barAndDateFieldData.icon"
+    (emitEvent)="openDateField()"
+  ></ui-text-and-icon-button>
+</div>
+<ui-field-input-calendar
+  *ngIf="isOpenCalendarField"
+  [title]="barAndDateFieldData.dateField.text"
+  [animationState]="animationState"
+  [matLabel]="barAndDateFieldData.dateField.matLabel"
+  [inputAppereance]="barAndDateFieldData.dateField.inputAppereance"
+></ui-field-input-calendar>

@@ -1,0 +1,33 @@
+<div class="container">
+  <ui-title-letter-spacing
+    [text]="formField.title"
+    [fontSize]="'15px'"
+  ></ui-title-letter-spacing>
+
+  <div class="inputs-and-decorations-box">
+    <div
+      class="inputs-and-decorations-box__input-and-decoration"
+      *ngFor="let input of formField.inputs"
+    >
+      <ui-input-form-field
+        [appereance]="formField.appereance"
+        [matLabel]="input.text"
+        [placeholder]="formField.placeholder"
+        [width]="'70px'"
+      ></ui-input-form-field>
+
+      <ui-input-parting-decoration
+        *ngIf="input.hasDecoration"
+        [decoration]="formField.partingDecoration"
+      ></ui-input-parting-decoration>
+    </div>
+  </div>
+  <button
+    *ngIf="formField.hasButton"
+    (click)="emitClickEvent.emit()"
+    mat-button
+    class="button"
+  >
+    {{ formField.buttonTitle }}
+  </button>
+</div>

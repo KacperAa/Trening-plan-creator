@@ -1,0 +1,10 @@
+.checkbox-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
+  .checkbox-box {
+    display: flex;
+  }
+}

@@ -1,0 +1,46 @@
+<nav>
+  <div
+    [ngStyle]="isSmallDevice ? { top: '56px' } : { top: '63px' }"
+    [@hamburgerMenuAnimation]="isHamburgerNav ? hamburgerMenuState : undefined"
+    [ngClass]="{ 'hamburger-nav-container': isHamburgerNav }"
+  >
+    <ng-container *ngFor="let parentButton of navigationButtons">
+      <button
+        mat-button
+        [matMenuTriggerFor]="
+          parentButton.menu.length > 0 && !isHamburgerNav ? menu : null
+        "
+      >
+        <i class="{{ parentButton.icon }}"></i>
+        {{ parentButton.title }}
+      </button>
+
+      <mat-menu
+        #menu="matMenu"
+        aria-label="This element appear when !isHamburgerNav"
+      >
+        <button mat-menu-item *ngFor="let menu of parentButton.menu">
+          {{ menu.title }}
+        </button>
+      </mat-menu>
+
+      <ng-container *ngIf="isHamburgerNav">
+        <button
+          class="menu-tree"
+          *ngFor="let menu of parentButton.menu"
+          mat-button
+        >
+          {{ menu.title }}
+        </button>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="isHamburgerNav">
+      <div class="social-media-adress-box">
+        <ui-social-media-adresses
+          *ngFor="let styleAndAdress of stylesAndSocialMediaAdresses"
+          [styleAndSocialMediaAdress]="styleAndAdress"
+        ></ui-social-media-adresses>
+      </div>
+    </ng-container>
+  </div>
+</nav>

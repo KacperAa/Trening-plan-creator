@@ -1,0 +1,15 @@
+.button-and-icon {
+  display: flex;
+  .button {
+    font-weight: 400;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.page-adress {
+  text-decoration: none;
+  color: black;
+  display: flex;
+}

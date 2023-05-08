@@ -1,0 +1,14 @@
+.mat-card {
+  display: flex;
+  align-items: center;
+
+  &__border {
+    height: 3px;
+    width: 50%;
+    margin: 15px auto;
+  }
+}
+.mat-card:hover {
+  cursor: pointer;
+  background-color: #efecec;
+}

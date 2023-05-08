@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10px 0 10px 0;
+  min-height: 70vh;
+  .side-nav {
+    border: 1px solid rgb(212, 210, 210);
+    border-radius: 10px 0px 0px 10px;
+  }
+
+  .options-template {
+    border-top: 1px solid rgb(212, 210, 210);
+    border-right: 1px solid rgb(212, 210, 210);
+    border-bottom: 1px solid rgb(212, 210, 210);
+  }
+}

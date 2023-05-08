@@ -1,0 +1,16 @@
+<footer class="footer">
+  <img class="logo" [src]="logoPath" />
+  <section class="title-and-social-media-adress-box">
+    <p class="title-and-social-media-adress-box__title">Find me on:</p>
+    <div class="title-and-social-media-adress-box__social-media-adresses-box">
+      <ui-social-media-adresses
+        *ngFor="let styleAndAdress of stylesAndSocialMediaAdresses"
+        [styleAndSocialMediaAdress]="styleAndAdress"
+      ></ui-social-media-adresses>
+    </div>
+  </section>
+  <div>
+    <p class="content-title">Wszelkie prawa zastrzezone.</p>
+    <p class="content-title">&copy; Kacper Froncirz Development 2023</p>
+  </div>
+</footer>

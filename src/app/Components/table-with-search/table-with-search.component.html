@@ -1,0 +1,16 @@
+<div class="container">
+  <ui-table-finder
+    [matLabel]="inputFieldData.matLabel"
+    [placeholder]="inputFieldData.placeholder"
+    [appereance]="inputFieldData.appereance"
+    (emitInputValue)="findRowsByKey($event)"
+  ></ui-table-finder>
+  <ui-title-on-bar [title]="'Exercises performed'"></ui-title-on-bar>
+  <ui-table
+    [dataSource]="filteredRows$ | async"
+    [columns]="columns"
+    [isClicableRows]="true"
+    [radioButtonsData]="radioButtonsData"
+    (emitRow)="openChosenRow($event)"
+  ></ui-table>
+</div>
