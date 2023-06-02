@@ -1,8 +1,5 @@
 <div class="container">
-  <ui-bolt-title
-    [title]="optionsPage.title"
-    [fontSize]="'22px'"
-  ></ui-bolt-title>
+  <h3 class="title">{{ optionsPage.title }}</h3>
   <div class="edit-profile-field">
     <ui-edit-image
       *ngIf="optionsPage.form.editImageData !== null"

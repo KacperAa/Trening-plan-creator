@@ -1,6 +1,11 @@
 .container {
   width: 50vh;
   padding: 30px 40px 30px 40px;
+  .title {
+    font-size: 22px;
+    margin: 12px 0;
+    font-weight: 500;
+  }
 
   .edit-profile-field {
     display: flex;
