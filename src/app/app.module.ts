@@ -38,7 +38,6 @@ import { BannerComponent } from './UI/molecules/banner/banner.molecule';
 import { PageInformationBarComponent } from './UI/atoms/page-information-bar.atom/page-information-bar.atom';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TitleAndCheckboxComponent } from './UI/molecules/title-and-checkbox/title-and-checkbox.molecule';
-import { ContentAndButtonComponent } from './UI/atoms/content-and-button/content-and-button.atom';
 import { TableComponent } from './Components/table/table.component';
 import { ExerciseStepsComponent } from './Components/exercise-steps/exercise-steps.component';
 import { ExercisePerformedComponent } from './Components/actual-plan/exercise-performed.component';
@@ -52,15 +51,10 @@ import { TitleAndChipsComponent } from './UI/molecules/title-and-chips/title-and
 import { TitleAndRadioButtonComponent } from './UI/molecules/title-and-radio-button/title-and-radio-button.molecule';
 import { DialogFormComponent } from './UI/molecules/dialog-form/dialog-form.molecule';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EditTableComponent } from './UI/molecules/edit-table/edit-table.molecule';
-import { EditColumnButtonComponent } from './UI/atoms/edit-column-button/edit-param-button.atom';
 import { TimerComponent } from './UI/atoms/timer/timer.molecule';
-import { LittleTitleComponent } from './UI/atoms/little-title/little-title.atom';
-import { ItalicTitleComponent } from './UI/atoms/italic-title/italic-title.atom';
 import { TitleOnBarComponent } from './UI/atoms/title-on-bar/title-on-bar.atom';
 import { CloseButtonComponent } from './UI/atoms/close-button/close-button.atom';
 import { InputFormFieldComponent } from './UI/atoms/input-form-field/input-form-field.atom';
-import { HeaderLetterSpacingComponent } from './UI/atoms/header-letter-spacing/header-letter-spacing.atom';
 import { DataPickerComponent } from './UI/atoms/data-picker/data-picker.atom';
 import { TrackProgressComponent } from './content/track-progress/track-progress.component';
 import { MatTabsBarComponent } from './Components/mat-tabs-bar/mat-tabs-bar.component';
@@ -118,7 +112,6 @@ import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increa
     TodayTreningComponent,
     BannerComponent,
     TitleAndCheckboxComponent,
-    ContentAndButtonComponent,
     TableComponent,
     ExerciseStepsComponent,
     ExercisePerformedComponent,
@@ -129,15 +122,10 @@ import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increa
     DialogFormComponent,
     MatAutocomplateComponent,
     ExerciseDataChartComponent,
-    EditTableComponent,
-    EditColumnButtonComponent,
     TimerComponent,
-    LittleTitleComponent,
-    ItalicTitleComponent,
     TitleOnBarComponent,
     CloseButtonComponent,
     InputFormFieldComponent,
-    HeaderLetterSpacingComponent,
     DateBarComponent,
     DataPickerComponent,
     TrackProgressComponent,

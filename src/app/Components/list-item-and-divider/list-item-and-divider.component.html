@@ -1,9 +1,6 @@
-<mat-list-item
-  ><ui-bolt-title
-    [title]="listItemData.title"
-    [fontSize]="'15px'"
-  ></ui-bolt-title
-></mat-list-item>
+<mat-list-item>
+  <h3 class="title">{{ listItemData.title }}</h3>
+</mat-list-item>
 <mat-divider></mat-divider>
 <ng-container *ngFor="let list of listItemData.list; let i = index">
   <mat-list-item>{{ list }}</mat-list-item>
