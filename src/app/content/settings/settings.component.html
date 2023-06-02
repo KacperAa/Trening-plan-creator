@@ -1,16 +1,21 @@
 <ui-page-information-bar [header]="'Options'"></ui-page-information-bar>
 <main class="container">
-  <ui-side-nav
-    class="side-nav"
-    [buttonsText]="buttonsText"
-    (emitSelectedOption)="captureSelectedOption($event)"
-  ></ui-side-nav>
-
-  <ng-container *ngFor="let page of optionsPages">
+  <nav class="side-nav">
+    <button
+      *ngFor="let text of buttonsText; let i = index"
+      [ngStyle]="i === 0 ? { 'border-radius': '10px 0 0 0' } : null"
+      (click)="selectOption(text)"
+      class="button"
+      mat-button
+    >
+      {{ text }}
+    </button>
+  </nav>
+  <!--   <ng-container *ngFor="let page of optionsPages">
     <ui-options-form
       class="options-template"
       *ngIf="page.title === selectedOption"
       [optionsPage]="page"
     ></ui-options-form>
-  </ng-container>
+  </ng-container> -->
 </main>

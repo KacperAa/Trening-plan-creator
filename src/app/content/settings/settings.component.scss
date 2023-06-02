@@ -5,8 +5,18 @@
   margin: 10px 0 10px 0;
   min-height: 70vh;
   .side-nav {
+    display: flex;
+    flex-direction: column;
     border: 1px solid rgb(212, 210, 210);
     border-radius: 10px 0px 0px 10px;
+    .button {
+      display: flex;
+      justify-content: flex-start;
+      font-weight: 400;
+      border-radius: 0;
+      width: 100%;
+      padding: 30px 50px 30px 10px;
+    }
   }
 
   .options-template {

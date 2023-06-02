@@ -124,7 +124,9 @@ export class SettingsComponent {
       },
     },
   ];
-
+  public selectOption(text: string): void {
+    this.selectedOption = text;
+  }
   public captureSelectedOption(option: string): void {
     this.selectedOption = option;
   }

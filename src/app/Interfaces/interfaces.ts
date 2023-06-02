@@ -142,16 +142,17 @@ export interface Profile {
 
 export interface Options {
   title: string;
-  form: OptionsForm;
+  form: any;
 }
 
-export interface OptionsForm {
-  editImageData: EditImage | null;
+export interface OptionsForm<T> {
+  /*   [key: string]: T; */
+  /*   editImageData: EditImage | null;
   textArea: TextArea | null;
   inputs: InputAndTitle | null;
   autocomplete: MatAutocompeteData | null;
   sliders: MatSlider[] | null;
-  button: string | null;
+  button: string | null; */
 }
 
 export interface MatSlider {

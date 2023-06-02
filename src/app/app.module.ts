@@ -85,8 +85,6 @@ import { OptionsFormComponent } from './UI/organisms/edit-profile/options-form.o
 import { EditImageComponent } from './UI/molecules/edit-image/edit-image.molecule';
 import { TextareaAndTitleComponent } from './UI/molecules/textarea-and-title/textarea-and-title.molecule';
 import { InputAndTitleComponent } from './UI/molecules/input-and-title/input-and-title.molecule';
-import { SideNavComponent } from './UI/molecules/side-nav/side-nav.molecule';
-
 import { PlansListComponent } from './content/plans-list/plans-list.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { DateBarComponent } from './Components/date-bar/date-bar.component';
@@ -162,7 +160,6 @@ import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increa
     EditImageComponent,
     TextareaAndTitleComponent,
     InputAndTitleComponent,
-    SideNavComponent,
     PlansListComponent,
     CalendarComponent,
     TableAndBarComponent,
