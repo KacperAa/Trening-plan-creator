@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  .title-autocomplete-icon-decoration-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &__decoration {
+      font-size: 50px;
+      color: rgb(179, 179, 179);
+      padding: 45px 5px 20px 5px;
+    }
+  }
+}

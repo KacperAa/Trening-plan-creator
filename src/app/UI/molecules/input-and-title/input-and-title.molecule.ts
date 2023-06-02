@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { InputFormField } from 'src/app/Interfaces/interfaces';
+import { InputAndTitle } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'ui-input-and-title[data]',
@@ -8,5 +8,5 @@ import { InputFormField } from 'src/app/Interfaces/interfaces';
 })
 export class InputAndTitleComponent {
   @Input()
-  public data!: InputFormField;
+  public data!: InputAndTitle;
 }

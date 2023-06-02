@@ -1,0 +1,6 @@
+<div class="container">
+  {{ dateAndFormat.date | date : dateAndFormat.dateFormat }}
+  <button (click)="openDialog()" mat-icon-button>
+    <mat-icon>date_range</mat-icon>
+  </button>
+</div>

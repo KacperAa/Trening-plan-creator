@@ -1,0 +1,11 @@
+<div class="container">
+  <button mat-icon-button (click)="openNav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img class="logo" [src]="logoPath" />
+  <ui-navigation
+    [isHamburgerNav]="true"
+    [isSmallDevice]="isSmallDevice"
+    [hamburgerMenuState]="hamburgerMenuState"
+  ></ui-navigation>
+</div>

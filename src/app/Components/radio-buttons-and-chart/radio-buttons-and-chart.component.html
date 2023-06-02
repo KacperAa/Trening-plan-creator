@@ -1,0 +1,12 @@
+<mat-radio-group [(ngModel)]="checkedOption">
+  <mat-radio-button
+    *ngFor="let option of radioButtonsOptions"
+    [value]="option.title"
+    >{{ option.title }}</mat-radio-button
+  >
+</mat-radio-group>
+<ng-container *ngFor="let button of radioButtonsOptions"
+  ><app-exercise-data-chart
+    *ngIf="checkedOption === button.title"
+  ></app-exercise-data-chart
+></ng-container>

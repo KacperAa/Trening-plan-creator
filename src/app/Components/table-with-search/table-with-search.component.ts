@@ -1,11 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { MatRow } from '@angular/material/table';
+import { Component, OnInit, Type } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {
   InputFormField,
-  RadioButtonsData,
+  TableWithOpenedGraphsComponent,
 } from 'src/app/Interfaces/interfaces';
 import { PeriodicElementt } from 'src/app/content/today-trening/today-trening.component';
+import { RadioButtonsAndChartComponent } from '../radio-buttons-and-chart/radio-buttons-and-chart.component';
+import { ContentComponent } from 'src/app/content/content.component';
+
+@Component({
+  selector: 'app-table-with-search',
+  templateUrl: './table-with-search.component.html',
+  styleUrls: ['./table-with-search.component.scss'],
+})
+export class TableWithSearchComponent
+  implements OnInit, TableWithOpenedGraphsComponent
+{
+  public dataSource: PeriodicElementt[] = ELEMENT_DATA;
+  public columns: string[] = ['ex', 'series', 'RPE'];
+  public tableFinder: InputFormField = {
+    matLabel: 'find ex',
+    placeholder: '...',
+    appereance: 'fill',
+  };
+  public additionalContentForRow: Type<RadioButtonsAndChartComponent> =
+    RadioButtonsAndChartComponent;
+  public filteredRows$!: Observable<PeriodicElementt[]>;
+
+  public ngOnInit(): void {
+    this.filteredRows$ = of(this.dataSource);
+  }
+
+  public findRowsByKey(inputValue: string): void {
+    this.filteredRows$ = of(this._filterDataSource(inputValue));
+  }
+
+  private _filterDataSource(value: string): PeriodicElementt[] {
+    const valueToLowerCase = value.toLowerCase();
+
+    return this.dataSource.filter((element) =>
+      element.ex.toLowerCase().includes(valueToLowerCase)
+    );
+  }
+}
+/* dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
 
 const ELEMENT_DATA: PeriodicElementt[] = [
   {
@@ -51,48 +89,3 @@ const ELEMENT_DATA: PeriodicElementt[] = [
     icons: [{ column: 'Create', icon: 'create' }],
   },
 ];
-
-@Component({
-  selector: 'app-table-with-search',
-  templateUrl: './table-with-search.component.html',
-  styleUrls: ['./table-with-search.component.scss'],
-})
-export class TableWithSearchComponent implements OnInit {
-  public dataSource: PeriodicElementt[] = ELEMENT_DATA;
-  public columns: string[] = ['ex', 'series', 'RpE'];
-  public inputFieldData: InputFormField = {
-    title: null,
-    matLabel: 'find ex',
-    placeholder: '...',
-    appereance: 'fill',
-  };
-  public radioButtonsData: RadioButtonsData = {
-    title: 'choose',
-    buttons: [
-      { title: '1RM', hasDialog: false },
-      { title: 'PWS', hasDialog: false },
-    ],
-    selectedOption: '1RM',
-  };
-  public filteredRows$!: Observable<PeriodicElementt[]>;
-
-  public ngOnInit(): void {
-    this.filteredRows$ = of(this.dataSource);
-  }
-
-  public findRowsByKey(inputValue: string): void {
-    this.filteredRows$ = of(this._filterDataSource(inputValue));
-  }
-
-  public openChosenRow(row: MatRow): void {
-    console.log(row);
-  }
-
-  private _filterDataSource(value: string): PeriodicElementt[] {
-    const valueToLowerCase = value.toLowerCase();
-
-    return this.dataSource.filter((element) =>
-      element.ex.toLowerCase().includes(valueToLowerCase)
-    );
-  }
-}

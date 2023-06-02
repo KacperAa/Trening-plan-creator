@@ -1,0 +1,16 @@
+.stepper {
+  border-radius: 10px;
+  border: 1px solid rgb(184, 184, 184);
+  .inputs-and-button-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__inputs {
+      margin-top: 20px;
+      display: flex;
+      gap: 5px;
+    }
+  }
+}

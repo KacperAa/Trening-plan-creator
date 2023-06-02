@@ -1,14 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RadioButtonsData } from 'src/app/Interfaces/interfaces';
+import { Component, Input } from '@angular/core';
+import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/interfaces';
 
 @Component({
-  selector: 'ui-title-and-radio-button[radioButtonsData]',
+  selector: 'ui-title-and-radio-button[data]',
   templateUrl: './title-and-radio-button.molecule.html',
   styleUrls: ['./title-and-radio-button.molecule.scss'],
 })
 export class TitleAndRadioButtonComponent {
   @Input()
-  public radioButtonsData!: RadioButtonsData;
-  @Output()
-  public emitSelectedOption: EventEmitter<string> = new EventEmitter<string>();
+  public data!: RadioButtonsDialogWithTitle;
 }

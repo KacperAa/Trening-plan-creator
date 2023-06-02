@@ -6,14 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-plan.component.scss'],
 })
 export class CreatePlanComponent {
-  public isAddExerciseFormOpened: boolean = false;
+  public isFormOpened: boolean = false;
   public daysOfWeek: string[] = ['Monday', 'Wednesday', 'Friday'];
 
-  public openAddExForm(): void {
-    this.isAddExerciseFormOpened = true;
+  public openAddExercise(): void {
+    this.isFormOpened = true;
   }
 
-  public closeExForm(): void {
-    this.isAddExerciseFormOpened = false;
+  public closeAddExercise(): void {
+    this.isFormOpened = false;
   }
 }

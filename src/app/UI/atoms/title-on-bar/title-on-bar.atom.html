@@ -1,5 +1,11 @@
-<div class="container">
-  <header>
-    <h2 class="header">{{ title }}</h2>
-  </header>
+<div class="container" [ngClass]="{'has-close-button':hasCloseButton} ">
+  <h2 class="title">{{ title }}</h2>
+  <button
+    *ngIf="hasCloseButton"
+    (click)="emitClick.emit()"
+    mat-icon-button
+    class="close-button"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
 </div>

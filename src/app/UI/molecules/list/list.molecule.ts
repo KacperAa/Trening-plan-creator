@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  MatDividerListData,
-  SocialMediaIconAndAdress,
-} from 'src/app/Interfaces/interfaces';
+import { MatDividerListData, IconLink } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'ui-list[listItemsData]',
@@ -11,7 +8,7 @@ import {
 })
 export class ListComponent {
   @Input()
-  public socialMediaData!: SocialMediaIconAndAdress[];
+  public socialMediaData!: IconLink[];
   @Input()
   public listItemsData!: MatDividerListData[];
 }

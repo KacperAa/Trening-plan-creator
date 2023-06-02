@@ -1,9 +1,12 @@
 <ui-page-information-bar [header]="'Your plan'"></ui-page-information-bar>
 <div class="container">
-  <div class="data-bar-and-form">
-    <ui-bar-and-data-field
-      [barAndDateFieldData]="barAndDateFieldData"
-    ></ui-bar-and-data-field>
-    <app-assign-ex-form *ngIf="isCreated"></app-assign-ex-form>
+  <div class="date-bar-and-form">
+    <app-date-bar></app-date-bar>
+    <app-table
+      [columns]="columns"
+      [dataSource]="dataSource"
+      [isClicableRows]="true"
+      [componentForClicableRows]="passedComponent"
+    ></app-table>
   </div>
 </div>

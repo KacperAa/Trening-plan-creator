@@ -9,9 +9,7 @@
     align-items: center;
     border: 2px solid rgb(120, 120, 209);
     background-color: #f8f8ff;
-
     border-radius: 50%;
-
     width: 40px;
     height: 40px;
     font-size: 20px;
@@ -20,5 +18,13 @@
 
   .buttons-box {
     display: flex;
+    background-color: #1c9b9b;
+    border-radius: 10px;
+    margin: 10px 0 10px 0;
+
+    &__button {
+      color: white;
+      font-weight: 400;
+    }
   }
 }

@@ -152,7 +152,7 @@ export const detailExpand: AnimationTriggerMetadata = trigger('detailExpand', [
   state('expanded', style({ height: '*', opacity: '1' })),
   transition(
     'expanded <=> collapsed',
-    animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+    animate('5000ms cubic-bezier(0.4, 0.0, 0.2, 1)')
   ),
 ]);
 

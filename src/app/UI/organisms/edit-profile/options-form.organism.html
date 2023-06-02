@@ -20,15 +20,15 @@
       [fontSize]="'15px'"
     ></ui-title-letter-spacing>
 
-    <ui-input-and-title
-      *ngFor="let input of optionsPage.form.inputs?.inputsData"
+    <!--     <ui-input-and-title
+      *ngFor="let input of optionsPage.form.inputs.inputData"
       [data]="input"
-    ></ui-input-and-title>
+    ></ui-input-and-title> -->
 
-    <ui-autocomplete-and-title
+    <!--     <ui-autocomplete-and-title
       *ngIf="optionsPage.form.autocomplete !== null"
       [data]="optionsPage.form.autocomplete"
-    ></ui-autocomplete-and-title>
+    ></ui-autocomplete-and-title> -->
 
     <ng-container *ngIf="optionsPage.form.sliders !== null">
       <mat-slide-toggle *ngFor="let slider of optionsPage.form.sliders"

@@ -10,17 +10,13 @@ import { Guide } from 'src/app/Interfaces/interfaces';
 })
 export class GuidesComponent {
   @Input()
-  public guide: Guide = {
-    title: '',
-    content: '',
-    footerColor: 'red',
-  };
-  public matCardState: string = 'inactive';
+  public guide!: Guide;
+  public animationState: string = 'inactive';
 
   public matCardDown(): void {
-    this.matCardState = 'active';
+    this.animationState = 'active';
   }
   public matCardUp(): void {
-    this.matCardState = 'inactive';
+    this.animationState = 'inactive';
   }
 }

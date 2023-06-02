@@ -1,0 +1,73 @@
+<div class="overlay">
+  <section class="container">
+    <ui-close-button (click)="close.emit()" />
+    <h3 class="title">Add Exercise</h3>
+    <mat-stepper
+      [linear]="false"
+      [labelPosition]="'bottom'"
+      #stepper
+      class="stepper"
+    >
+      <form>
+        <mat-step>
+          <ng-template matStepLabel
+            ><span class="step-title">Exercise</span></ng-template
+          >
+          <div class="element-and-button-box">
+            <ui-title-and-autocomplete [data]="exerciseData" />
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <ng-container *ngFor="let data of inputAndAutocompletesSwitchers">
+          <mat-step *ngIf="data.inputAndTitle.title !== 'RPE'">
+            <ng-template matStepLabel
+              ><span class="step-title">{{
+                data.inputAndTitle.title
+              }}</span></ng-template
+            >
+            <div class="element-and-button-box">
+              <app-input-and-autocomplete-switcher
+                [inputData]="data.inputAndTitle"
+                [additionalOptionsData]="data.autocompletesAndTitles"
+              ></app-input-and-autocomplete-switcher>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+        </ng-container>
+        <mat-step>
+          <ng-template matStepLabel
+            ><span class="step-title">Reps</span></ng-template
+          >
+          <div class="element-and-button-box">
+            <ui-decorated-input-group
+              [data]="repsRangeViewScenario"
+              (emitClickEvent)="changeRepsRangeViewScenario()"
+            />
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step *ngFor="let data of rateAndBreakFields">
+          <ng-template matStepLabel
+            ><span class="step-title">{{ data.title }}</span></ng-template
+          >
+          <div class="element-and-button-box">
+            <ui-decorated-input-group [data]="data" />
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel
+            ><span class="step-title">RPE</span></ng-template
+          >
+          <div class="element-and-button-box">
+            <app-input-and-autocomplete-switcher
+              [inputData]="getRpeSwitcher.inputAndTitle"
+              [additionalOptionsData]="getRpeSwitcher.autocompletesAndTitles"
+            ></app-input-and-autocomplete-switcher>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+      </form>
+    </mat-stepper>
+  </section>
+</div>

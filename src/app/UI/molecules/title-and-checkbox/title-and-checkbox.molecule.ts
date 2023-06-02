@@ -1,15 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CheckboxData } from 'src/app/Interfaces/interfaces';
+import { Component, Input } from '@angular/core';
+import { CheckboxsAndTitle } from 'src/app/Interfaces/interfaces';
 
 @Component({
-  selector: 'ui-title-and-checkbox[checkboxData]',
+  selector: 'ui-title-and-checkbox[data]',
   templateUrl: './title-and-checkbox.molecule.html',
   styleUrls: ['./title-and-checkbox.molecule.scss'],
 })
-export class TreningParamCheckboxComponent {
+export class TitleAndCheckboxComponent {
   @Input()
-  public checkboxData!: CheckboxData;
-  @Output()
-  public emitControlsGroupValue: EventEmitter<object> =
-    new EventEmitter<object>();
+  public data!: CheckboxsAndTitle;
 }

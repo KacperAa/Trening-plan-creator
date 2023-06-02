@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatRow, MatTable } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { MatCell, MatRow } from '@angular/material/table';
+import { ro } from 'date-fns/locale';
+import { Subscription } from 'rxjs';
+import { TableRowAndCellKey } from 'src/app/Interfaces/interfaces';
+import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
 
 export interface ExerciseParams {
   ex: string;
@@ -15,20 +20,14 @@ const ELEMENT_DATA: ExerciseParams[] = [
     series: 3,
     reps: 12,
     rpe: 8,
-    icons: [
-      { column: 'Delete', icon: 'delete' },
-      { column: 'Edit', icon: 'create' },
-    ],
+    icons: [{ column: 'Delete', icon: 'delete' }],
   },
   {
     ex: 'Front Squad',
     series: 3,
     reps: 12,
     rpe: 9,
-    icons: [
-      { column: 'Delete', icon: 'delete' },
-      { column: 'Edit', icon: 'create' },
-    ],
+    icons: [{ column: 'Delete', icon: 'delete' }],
   },
 ];
 
@@ -41,42 +40,34 @@ export class TreningDayComponent {
   @Input()
   public dayOfWeek!: string;
   @Output()
-  public emitEvent = new EventEmitter<never>();
+  public emitOpen = new EventEmitter<never>();
   public dataSource = ELEMENT_DATA;
-  public editableRowData: MatRow[] = [];
-  public editTableRef!: MatTable<ExerciseParams>;
-  public isOpenedEditTable: boolean = false;
-  public tableColumns: string[] = [
-    'Ex',
-    'Series',
-    'Reps',
-    'RPE',
-    'Edit',
-    'Delete',
-  ];
-  public editableColumns: string[] = ['Ex', 'Series', 'Reps', 'RPE', 'Close'];
+  public tableColumns: string[] = ['Ex', 'Series', 'Reps', 'RPE', 'Delete'];
+  public inputValue!: string;
+  public rowAndCellKey!: TableRowAndCellKey;
+  private _subs: Subscription = new Subscription();
 
-  public emitAddExButtonEvent(): void {
-    return this.emitEvent.emit();
+  constructor(private _dialog: MatDialog) {}
+
+  public captureRowAndCellKey(rowAndCellKey: TableRowAndCellKey): void {
+    this.rowAndCellKey = rowAndCellKey;
+    this._openDialog();
   }
 
-  public captureTableReference(tableRef: MatTable<ExerciseParams>): void {
-    this.editTableRef = tableRef;
-  }
+  private _openDialog(): void {
+    const dialogRef = this._dialog.open(DialogFormComponent, {
+      data: {
+        title: this.rowAndCellKey.row[this.rowAndCellKey.cellKey] + ' - ',
+        placeholder: '...',
+        inputValue: this.inputValue,
+        unit: this.rowAndCellKey.cellKey,
+      },
+    });
 
-  public openEditRow(row: MatRow): void {
-    this.isOpenedEditTable = true;
-    this.editableRowData[0] = row;
-    this._refreshEditTableView();
-  }
-
-  public closeEditRow(): void {
-    this.isOpenedEditTable = false;
-  }
-
-  private _refreshEditTableView(): void {
-    setTimeout(() => {
-      this.editTableRef.renderRows();
-    }, 0);
+    this._subs.add(
+      dialogRef.afterClosed().subscribe((inputValue) => {
+        this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = inputValue;
+      })
+    );
   }
 }

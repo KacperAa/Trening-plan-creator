@@ -1,5 +1,9 @@
-<ui-italic-title [title]="title"></ui-italic-title>
+<h3 class="title">{{data.title}}</h3>
 <mat-chip-listbox (change)="chipChange.emit($event)">
-  <mat-chip-option [selected]="true" color="accent">Regular</mat-chip-option>
-  <mat-chip-option color="accent">Elastic</mat-chip-option>
+  <mat-chip-option
+    [selected]="chip.selected"
+    *ngFor="let chip of data.chips"
+    color="accent"
+    >{{chip.text}}</mat-chip-option
+  >
 </mat-chip-listbox>

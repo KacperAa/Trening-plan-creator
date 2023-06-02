@@ -1,0 +1,7 @@
+<a
+  (mouseup)="iconMouseUp()"
+  (mousedown)="iconMouseDown(socialMediaData.url)"
+  [@holdUnhold]="animationState"
+  class="url"
+  ><i [ngClass]="socialMediaData.style"></i
+></a>

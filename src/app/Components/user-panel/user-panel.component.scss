@@ -1,0 +1,22 @@
+.user-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3px;
+  &__profile-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+  &__profile-image:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+  &__logut-button {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    font-size: 11px;
+  }
+}

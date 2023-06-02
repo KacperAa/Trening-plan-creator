@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Guide, HomePagePromo } from 'src/app/Interfaces/interfaces';
+import { BannerData, Guide, TextBox } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'app-home-page',
@@ -7,7 +7,12 @@ import { Guide, HomePagePromo } from 'src/app/Interfaces/interfaces';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-  public headersAndContents: HomePagePromo[] = [
+  public text: BannerData = {
+    header: 'Plan Creator',
+    content: 'Efekty takie - że japierdole...',
+    buttonText: 'Get started',
+  };
+  public headersAndContents: TextBox[] = [
     {
       title: 'Track progress',
       contents: [

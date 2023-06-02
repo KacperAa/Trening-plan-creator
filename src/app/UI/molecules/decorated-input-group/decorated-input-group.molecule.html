@@ -1,0 +1,28 @@
+<div class="container">
+  <h3 class="title">{{data.title}}</h3>
+  <div class="inputs-and-decorations-box">
+    <ng-container *ngFor="let input of data.inputs">
+      <ui-input-form-field
+        [matLabel]="input.matLabel"
+        [placeholder]="input.placeholder"
+        [appereance]="input.appereance"
+        [width]="'70px'"
+      ></ui-input-form-field>
+      <div
+        class="inputs-and-decorations-box__decoration"
+        *ngIf="isNotLastInput(input)"
+      >
+        {{partingDecoration}}
+      </div>
+    </ng-container>
+  </div>
+
+  <button
+    *ngIf="data.hasButton"
+    (click)="emitClickEvent.emit()"
+    mat-button
+    class="button"
+  >
+    {{ data.buttonTitle }}
+  </button>
+</div>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {
   MatDividerListData,
   Profile,
-  SocialMediaIconAndAdress,
+  IconLink,
 } from 'src/app/Interfaces/interfaces';
 
 @Component({
@@ -17,7 +17,7 @@ export class ProfileCardComponent {
     assing: 'Ksiaze Ciemnosci',
   };
 
-  public socialMediaData: SocialMediaIconAndAdress[] = [
+  public socialMediaData: IconLink[] = [
     {
       style: 'fa-brands fa-facebook-f',
       url: 'https://pl-pl.facebook.com/',

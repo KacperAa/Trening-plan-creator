@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .logo {
+    height: 45px;
+    opacity: 0.8;
+  }
+}

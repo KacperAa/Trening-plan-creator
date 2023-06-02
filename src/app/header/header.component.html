@@ -1,19 +1,12 @@
 <header>
   <mat-toolbar color="warn" class="header">
-    <div class="hamburger-menu-and-logo-box">
-      <button mat-icon-button (click)="openHamburgerNav()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <img class="hamburger-menu-and-logo-box__logo" [src]="logoPath" />
-      <ui-navigation
-        [isSmallDevice]="isSmallDevice"
-        [hamburgerMenuState]="hamburgerMenuState"
-        [isHamburgerNav]="true"
-      ></ui-navigation>
-    </div>
+    <app-hamburger-logo
+      [logoPath]="logoPath"
+      [isSmallDevice]="isSmallDevice"
+      [hamburgerMenuState]="hamburgerMenuState"
+      (openNav)="openHamburgerNav()"
+    ></app-hamburger-logo>
     <ui-navigation *ngIf="!isSmallDevice"></ui-navigation>
-    <div class="log-in-and-register-box">
-      <div>Log in | register</div>
-    </div>
+    <app-user-panel [data]="userPanelData"></app-user-panel>
   </mat-toolbar>
 </header>

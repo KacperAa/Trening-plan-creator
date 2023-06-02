@@ -13,9 +13,6 @@ export class TrackProgressComponent {
       labelName: 'Actual Plan',
       content: TableWithSearchComponent,
     },
-    { labelName: 'Last Half Year', content: 'huj' },
-    { labelName: 'Last Year', content: 'huj' },
-    { labelName: 'Last two years', content: 'huj' },
-    { labelName: 'Last five years', content: 'huj' },
+    { labelName: 'Exercises progress', content: TableWithSearchComponent },
   ];
 }

@@ -1,10 +1,10 @@
-<ui-welcome-banner></ui-welcome-banner>
-<div class="articles-box">
-  <ui-application-description-box
+<ui-banner [data]="text"></ui-banner>
+<section class="articles-box">
+  <ui-text-box
     *ngFor="let headerAndContent of headersAndContents"
     [headerAndContents]="headerAndContent"
-  ></ui-application-description-box>
-</div>
+  ></ui-text-box>
+</section>
 <nav class="guides-box">
   <ui-guides *ngFor="let guide of guides" [guide]="guide"></ui-guides>
 </nav>

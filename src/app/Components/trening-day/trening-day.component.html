@@ -1,21 +1,14 @@
 <ui-title-on-bar [title]="dayOfWeek"></ui-title-on-bar>
-<ui-table
-  *ngIf="!isOpenedEditTable"
+<app-table
   [columns]="tableColumns"
   [dataSource]="dataSource"
   [isClicableRows]="false"
-  (emitRow)="openEditRow($event)"
-></ui-table>
-<ui-edit-table
-  *ngIf="isOpenedEditTable"
-  [dataSource]="editableRowData"
-  [columns]="editableColumns"
-  (tableRef)="captureTableReference($event)"
-  (emitCloseButtonEvent)="closeEditRow()"
-></ui-edit-table>
+  [isClicableParams]="true"
+  (tableRowAndCellLocation)="captureRowAndCellKey($event)"
+></app-table>
 
 <button
-  (click)="emitAddExButtonEvent()"
+  (click)="emitOpen.emit()"
   class="add-ex-button"
   mat-flat-button
   color="primary"

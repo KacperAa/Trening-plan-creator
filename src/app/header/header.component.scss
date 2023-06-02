@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  position: fixed;
+  z-index: 999;
   -webkit-box-shadow: 0px 0px 16px -6px rgba(80, 85, 113, 1);
   -moz-box-shadow: 0px 0px 16px -6px rgba(80, 85, 113, 1);
   box-shadow: 0px 0px 16px -6px rgba(80, 85, 113, 1);
@@ -14,11 +16,5 @@
       height: 45px;
       opacity: 0.8;
     }
-  }
-  .log-in-and-register-box {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    font-size: 11px;
   }
 }

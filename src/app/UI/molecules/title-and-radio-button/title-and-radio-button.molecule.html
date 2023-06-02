@@ -1,13 +1,10 @@
-<ui-italic-title [title]="radioButtonsData.title"></ui-italic-title>
-<mat-radio-group
-  (change)="emitSelectedOption.emit(radioButtonsData.selectedOption)"
-  [(ngModel)]="radioButtonsData.selectedOption"
->
-  <ng-container *ngFor="let button of radioButtonsData.buttons">
-    <ui-mat-radio-button
-      [selectedOption]="radioButtonsData.selectedOption"
+<h3 class="title">{{data.title}}</h3>
+<mat-radio-group [(ngModel)]="data.selectedOption">
+  <ng-container *ngFor="let button of data.buttons">
+    <ui-radio-dialog
+      [selectedOption]="data.selectedOption"
       [button]="button"
-      [dialogData]="radioButtonsData.dialogData"
-    ></ui-mat-radio-button>
+      [dialogData]="data.dialogData"
+    ></ui-radio-dialog>
   </ng-container>
 </mat-radio-group>

@@ -1,8 +1,8 @@
 <div class="container">
-  <ui-bolt-title [title]="data.title" [fontSize]="'15px'"></ui-bolt-title>
+  <h3 class="title">{{data.title}}</h3>
   <ui-input-form-field
-    [matLabel]="data.matLabel"
-    [placeholder]="data.placeholder"
-    [appereance]="data.appereance"
+    [matLabel]="data.inputData.matLabel"
+    [placeholder]="data.inputData.placeholder"
+    [appereance]="data.inputData.appereance"
   ></ui-input-form-field>
 </div>

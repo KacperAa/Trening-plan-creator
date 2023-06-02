@@ -1,0 +1,45 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 20px;
+  padding: 40vh 0 0 0;
+  height: 20vh;
+  background-color: rgb(212, 84, 84);
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 2px 8px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0px 2px 8px 0px rgba(66, 68, 90, 1);
+
+  .text-and-button-box {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__header {
+      color: white;
+      font-size: 55px;
+      font-weight: 500;
+      text-shadow: 0px 0px 4px rgba(126, 126, 150, 1);
+    }
+
+    &__text {
+      color: rgb(216, 215, 215);
+      font-style: italic;
+      text-shadow: 0px 0px 4px rgba(126, 126, 150, 1);
+    }
+  }
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  background-image: url("logo.gif");
+  background-size: 450px;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: 75% 120px;
+  opacity: 0.2;
+}

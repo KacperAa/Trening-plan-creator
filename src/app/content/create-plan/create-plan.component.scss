@@ -1,14 +1,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  .trening-plan-creator-form {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 30px 0;
+  .stepper-form {
+    padding: 50px;
   }
-  .trening-days-box {
+  .tables-box {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -16,7 +12,7 @@
     gap: 10px;
   }
 
-  .create-plan-button {
+  .button {
     margin-top: 12px;
   }
 }

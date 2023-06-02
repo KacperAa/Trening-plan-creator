@@ -1,16 +1,17 @@
 <footer class="footer">
-  <img class="logo" [src]="logoPath" />
-  <section class="title-and-social-media-adress-box">
-    <p class="title-and-social-media-adress-box__title">Find me on:</p>
-    <div class="title-and-social-media-adress-box__social-media-adresses-box">
-      <ui-social-media-adresses
-        *ngFor="let styleAndAdress of stylesAndSocialMediaAdresses"
-        [styleAndSocialMediaAdress]="styleAndAdress"
-      ></ui-social-media-adresses>
+  <section class="title-and-links-box">
+    <h3 class="title-and-links-box__title">Find me on:</h3>
+    <div class="title-and-links-box__links">
+      <ui-icon-link
+        *ngFor="let data of socialMediaData"
+        [socialMediaData]="data"
+      ></ui-icon-link>
     </div>
   </section>
-  <div>
-    <p class="content-title">Wszelkie prawa zastrzezone.</p>
-    <p class="content-title">&copy; Kacper Froncirz Development 2023</p>
+  <div class="text-box">
+    <span class="text-box__text">All rights reserved.</span>
+    <span class="text-box__text"
+      >&copy; Kacper Froncirz Development {{ date | date : "YYYY" }}</span
+    >
   </div>
 </footer>

@@ -1,0 +1,60 @@
+<table
+  mat-table
+  [dataSource]="dataSource"
+  multiTemplateDataRows
+  class="mat-elevation-z8"
+>
+  <ng-container *ngFor="let column of columns" matColumnDef="{{ column }}">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let row">
+      <ng-container *ngFor="let icon of row.icons">
+        <!-----------------------   Appears when it is possible to click on cells ------------------>
+        <button
+          (click)="emitTableRowAndCellLocation(row, column)"
+          *ngIf="isClicableParams && !columnHasIcon(column, icon)"
+          mat-button
+        >
+          {{ displayCellValue(row, column) }}
+        </button>
+        <!-- ............................................... -->
+
+        <!-- ----------------------   Appears when there are no clickable cell -------------------->
+        <ng-container *ngIf="!isClicableParams">{{
+          row[column.toLowerCase()]
+        }}</ng-container>
+        <!--  .........................--------------------- -->
+        <button *ngIf="column === icon.column" mat-icon-button>
+          <mat-icon>{{ icon.icon }}</mat-icon>
+        </button></ng-container
+      >
+    </td>
+  </ng-container>
+  <!--   .........................occurs when row is allowed to expand............................... -->
+
+  <ng-container *ngIf="isClicableRows" matColumnDef="expandedDetail">
+    <td [attr.colspan]="columns.length" mat-cell *matCellDef="let row">
+      <div
+        [@detailExpand]="getAnimationState(row)"
+        *ngIf="getAnimationState(row) === 'expanded'"
+      >
+        <ng-container *ngComponentOutlet="dynamicComponent"></ng-container>
+      </div>
+    </td>
+  </ng-container>
+  <!--   ............................................................................ -->
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr
+    [ngClass]="{ 'row-if-clicable-rows': isClicableRows }"
+    mat-row
+    *matRowDef="let row; columns: columns"
+    (click)="isClicableRows ? expandRow(row) : null"
+  ></tr>
+  <ng-container *ngIf="isClicableRows">
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="detail-row"
+    ></tr
+  ></ng-container>
+</table>

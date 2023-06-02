@@ -10,11 +10,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { ContentComponent } from './content/content.component';
 import { HomePageComponent } from './content/home-page/home-page.component';
-import { SocialMediaAdressesComponent } from './UI/atoms/social-media-adresses.atom/social-media-adresses.atom';
+import { SocialMediaAdressesComponent } from './UI/atoms/icon-link/icon-link.atom';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavigationComponent } from './UI/molecules/main-navigation.molecule/navigation.molecule';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ApplicationDescriptionBoxComponent } from './UI/atoms/application-description-box/application-description-box.atom';
+import { TextBoxComponent } from './UI/molecules/text-box/text-box.molecule';
 import { GuidesComponent } from './UI/molecules/guide.molecule/guides.molecule';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
@@ -22,7 +22,7 @@ import { CreatePlanComponent } from './content/create-plan/create-plan.component
 import { MatTableModule } from '@angular/material/table';
 import { TreningDayComponent } from './Components/trening-day/trening-day.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { TreningPlanCreatorFormComponent } from './Components/trening-plan-creator-form/trening-plan-creator-form.component';
+import { TreningPlanCreatorComponent } from './Components/trening-plan-creator/trening-plan-creator.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -30,34 +30,28 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
-import { AddExcerciseFormComponent } from './UI/organisms/form/form.organism';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TodayTreningComponent } from './content/today-trening/today-trening.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatTreeModule } from '@angular/material/tree';
-import { TreeOfPlansComponent } from './Components/tree-of-plans/tree-of-plans.component';
-import { WelcomeBannerAtomComponent } from './UI/atoms/welcome-banner.atom/welcome-banner.molecule';
+import { BannerComponent } from './UI/molecules/banner/banner.molecule';
 import { PageInformationBarComponent } from './UI/atoms/page-information-bar.atom/page-information-bar.atom';
-import { HeaderAndTextComponent } from './UI/atoms/header-and-text.atom/header-and-text/header-and-text.atom';
-import { CommonModule } from '@angular/common';
-import { TreningParamCheckboxComponent } from './UI/molecules/title-and-checkbox/title-and-checkbox.molecule';
+import { CommonModule, DatePipe } from '@angular/common';
+import { TitleAndCheckboxComponent } from './UI/molecules/title-and-checkbox/title-and-checkbox.molecule';
 import { ContentAndButtonComponent } from './UI/atoms/content-and-button/content-and-button.atom';
-import { TableComponent } from './UI/templates/table/table.template';
-import { ModifiableTableComponent } from './Components/modifiable-table/modifiable-table.component';
-import { StepperComponent } from './UI/molecules/stepper/stepper.molecule';
-import { AssignExFormComponent } from './Components/assign-ex-form/assign-ex-form.component';
-import { InputCalendarComponent } from './UI/atoms/input-calendar/field-input-calendar.molecule';
+import { TableComponent } from './Components/table/table.component';
+import { ExerciseStepsComponent } from './Components/exercise-steps/exercise-steps.component';
+import { ExercisePerformedComponent } from './Components/actual-plan/exercise-performed.component';
+import { InputCalendarComponent } from './Components/calendar-input/calendar-input.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { FormFieldComponent } from './UI/molecules/form-field/form-field.molecule';
+import { DecoratedInputGroup } from './UI/molecules/decorated-input-group/decorated-input-group.molecule';
 import { MatRadioModule } from '@angular/material/radio';
 import { TitleAndChipsComponent } from './UI/molecules/title-and-chips/title-and-chips.molecule';
 import { TitleAndRadioButtonComponent } from './UI/molecules/title-and-radio-button/title-and-radio-button.molecule';
 import { DialogFormComponent } from './UI/molecules/dialog-form/dialog-form.molecule';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatAutocomplateComponent } from './UI/molecules/input-autocomplete/input-autocomplete.molecule';
 import { EditTableComponent } from './UI/molecules/edit-table/edit-table.molecule';
 import { EditColumnButtonComponent } from './UI/atoms/edit-column-button/edit-param-button.atom';
 import { TimerComponent } from './UI/atoms/timer/timer.molecule';
@@ -65,23 +59,17 @@ import { LittleTitleComponent } from './UI/atoms/little-title/little-title.atom'
 import { ItalicTitleComponent } from './UI/atoms/italic-title/italic-title.atom';
 import { TitleOnBarComponent } from './UI/atoms/title-on-bar/title-on-bar.atom';
 import { CloseButtonComponent } from './UI/atoms/close-button/close-button.atom';
-import { InputNgModelComponent } from './UI/atoms/input-ng-model/input-ng-model.atom';
 import { InputFormFieldComponent } from './UI/atoms/input-form-field/input-form-field.atom';
 import { HeaderLetterSpacingComponent } from './UI/atoms/header-letter-spacing/header-letter-spacing.atom';
-import { AutocompleteComponent } from './UI/atoms/autocomplete/autocomplete.atom';
-import { InputPartingDecorationComponent } from './UI/atoms/input-parting-decoration/input-parting-decoration.atom';
-import { TableBarComponent } from './UI/organisms/bar-and-data-field/bar-and-data-field.organism';
-import { TextAndIconButtonComponent } from './UI/molecules/text-and-icon-button/text-and-icon-button.molecule';
 import { DataPickerComponent } from './UI/atoms/data-picker/data-picker.atom';
 import { TrackProgressComponent } from './content/track-progress/track-progress.component';
 import { MatTabsBarComponent } from './Components/mat-tabs-bar/mat-tabs-bar.component';
 import { TableWithSearchComponent } from './Components/table-with-search/table-with-search.component';
-import { TableFinderComponent } from './UI/atoms/table-finder/table-finder.atom';
-import { ExerciseDataChartComponent } from './UI/atoms/exercise-data-chart/exercise-data-chart.atom';
+import { TableFinderComponent } from './Components/table-finder/table-finder.component';
+import { ExerciseDataChartComponent } from './Components/exercise-data-chart/exercise-data-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { RadioButtonsAndChartComponent } from './UI/organisms/radio-buttons-and-chart/radio-buttons-and-chart.organism';
-import { MatRadioButtonComponent } from './UI/atoms/mat-radio-button/mat-radio-button.atom';
-import { ViewPlanComponent } from './content/view-plan/view-plan.component';
+import { RadioButtonsAndChartComponent } from './Components/radio-buttons-and-chart/radio-buttons-and-chart.component';
+import { RadioDialogComponent } from './UI/atoms/radio-dialog/radio-dialog.atom';
 import { ProfileComponent } from './content/profile/profile.component';
 import { ProfileCardComponent } from './UI/organisms/profile-card/profile-card.organism';
 import { ProfileImageComponent } from './UI/atoms/profile-image/profile-image.atom';
@@ -97,10 +85,22 @@ import { OptionsFormComponent } from './UI/organisms/edit-profile/options-form.o
 import { EditImageComponent } from './UI/molecules/edit-image/edit-image.molecule';
 import { TextareaAndTitleComponent } from './UI/molecules/textarea-and-title/textarea-and-title.molecule';
 import { InputAndTitleComponent } from './UI/molecules/input-and-title/input-and-title.molecule';
-import { AutocompleteAndTitleComponent } from './UI/molecules/autocomplete-and-title/autocomplete-and-title.molecule';
 import { SideNavComponent } from './UI/molecules/side-nav/side-nav.molecule';
 import { OptionsComponent } from './UI/templates/table/options/options.template';
 import { PlansListComponent } from './content/plans-list/plans-list.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { DateBarComponent } from './Components/date-bar/date-bar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendarComponent } from './Components/calendar/calendar.organism';
+import { TableAndBarComponent } from './UI/molecules/table-and-bar/table-and-bar.molecule';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { UserPanelComponent } from './Components/user-panel/user-panel.component';
+import { HamburgerLogoComponent } from './Components/hamburger-logo/hamburger-logo.component';
+import { AddExercise } from './Components/add-exercise/add-exercise.component';
+import { MatAutocomplateComponent } from './UI/molecules/input-autocomplete/input-autocomplete.atom';
+import { TitleAndAutocompleteComponent } from './UI/molecules/title-and-autocomplete/title-and-autocomplete.molecule';
+import { InputAndAutocompletesSwitcherComponent } from './Components/input-and-autocomplete-switcher/input-and-autocomplete-switcher.component';
+import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increase/weekly-amount-increase.component';
 
 @NgModule({
   declarations: [
@@ -111,25 +111,21 @@ import { PlansListComponent } from './content/plans-list/plans-list.component';
     HomePageComponent,
     SocialMediaAdressesComponent,
     NavigationComponent,
-    ApplicationDescriptionBoxComponent,
+    TextBoxComponent,
     GuidesComponent,
     CreatePlanComponent,
     PageInformationBarComponent,
     TreningDayComponent,
-    TreningPlanCreatorFormComponent,
-    AddExcerciseFormComponent,
+    TreningPlanCreatorComponent,
     TodayTreningComponent,
-    TreeOfPlansComponent,
-    WelcomeBannerAtomComponent,
-    HeaderAndTextComponent,
-    TreningParamCheckboxComponent,
+    BannerComponent,
+    TitleAndCheckboxComponent,
     ContentAndButtonComponent,
     TableComponent,
-    ModifiableTableComponent,
-    StepperComponent,
-    AssignExFormComponent,
+    ExerciseStepsComponent,
+    ExercisePerformedComponent,
     InputCalendarComponent,
-    FormFieldComponent,
+    DecoratedInputGroup,
     TitleAndChipsComponent,
     TitleAndRadioButtonComponent,
     DialogFormComponent,
@@ -142,21 +138,16 @@ import { PlansListComponent } from './content/plans-list/plans-list.component';
     ItalicTitleComponent,
     TitleOnBarComponent,
     CloseButtonComponent,
-    InputNgModelComponent,
     InputFormFieldComponent,
     HeaderLetterSpacingComponent,
-    AutocompleteComponent,
-    InputPartingDecorationComponent,
-    TableBarComponent,
-    TextAndIconButtonComponent,
+    DateBarComponent,
     DataPickerComponent,
     TrackProgressComponent,
     MatTabsBarComponent,
     TableWithSearchComponent,
     TableFinderComponent,
     RadioButtonsAndChartComponent,
-    MatRadioButtonComponent,
-    ViewPlanComponent,
+    RadioDialogComponent,
     ProfileComponent,
     ProfileCardComponent,
     ProfileImageComponent,
@@ -171,10 +162,17 @@ import { PlansListComponent } from './content/plans-list/plans-list.component';
     EditImageComponent,
     TextareaAndTitleComponent,
     InputAndTitleComponent,
-    AutocompleteAndTitleComponent,
     SideNavComponent,
     OptionsComponent,
     PlansListComponent,
+    CalendarComponent,
+    TableAndBarComponent,
+    UserPanelComponent,
+    HamburgerLogoComponent,
+    AddExercise,
+    TitleAndAutocompleteComponent,
+    InputAndAutocompletesSwitcherComponent,
+    WeeklyAmountIncreaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -196,7 +194,6 @@ import { PlansListComponent } from './content/plans-list/plans-list.component';
     MatCheckboxModule,
     MatChipsModule,
     FormsModule,
-    DragDropModule,
     MatSelectModule,
     MatListModule,
     MatTreeModule,
@@ -208,8 +205,11 @@ import { PlansListComponent } from './content/plans-list/plans-list.component';
     MatDialogModule,
     NgxChartsModule,
     MatSlideToggleModule,
+    MatBottomSheetModule,
+    FullCalendarModule,
+    MatTooltipModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

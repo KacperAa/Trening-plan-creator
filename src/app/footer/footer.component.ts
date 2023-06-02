@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SocialMediaIconAndAdress } from '../Interfaces/interfaces';
+import { IconLink } from '../Interfaces/interfaces';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +8,8 @@ import { SocialMediaIconAndAdress } from '../Interfaces/interfaces';
 })
 export class FooterComponent {
   public logoPath: string = 'assets/logo.png';
-  public stylesAndSocialMediaAdresses: SocialMediaIconAndAdress[] = [
+  public date: Date = new Date();
+  public socialMediaData: IconLink[] = [
     {
       style: 'fa-brands fa-facebook-f',
       url: 'https://pl-pl.facebook.com/',

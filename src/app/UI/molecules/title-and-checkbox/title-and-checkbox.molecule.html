@@ -1,17 +1,15 @@
-<section class="checkbox-section" [formGroup]="checkboxData.formGroup">
-  <ui-bolt-title [title]="checkboxData.title"></ui-bolt-title>
+<section class="checkbox-section" [formGroup]="data.formGroup">
+  <h3 class="title">{{data.title}}</h3>
   <div class="checkbox-box">
-    <ng-container *ngFor="let formControlNameAndTitle of checkboxData.button">
-      <mat-checkbox
-        (change)="emitControlsGroupValue.emit(checkboxData.formGroup.value)"
-        formControlName="{{ formControlNameAndTitle.formControlName }}"
-        >{{ formControlNameAndTitle.text }}</mat-checkbox
+    <ng-container *ngFor="let button of data.buttons">
+      <mat-checkbox formControlName="{{ button.formControlName }}"
+        >{{ button.text }}</mat-checkbox
       ></ng-container
     >
   </div>
 </section>
-
-<section [formGroup]="checkboxData.formGroup">
+<!-- 
+<section [formGroup]="data.formGroup">
   <h4>You chose:</h4>
-  {{ checkboxData.formGroup.value | json }}
-</section>
+  {{ data.formGroup.value | json }}
+</section> -->

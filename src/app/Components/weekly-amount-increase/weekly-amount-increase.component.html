@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="title-autocomplete-icon-decoration-box">
+    <button (click)="this.back.emit()" mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <ng-container *ngFor="let autcompleteAndTitle of data">
+      <ui-title-and-autocomplete
+        [data]="autcompleteAndTitle"
+      ></ui-title-and-autocomplete>
+      <div
+        *ngIf="isNotLastAutocomplete(autcompleteAndTitle)"
+        class="title-autocomplete-icon-decoration-box__decoration"
+      >
+        /
+      </div>
+    </ng-container>
+  </div>
+</div>

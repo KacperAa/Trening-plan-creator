@@ -5,9 +5,9 @@
     ></ui-list-item-and-divider
   ></ng-container>
   <div class="social-media-adress-box">
-    <ui-social-media-adresses
+    <ui-icon-link
       *ngFor="let data of socialMediaData"
-      [styleAndSocialMediaAdress]="data"
-    ></ui-social-media-adresses>
+      [socialMediaData]="data"
+    ></ui-icon-link>
   </div>
 </mat-list>

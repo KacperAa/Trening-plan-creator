@@ -1,0 +1,18 @@
+<mat-stepper class="stepper" #stepper>
+  <mat-step *ngFor="let step of steps" [stepControl]="step.formGroup">
+    <ng-template matStepLabel>{{ step.title }}</ng-template>
+    <div class="inputs-and-button-box">
+      <div class="inputs-and-button-box__inputs">
+        <ui-input-form-field
+          *ngFor="let inputParam of inputParams"
+          [matLabel]="inputParam.matLabel"
+          [placeholder]="inputParam.placeholder"
+          [appereance]="inputParam.appereance"
+          [width]="'70px'"
+        ></ui-input-form-field>
+      </div>
+      <ui-timer></ui-timer>
+      <button mat-raised-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+</mat-stepper>

@@ -3,8 +3,14 @@
     <div>{{ formatTime(time) | date : "mm:ss" }}</div>
   </div>
   <div class="buttons-box">
-    <button (click)="startTimer()" mat-button>Start</button>
-    <button (click)="stopTimer()" mat-button>Stop</button>
-    <button (click)="resetTimer()" mat-button>Reset</button>
+    <button class="buttons-box__button" (click)="startTimer()" mat-button>
+      Start
+    </button>
+    <button class="buttons-box__button" (click)="stopTimer()" mat-button>
+      Stop
+    </button>
+    <button class="buttons-box__button" (click)="resetTimer()" mat-button>
+      Reset
+    </button>
   </div>
 </div>

@@ -4,11 +4,10 @@
   </h1>
   <ui-close-button (emitEvent)="closeDialog()"></ui-close-button>
   <div mat-dialog-content>
-    <ui-input-ng-model
-      [placeholder]="data.placeholder"
-      [inputValue]="data.inputValue"
-      (emitInputValue)="data.inputValue = $event"
-    ></ui-input-ng-model>
+    <mat-form-field appearance="fill">
+      <mat-label>{{ data.placeholder }}</mat-label>
+      <input matInput [(ngModel)]="data.inputValue" />
+    </mat-form-field>
   </div>
   <div mat-dialog-actions>
     <button mat-button [mat-dialog-close]="data.inputValue" cdkFocusInitial>

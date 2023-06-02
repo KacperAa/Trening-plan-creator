@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
 import { Options } from 'src/app/Interfaces/interfaces';
 
 @Component({
@@ -17,7 +16,7 @@ export class SettingsComponent {
   ];
   public selectedOption: string = this.buttonsText[0];
   public optionsPages: Options[] = [
-    {
+    /*   {
       title: 'Edit Profile',
       form: {
         editImageData: {
@@ -28,40 +27,34 @@ export class SettingsComponent {
         },
         textArea: { title: 'Biogram', matLabel: 'textArea' },
         inputs: {
-          title: null,
+          title: 'dupa',
           inputsData: [
             {
-              title: 'Weight',
               matLabel: 'Weight',
               placeholder: '...',
               appereance: 'fill',
             },
             {
-              title: 'Intern',
               matLabel: 'Intern',
               placeholder: '...',
               appereance: 'fill',
             },
             {
-              title: 'Facebook',
               matLabel: 'adress',
               placeholder: '...',
               appereance: 'fill',
             },
             {
-              title: 'Instagram',
               matLabel: 'adress',
               placeholder: '...',
               appereance: 'fill',
             },
             {
-              title: 'Twitter',
               matLabel: 'adress',
               placeholder: '...',
               appereance: 'fill',
             },
             {
-              title: 'Youtube',
               matLabel: 'adress',
               placeholder: '...',
               appereance: 'fill',
@@ -72,27 +65,24 @@ export class SettingsComponent {
         autocomplete: null,
         sliders: null,
       },
-    },
-    {
+    }, */
+    /*     {
       title: 'Account Data',
       form: {
         inputs: {
           title: 'Change password',
-          inputsData: [
+          inputData: [
             {
-              title: 'Old password',
               matLabel: 'password',
               placeholder: '...',
               appereance: 'fill',
             },
             {
-              title: 'New password',
               matLabel: 'password',
               placeholder: '...',
               appereance: 'fill',
             },
             {
-              title: 'Repeat password',
               matLabel: 'password',
               placeholder: '...',
               appereance: 'fill',
@@ -105,12 +95,11 @@ export class SettingsComponent {
         autocomplete: null,
         sliders: null,
       },
-    },
+    }, */
     {
       title: 'Language',
       form: {
         autocomplete: {
-          title: 'Choose Language',
           matLabel: 'dupa',
           placeholder: '...',
           formControl: new FormControl(),
@@ -140,3 +129,5 @@ export class SettingsComponent {
     this.selectedOption = option;
   }
 }
+
+/* generyczny interfejs */

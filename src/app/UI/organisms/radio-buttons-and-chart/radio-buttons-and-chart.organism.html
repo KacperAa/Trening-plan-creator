@@ -1,8 +1,0 @@
-<ui-title-and-radio-button
-  [radioButtonsData]="radioButtonsData"
-></ui-title-and-radio-button>
-<ng-container *ngFor="let button of radioButtonsData.buttons"
-  ><ui-exercise-data-chart
-    *ngIf="radioButtonsData.selectedOption === button.title"
-  ></ui-exercise-data-chart
-></ng-container>

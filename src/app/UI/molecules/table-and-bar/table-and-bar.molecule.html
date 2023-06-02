@@ -1,0 +1,12 @@
+<div class="container">
+  <ui-title-on-bar
+    [title]="tableAndBarData.bar.title"
+    [hasCloseButton]="tableAndBarData.bar.hasCloseButton"
+    (emitClick)="emitClick.emit()"
+  ></ui-title-on-bar>
+  <app-table
+    [columns]="tableAndBarData.table.columns"
+    [dataSource]="tableAndBarData.table.dataSource"
+    [isClicableRows]="false"
+  ></app-table>
+</div>

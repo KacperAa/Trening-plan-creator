@@ -1,17 +1,33 @@
 .container {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #008080;
+  position: relative;
   border-radius: 10px 0;
   -webkit-box-shadow: 0px 0px 13px -5px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 0px 13px -5px rgba(66, 68, 90, 1);
   box-shadow: 0px 0px 13px -5px rgba(66, 68, 90, 1);
 
-  .header {
+  .title {
+    display: flex;
     color: white;
     opacity: 0.9;
     margin: 0;
     font-size: 14px;
     font-weight: 400;
   }
+  .close-button {
+    display: flex;
+    color: rgb(241, 238, 238);
+    width: 24px;
+    height: 24px;
+    padding: 0;
+  }
+}
+
+.has-close-button {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
 }

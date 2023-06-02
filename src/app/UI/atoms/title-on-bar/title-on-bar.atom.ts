@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'ui-title-on-bar[title]',
@@ -7,5 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class TitleOnBarComponent {
   @Input()
-  public title!: string;
+  public title!: string | null;
+  @Input()
+  public hasCloseButton!: boolean;
+  @Output()
+  public emitClick: EventEmitter<never> = new EventEmitter<never>();
 }

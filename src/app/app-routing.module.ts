@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'create-plan', component: CreatePlanComponent },
-  { path: 'your-plans', component: TodayTreningComponent },
+  { path: 'todays-plan', component: TodayTreningComponent },
   { path: 'track-progress', component: TrackProgressComponent },
   { path: 'your-profile', component: ProfileComponent },
   { path: 'options', component: OptionsComponent },

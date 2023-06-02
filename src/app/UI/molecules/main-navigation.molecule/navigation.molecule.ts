@@ -1,9 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { hamburgerMenuAnimation } from 'src/app/Animations/own-animations';
-import {
-  SocialMediaIconAndAdress,
-  TitleAndMenu,
-} from 'src/app/Interfaces/interfaces';
+import { IconLink, TitleAndMenu } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'ui-navigation',
@@ -18,7 +15,6 @@ export class NavigationComponent {
   public hamburgerMenuState!: string;
   @Input()
   public isSmallDevice!: boolean;
-  public logoPath: string = 'assets/logo.png';
   public navigationButtons: TitleAndMenu[] = [
     {
       title: 'Trening plan',
@@ -30,7 +26,7 @@ export class NavigationComponent {
     { title: 'Options', menu: [], icon: null },
     { title: 'Your Profile', menu: [], icon: null },
   ];
-  public stylesAndSocialMediaAdresses: SocialMediaIconAndAdress[] = [
+  public socialMediaData: IconLink[] = [
     {
       style: 'fa-brands fa-facebook-f',
       url: 'https://pl-pl.facebook.com/',

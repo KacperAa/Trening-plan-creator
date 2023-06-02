@@ -1,8 +1,13 @@
+import { Component, Type } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatRow } from '@angular/material/table';
+import { format } from 'date-fns';
 import { Observable } from 'rxjs';
+import { RadioButtonsAndChartComponent } from '../Components/radio-buttons-and-chart/radio-buttons-and-chart.component';
+import { PeriodicElementt } from '../content/today-trening/today-trening.component';
 
-export interface SocialMediaIconAndAdress {
+export interface IconLink {
   style: string;
   url: string;
 }
@@ -17,7 +22,7 @@ export interface Menu {
   title: string;
 }
 
-export interface HomePagePromo {
+export interface TextBox {
   title: string;
   contents: string[];
 }
@@ -28,32 +33,26 @@ export interface Guide {
   footerColor: string;
 }
 
-export interface CheckboxData {
-  formGroup: FormGroup;
+export interface CheckboxsAndTitle {
   title: string;
-  button: TextAndFormControlName[];
+  formGroup: FormGroup;
+  buttons: CheckboxButton[];
+  additionalData?: GenericParam<string>;
 }
 
-export interface TextAndFormControlName {
+export interface GenericParam<T> {
+  [name: string]: T;
+}
+
+export interface CheckboxButton {
   formControlName: string;
   text: string;
 }
 
-export interface HeaderAndText {
+export interface BannerData {
   header: string;
   content: string;
-}
-
-export interface TreningListTree {
-  name: string;
-  icon?: string;
-  children?: TreningListTree[];
-}
-
-export interface BranchTreningTree {
-  isExpandable: boolean;
-  name: string;
-  level: number;
+  buttonText: string;
 }
 
 export interface MatStepProperties {
@@ -62,25 +61,14 @@ export interface MatStepProperties {
   formControlName: string;
 }
 
-export interface InputParams {
-  label: string;
-  isSmallInput: boolean;
-}
-
-export interface InputsFormField {
+export interface DecoratedInputsGroup {
   title: string;
-  appereance: MatFormFieldAppearance;
-  inputs: InputInField[];
-  placeholder: string;
-  isOpen: boolean;
+  inputs: InputFormField[];
+  /*   formControl: FormControl; */
   hasButton?: boolean;
   buttonTitle?: string;
-  partingDecoration?: string;
-}
-
-export interface InputInField {
-  text: string;
-  hasDecoration: boolean;
+  customDecoration?: string;
+  additionalParam?: GenericParam<string>;
 }
 
 export interface AutocompleteFormProperties {
@@ -98,7 +86,7 @@ export interface MatDialogData {
   unit: string;
 }
 
-export interface RadioButtonsData {
+export interface RadioButtonsDialogWithTitle {
   title: string;
   buttons: RadioButtonOption[];
   selectedOption: string;
@@ -107,7 +95,7 @@ export interface RadioButtonsData {
 
 export interface RadioButtonOption {
   title: string;
-  hasDialog: boolean;
+  hasDialog?: boolean;
 }
 
 export interface MatAutocompeteData {
@@ -115,32 +103,30 @@ export interface MatAutocompeteData {
   placeholder: string;
   formControl: FormControl;
   options: string[];
-  title: string | null;
 }
 
 export interface InputFormField {
   matLabel: string;
   placeholder: string;
   appereance: MatFormFieldAppearance;
-  title: string | null;
 }
 
-export interface BarAndDataField {
+export interface DateAndFormat {
   date: Date;
   dateFormat: string;
-  icon: string;
-  dateField: DateField;
-}
-
-export interface DateField {
-  text: string;
-  matLabel: string;
-  inputAppereance: MatFormFieldAppearance;
 }
 
 export interface MatTabs {
   labelName: string;
-  content: any;
+  content: Type<TableWithOpenedGraphsComponent>;
+}
+
+export interface TableWithOpenedGraphsComponent {
+  dataSource: any;
+  columns: string[];
+  tableFinder: InputFormField;
+  additionalContentForRow: Type<RadioButtonsAndChartComponent>;
+  filteredRows$: Observable<PeriodicElementt[]>;
 }
 
 export interface MatDividerListData {
@@ -162,7 +148,7 @@ export interface Options {
 export interface OptionsForm {
   editImageData: EditImage | null;
   textArea: TextArea | null;
-  inputs: InputsForm | null;
+  inputs: InputAndTitle | null;
   autocomplete: MatAutocompeteData | null;
   sliders: MatSlider[] | null;
   button: string | null;
@@ -186,4 +172,64 @@ export interface EditImage {
 export interface TextArea {
   matLabel: string;
   title?: string;
+}
+
+export interface BottomSheet {
+  name: string;
+  title: string;
+  date: string;
+}
+
+export interface BarAndTable {
+  bar: { title: string | null; hasCloseButton: boolean };
+  table: { columns: string[]; dataSource: any };
+}
+
+export interface InputsFormFields {
+  name: string;
+  data: InputFormField[];
+}
+
+export interface UserPanelData {
+  imgAdress: string;
+  buttonText: string;
+  matIcon: string;
+  matTooltipText: string;
+}
+
+export interface ChipsWithTitle {
+  title: string;
+  chips: Chips[];
+}
+
+export interface Chips {
+  text: string;
+  selected?: boolean;
+}
+
+export interface InputAndTitle {
+  title: string;
+  inputData: InputFormField;
+  additionalParam?: GenericParam<string>;
+}
+
+export interface TitleAndAutocomplete {
+  title: string;
+  autocomplete: MatAutocompeteData;
+}
+
+export interface InputTitleIcon {
+  title: string;
+  icon: string;
+  input: InputFormField;
+}
+
+export interface InputAndAutocompletesSwitcher {
+  inputAndTitle: InputTitleIcon;
+  autocompletesAndTitles: TitleAndAutocomplete[];
+}
+
+export interface TableRowAndCellKey {
+  row: MatRow | any;
+  cellKey: string;
 }

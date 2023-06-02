@@ -2,7 +2,7 @@
   <mat-tab-group>
     <ng-container *ngFor="let data of matTabsData">
       <mat-tab label="{{ data.labelName }}">
-        <app-table-with-search></app-table-with-search>
+        <ng-container *ngComponentOutlet="data.content"></ng-container>
       </mat-tab>
     </ng-container>
   </mat-tab-group>

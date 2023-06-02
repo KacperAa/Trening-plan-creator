@@ -1,5 +1,17 @@
-import { Component } from '@angular/core';
-import { BarAndDataField } from 'src/app/Interfaces/interfaces';
+import { Component, Type } from '@angular/core';
+import { ExercisePerformedComponent } from 'src/app/Components/actual-plan/exercise-performed.component';
+
+@Component({
+  selector: 'app-today-trening',
+  templateUrl: './today-trening.component.html',
+  styleUrls: ['./today-trening.component.scss'],
+})
+export class TodayTreningComponent {
+  public columns: string[] = ['Ex', 'Series', 'Reps', 'Rpe', 'Edit'];
+  public dataSource: PeriodicElementt[] = ELEMENT_DATA;
+  public passedComponent: Type<ExercisePerformedComponent> =
+    ExercisePerformedComponent;
+}
 
 export interface PeriodicElementt {
   ex: string;
@@ -15,63 +27,41 @@ const ELEMENT_DATA: PeriodicElementt[] = [
     series: 3,
     reps: 12,
     rpe: 8,
-    icons: [{ column: 'Create', icon: 'create' }],
+    icons: [{ column: 'Edit', icon: 'create' }],
   },
   {
     ex: 'Front Squad',
     series: 3,
     reps: 12,
     rpe: 9,
-    icons: [{ column: 'Create', icon: 'create' }],
+    icons: [{ column: 'Edit', icon: 'create' }],
   },
   {
     ex: 'Bench Press',
     series: 3,
     reps: 12,
     rpe: 8,
-    icons: [{ column: 'Create', icon: 'create' }],
+    icons: [{ column: 'Edit', icon: 'create' }],
   },
   {
     ex: 'Front Squad',
     series: 3,
     reps: 12,
     rpe: 9,
-    icons: [{ column: 'Create', icon: 'create' }],
+    icons: [{ column: 'Edit', icon: 'create' }],
   },
   {
     ex: 'Bench Press',
     series: 3,
     reps: 12,
     rpe: 8,
-    icons: [{ column: 'Create', icon: 'create' }],
+    icons: [{ column: 'Edit', icon: 'create' }],
   },
   {
     ex: 'Front Squad',
     series: 3,
     reps: 12,
     rpe: 9,
-    icons: [{ column: 'Create', icon: 'create' }],
+    icons: [{ column: 'Edit', icon: 'create' }],
   },
 ];
-
-@Component({
-  selector: 'app-today-trening',
-  templateUrl: './today-trening.component.html',
-  styleUrls: ['./today-trening.component.scss'],
-})
-export class TodayTreningComponent {
-  public isCreated: boolean = true;
-  public columns: string[] = ['Ex', 'Series', 'Reps', 'Rpe', 'Create'];
-  public dataSource: PeriodicElementt[] = ELEMENT_DATA;
-
-  public barAndDateFieldData: BarAndDataField = {
-    date: new Date(),
-    dateFormat: 'EEEE dd/MM/y',
-    icon: 'date_range',
-    dateField: {
-      text: 'If you dont have time today...',
-      matLabel: 'Choose Day',
-      inputAppereance: 'outline',
-    },
-  };
-}
