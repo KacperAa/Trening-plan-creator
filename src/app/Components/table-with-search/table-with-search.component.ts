@@ -6,7 +6,6 @@ import {
 } from 'src/app/Interfaces/interfaces';
 import { PeriodicElementt } from 'src/app/content/today-trening/today-trening.component';
 import { RadioButtonsAndChartComponent } from '../radio-buttons-and-chart/radio-buttons-and-chart.component';
-import { ContentComponent } from 'src/app/content/content.component';
 
 @Component({
   selector: 'app-table-with-search',
@@ -19,7 +18,7 @@ export class TableWithSearchComponent
   public dataSource: PeriodicElementt[] = ELEMENT_DATA;
   public columns: string[] = ['ex', 'series', 'RPE'];
   public tableFinder: InputFormField = {
-    matLabel: 'find ex',
+    matLabel: 'find exercise',
     placeholder: '...',
     appereance: 'fill',
   };

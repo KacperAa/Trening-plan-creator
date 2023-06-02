@@ -71,11 +71,11 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { RadioButtonsAndChartComponent } from './Components/radio-buttons-and-chart/radio-buttons-and-chart.component';
 import { RadioDialogComponent } from './UI/atoms/radio-dialog/radio-dialog.atom';
 import { ProfileComponent } from './content/profile/profile.component';
-import { ProfileCardComponent } from './UI/organisms/profile-card/profile-card.organism';
+import { ProfileCardComponent } from './Components/profile-card/profile-card.component';
 import { ProfileImageComponent } from './UI/atoms/profile-image/profile-image.atom';
-import { ListComponent } from './UI/molecules/list/list.molecule';
-import { ListItemAndDividerComponent } from './UI/molecules/list-item-and-divider/list-item-and-divider.molecule';
-import { ProgileImageAndNicknameComponent } from './UI/molecules/progile-image-and-nickname/progile-image-and-nickname.molecule';
+import { ProfileListComponent } from './UI/molecules/profile-list/profile-list.component';
+import { ListItemAndDividerComponent } from './Components/list-item-and-divider/list-item-and-divider.component';
+import { ProfileImageAndNicknameComponent } from './UI/molecules/profile-image-and-nickname/profile-image-and-nickname.molecule';
 import { LoginPanelComponent } from './content/login-panel/login-panel.component';
 import { LoginFormComponent } from './UI/molecules/login-or-register-form/login-or-register.molecule';
 import { RegisterComponent } from './content/register/register.component';
@@ -151,9 +151,9 @@ import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increa
     ProfileComponent,
     ProfileCardComponent,
     ProfileImageComponent,
-    ListComponent,
+    ProfileListComponent,
     ListItemAndDividerComponent,
-    ProgileImageAndNicknameComponent,
+    ProfileImageAndNicknameComponent,
     LoginPanelComponent,
     LoginFormComponent,
     RegisterComponent,

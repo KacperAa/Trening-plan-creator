@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { MatDividerListData } from 'src/app/Interfaces/interfaces';
 
 @Component({
-  selector: 'ui-list-item-and-divider[listItemData]',
-  templateUrl: './list-item-and-divider.molecule.html',
-  styleUrls: ['./list-item-and-divider.molecule.scss'],
+  selector: 'app-list-item-and-divider[listItemData]',
+  templateUrl: './list-item-and-divider.component.html',
+  styleUrls: ['./list-item-and-divider.component.scss'],
 })
 export class ListItemAndDividerComponent {
   @Input()

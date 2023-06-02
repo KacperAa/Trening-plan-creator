@@ -1,16 +1,16 @@
 <div class="container">
   <mat-card class="profile-card">
     <mat-card-header>
-      <ui-progile-image-and-nickname
-        [ngStyle]="{ width: '100%' }"
+      <ui-profile-image-and-nickname
+        [style]="{ width: '100%' }"
         [data]="imageAndText"
-      ></ui-progile-image-and-nickname>
+      ></ui-profile-image-and-nickname>
     </mat-card-header>
     <mat-card-content>
-      <ui-list
+      <app-profile-list
         [socialMediaData]="socialMediaData"
         [listItemsData]="listItemsData"
-      ></ui-list>
+      ></app-profile-list>
     </mat-card-content>
   </mat-card>
 </div>

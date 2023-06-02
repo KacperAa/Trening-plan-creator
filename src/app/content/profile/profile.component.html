@@ -1,4 +1,10 @@
 <div class="container">
   <ui-page-information-bar [header]="'Your profile'"></ui-page-information-bar>
-  <div class="profile-card"><app-profile-card></app-profile-card></div>
+  <div class="profile-card">
+    <app-profile-card
+      [imageAndText]="imageAndText"
+      [socialMediaData]="socialMediaData"
+      [listItemsData]="listItemsData"
+    />
+  </div>
 </div>
