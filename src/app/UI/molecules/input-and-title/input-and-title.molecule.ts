@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { InputAndTitle } from 'src/app/Interfaces/interfaces';
 
+type Position = 'vertical' | 'horizontal';
+
 @Component({
   selector: 'ui-input-and-title[data]',
   templateUrl: './input-and-title.molecule.html',
@@ -9,4 +11,6 @@ import { InputAndTitle } from 'src/app/Interfaces/interfaces';
 export class InputAndTitleComponent {
   @Input()
   public data!: InputAndTitle;
+  @Input()
+  public position!: Position;
 }

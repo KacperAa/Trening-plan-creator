@@ -18,17 +18,11 @@
       <ui-input-and-title
         *ngFor="let inputAndTitle of optionsPage.form.inputsAndTitles"
         [data]="inputAndTitle"
+        [position]="'vertical'"
       ></ui-input-and-title>
     </ng-container>
 
-    <ng-container *ngIf="optionsPage.form.inputsAndTitles !== null"
-      ><ui-input-and-title
-        *ngFor="let input of optionsPage.form.inputsAndTitles.inputData"
-        [data]="input"
-      ></ui-input-and-title>
-    </ng-container>
-
-    <ng-container *ngIf="optionsPage.form.autocomplete !==null">
+    <ng-container *ngIf="optionsPage.form.autocomplete !== null">
       <ui-title-and-autocomplete
         [data]="optionsPage.form.autocomplete"
         *ngIf="optionsPage.form.autocomplete !== null"
@@ -36,12 +30,12 @@
     </ng-container>
 
     <ng-container *ngIf="optionsPage.form.sliders !== null">
-      <mat-slide-toggle *ngFor="let slider of optionsPage.form.sliders"
-        >{{slider.text}}</mat-slide-toggle
-      ></ng-container
+      <mat-slide-toggle *ngFor="let slider of optionsPage.form.sliders">{{
+        slider.text
+      }}</mat-slide-toggle></ng-container
     >
     <button *ngIf="optionsPage.form.button !== null" mat-button color="primary">
-      {{optionsPage.form.button}}
+      {{ optionsPage.form.button }}
     </button>
   </div>
 </div>

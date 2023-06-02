@@ -12,10 +12,10 @@
     </button>
   </nav>
   <ng-container *ngFor="let page of optionsPages">
-    <ui-options-form
+    <app-options-page
       class="options-template"
       *ngIf="page.title === selectedOption"
       [optionsPage]="page"
-    ></ui-options-form>
+    ></app-options-page>
   </ng-container>
 </main>
