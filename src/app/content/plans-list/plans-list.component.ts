@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { BottomSheet } from 'src/app/Interfaces/interfaces';
-/* import { BottomSheetComponent } from 'src/app/UI/molecules/bottom-sheet/bottom-sheet.molecule'; */
 
 @Component({
   selector: 'app-plans-list',
@@ -14,12 +13,4 @@ export class PlansListComponent {
     { name: 'Chest priorytet', title: 'Plan finished:', date: 'xxx' },
     { name: 'Leg priorytet', title: 'Plan finished:', date: 'xxx' },
   ];
-
-  constructor(private _bottomSheet: MatBottomSheet) {}
-
-  /*   public openBottomSheet(): void {
-    this._bottomSheet.open(BottomSheetComponent, {
-      data: this.bottomSheetData,
-    });
-  } */
 }

@@ -7,9 +7,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { BarAndTable } from 'src/app/Interfaces/interfaces';
 
 @Component({
-  selector: 'ui-calendar',
-  templateUrl: './calendar.organism.html',
-  styleUrls: ['./calendar.organism.scss'],
+  selector: 'app-calendar',
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements AfterViewInit {
   @ViewChild('calendar') public calendarRef!: FullCalendarComponent;

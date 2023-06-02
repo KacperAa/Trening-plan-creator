@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { ContentComponent } from './content/content.component';
 import { HomePageComponent } from './content/home-page/home-page.component';
 import { SocialMediaAdressesComponent } from './UI/atoms/icon-link/icon-link.atom';
 import { MatMenuModule } from '@angular/material/menu';
@@ -83,7 +82,7 @@ import { PlansListComponent } from './content/plans-list/plans-list.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { DateBarComponent } from './Components/date-bar/date-bar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { CalendarComponent } from './Components/calendar/calendar.organism';
+import { CalendarComponent } from './Components/calendar/calendar.component';
 import { TableAndBarComponent } from './UI/molecules/table-and-bar/table-and-bar.molecule';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserPanelComponent } from './Components/user-panel/user-panel.component';
@@ -99,7 +98,6 @@ import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increa
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ContentComponent,
     HomePageComponent,
     SocialMediaAdressesComponent,
     NavigationComponent,
