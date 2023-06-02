@@ -79,14 +79,14 @@ import { ProfileImageAndNicknameComponent } from './UI/molecules/profile-image-a
 import { LoginPanelComponent } from './content/login-panel/login-panel.component';
 import { LoginFormComponent } from './UI/molecules/login-or-register-form/login-or-register.molecule';
 import { RegisterComponent } from './content/register/register.component';
-import { SettingsComponent } from './UI/organisms/settings/settings.organism';
+import { SettingsComponent } from './content/settings/settings.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { OptionsFormComponent } from './UI/organisms/edit-profile/options-form.organism';
 import { EditImageComponent } from './UI/molecules/edit-image/edit-image.molecule';
 import { TextareaAndTitleComponent } from './UI/molecules/textarea-and-title/textarea-and-title.molecule';
 import { InputAndTitleComponent } from './UI/molecules/input-and-title/input-and-title.molecule';
 import { SideNavComponent } from './UI/molecules/side-nav/side-nav.molecule';
-import { OptionsComponent } from './UI/templates/table/options/options.template';
+
 import { PlansListComponent } from './content/plans-list/plans-list.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { DateBarComponent } from './Components/date-bar/date-bar.component';
@@ -163,7 +163,6 @@ import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increa
     TextareaAndTitleComponent,
     InputAndTitleComponent,
     SideNavComponent,
-    OptionsComponent,
     PlansListComponent,
     CalendarComponent,
     TableAndBarComponent,
