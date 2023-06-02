@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Options } from 'src/app/Interfaces/interfaces';
+import { EditImage, Options, OptionsForm } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'app-settings',
@@ -16,7 +16,7 @@ export class SettingsComponent {
   ];
   public selectedOption: string = this.buttonsText[0];
   public optionsPages: Options[] = [
-    /*   {
+    {
       title: 'Edit Profile',
       form: {
         editImageData: {
@@ -26,89 +26,84 @@ export class SettingsComponent {
           buttonText: 'Change image',
         },
         textArea: { title: 'Biogram', matLabel: 'textArea' },
-        inputs: {
-          title: 'dupa',
-          inputsData: [
-            {
+        inputsAndTitles: [
+          {
+            title: 'Weight',
+            inputData: {
               matLabel: 'Weight',
               placeholder: '...',
               appereance: 'fill',
             },
-            {
+          },
+          {
+            title: 'Intern',
+            inputData: {
               matLabel: 'Intern',
               placeholder: '...',
               appereance: 'fill',
             },
-            {
+          },
+
+          {
+            title: 'adress',
+            inputData: {
               matLabel: 'adress',
               placeholder: '...',
               appereance: 'fill',
             },
-            {
-              matLabel: 'adress',
-              placeholder: '...',
-              appereance: 'fill',
-            },
-            {
-              matLabel: 'adress',
-              placeholder: '...',
-              appereance: 'fill',
-            },
-            {
-              matLabel: 'adress',
-              placeholder: '...',
-              appereance: 'fill',
-            },
-          ],
-        },
-        button: 'Save',
+          },
+        ],
         autocomplete: null,
         sliders: null,
+        button: 'Save',
       },
-    }, */
-    /*     {
+    },
+
+    {
       title: 'Account Data',
       form: {
-        inputs: {
-          title: 'Change password',
-          inputData: [
-            {
+        inputsAndTitles: [
+          {
+            title: 'Password',
+            inputData: {
               matLabel: 'password',
               placeholder: '...',
               appereance: 'fill',
             },
-            {
+          },
+          {
+            title: 'Password',
+            inputData: {
               matLabel: 'password',
               placeholder: '...',
               appereance: 'fill',
             },
-            {
-              matLabel: 'password',
-              placeholder: '...',
-              appereance: 'fill',
-            },
-          ],
-        },
+          },
+        ],
         button: 'Change password',
         editImageData: null,
         textArea: null,
         autocomplete: null,
         sliders: null,
       },
-    }, */
+    },
+
     {
       title: 'Language',
       form: {
         autocomplete: {
-          matLabel: 'dupa',
-          placeholder: '...',
-          formControl: new FormControl(),
-          options: ['Pl', 'EN'],
+          title: 'Lang',
+          autocomplete: {
+            matLabel: 'dupa',
+            placeholder: '...',
+            formControl: new FormControl(),
+            options: ['Pl', 'EN'],
+          },
         },
         button: 'Save',
         editImageData: null,
         textArea: null,
-        inputs: null,
+        inputsAndTitles: null,
         sliders: null,
       },
     },
@@ -120,10 +115,11 @@ export class SettingsComponent {
         autocomplete: null,
         editImageData: null,
         textArea: null,
-        inputs: null,
+        inputsAndTitles: null,
       },
     },
   ];
+
   public selectOption(text: string): void {
     this.selectedOption = text;
   }

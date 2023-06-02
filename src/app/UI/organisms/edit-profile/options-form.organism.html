@@ -14,21 +14,26 @@
       [data]="optionsPage.form.textArea"
     ></ui-textarea-and-title>
 
-    <ui-title-letter-spacing
-      *ngIf="optionsPage.form.inputs?.title !== null"
-      [text]="optionsPage.form.inputs?.title"
-      [fontSize]="'15px'"
-    ></ui-title-letter-spacing>
+    <ng-container *ngIf="optionsPage.form.inputsAndTitles !== null">
+      <ui-input-and-title
+        *ngFor="let inputAndTitle of optionsPage.form.inputsAndTitles"
+        [data]="inputAndTitle"
+      ></ui-input-and-title>
+    </ng-container>
 
-    <!--     <ui-input-and-title
-      *ngFor="let input of optionsPage.form.inputs.inputData"
-      [data]="input"
-    ></ui-input-and-title> -->
+    <ng-container *ngIf="optionsPage.form.inputsAndTitles !== null"
+      ><ui-input-and-title
+        *ngFor="let input of optionsPage.form.inputsAndTitles.inputData"
+        [data]="input"
+      ></ui-input-and-title>
+    </ng-container>
 
-    <!--     <ui-autocomplete-and-title
-      *ngIf="optionsPage.form.autocomplete !== null"
-      [data]="optionsPage.form.autocomplete"
-    ></ui-autocomplete-and-title> -->
+    <ng-container *ngIf="optionsPage.form.autocomplete !==null">
+      <ui-title-and-autocomplete
+        [data]="optionsPage.form.autocomplete"
+        *ngIf="optionsPage.form.autocomplete !== null"
+      ></ui-title-and-autocomplete>
+    </ng-container>
 
     <ng-container *ngIf="optionsPage.form.sliders !== null">
       <mat-slide-toggle *ngFor="let slider of optionsPage.form.sliders"

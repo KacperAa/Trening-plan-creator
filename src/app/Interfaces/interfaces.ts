@@ -1,8 +1,8 @@
-import { Component, Type } from '@angular/core';
+import { Type } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { MatRow } from '@angular/material/table';
-import { format } from 'date-fns';
+
 import { Observable } from 'rxjs';
 import { RadioButtonsAndChartComponent } from '../Components/radio-buttons-and-chart/radio-buttons-and-chart.component';
 import { PeriodicElementt } from '../content/today-trening/today-trening.component';
@@ -142,17 +142,16 @@ export interface Profile {
 
 export interface Options {
   title: string;
-  form: any;
+  form: OptionsForm;
 }
 
-export interface OptionsForm<T> {
-  /*   [key: string]: T; */
-  /*   editImageData: EditImage | null;
+export interface OptionsForm {
+  editImageData: EditImage | null;
   textArea: TextArea | null;
-  inputs: InputAndTitle | null;
-  autocomplete: MatAutocompeteData | null;
+  inputsAndTitles: InputAndTitle[] | null;
+  autocomplete: TitleAndAutocomplete | null;
   sliders: MatSlider[] | null;
-  button: string | null; */
+  button: string | null;
 }
 
 export interface MatSlider {
@@ -212,6 +211,11 @@ export interface InputAndTitle {
   title: string;
   inputData: InputFormField;
   additionalParam?: GenericParam<string>;
+}
+
+export interface InputsAndTitle {
+  title: string;
+  inputsData: InputAndTitle[];
 }
 
 export interface TitleAndAutocomplete {

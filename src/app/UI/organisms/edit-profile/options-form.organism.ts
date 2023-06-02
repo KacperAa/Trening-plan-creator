@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Options } from 'src/app/Interfaces/interfaces';
+import { Options, OptionsForm } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'ui-options-form[optionsPage]',
@@ -8,5 +8,5 @@ import { Options } from 'src/app/Interfaces/interfaces';
 })
 export class OptionsFormComponent {
   @Input()
-  public optionsPage!: Options;
+  public optionsPage!: any;
 }
