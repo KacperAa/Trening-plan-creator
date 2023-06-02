@@ -83,7 +83,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { DateBarComponent } from './Components/date-bar/date-bar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarComponent } from './Components/calendar/calendar.component';
-import { TableAndBarComponent } from './UI/molecules/table-and-bar/table-and-bar.molecule';
+import { TableAndBarComponent } from './Components/table-and-bar/table-and-bar.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserPanelComponent } from './Components/user-panel/user-panel.component';
 import { HamburgerLogoComponent } from './Components/hamburger-logo/hamburger-logo.component';

@@ -3,6 +3,8 @@
 </mat-list-item>
 <mat-divider></mat-divider>
 <ng-container *ngFor="let list of listItemData.list; let i = index">
-  <mat-list-item>{{ list }}</mat-list-item>
+  <mat-list-item
+    ><h3 class="title">{{ list }}</h3></mat-list-item
+  >
   <mat-divider *ngIf="i === listItemData.list!.length - 1"></mat-divider>
 </ng-container>

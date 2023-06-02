@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BarAndTable } from 'src/app/Interfaces/interfaces';
 
 @Component({
-  selector: 'ui-table-and-bar[tableAndBarData]',
-  templateUrl: './table-and-bar.molecule.html',
-  styleUrls: ['./table-and-bar.molecule.scss'],
+  selector: 'app-table-and-bar[tableAndBarData]',
+  templateUrl: './table-and-bar.component.html',
+  styleUrls: ['./table-and-bar.component.scss'],
 })
 export class TableAndBarComponent {
   @Input()

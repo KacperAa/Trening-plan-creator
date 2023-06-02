@@ -1,7 +1,7 @@
 <full-calendar #calendar [options]="calendarOptions"></full-calendar>
 <ng-container *ngIf="this.tableAndBarData.bar.title !== null">
-  <ui-table-and-bar
+  <app-table-and-bar
     [tableAndBarData]="tableAndBarData"
     (emitClick)="closeTable()"
-  ></ui-table-and-bar>
+  ></app-table-and-bar>
 </ng-container>
