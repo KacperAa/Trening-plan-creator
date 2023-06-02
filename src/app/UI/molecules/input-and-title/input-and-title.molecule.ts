@@ -12,5 +12,5 @@ export class InputAndTitleComponent {
   @Input()
   public data!: InputAndTitle;
   @Input()
-  public position!: Position;
+  public position: Position = 'horizontal';
 }

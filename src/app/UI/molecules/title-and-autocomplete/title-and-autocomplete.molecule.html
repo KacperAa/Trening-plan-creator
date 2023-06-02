@@ -1,4 +1,7 @@
-<div class="container">
+<div
+  class="container"
+  [ngClass]="position === 'vertical' ? 'vertical-position' : null"
+>
   <h3 class="title">{{data.title}}</h3>
   <ui-input-autocomplete [data]="data.autocomplete"></ui-input-autocomplete>
 </div>

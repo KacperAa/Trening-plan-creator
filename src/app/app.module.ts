@@ -83,7 +83,7 @@ import { SettingsComponent } from './content/settings/settings.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { OptionsFormComponent } from './Components/options-page/options-page.component';
 import { EditImageComponent } from './UI/molecules/edit-image/edit-image.molecule';
-import { TextareaAndTitleComponent } from './UI/molecules/textarea-and-title/textarea-and-title.molecule';
+import { TextareaAndTitleComponent } from './Components/textarea-and-title/textarea-and-title.component';
 import { InputAndTitleComponent } from './UI/molecules/input-and-title/input-and-title.molecule';
 import { PlansListComponent } from './content/plans-list/plans-list.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
