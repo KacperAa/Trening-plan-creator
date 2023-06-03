@@ -1,6 +1,5 @@
 import { Component, Type } from '@angular/core';
 import { ExercisePerformedComponent } from 'src/app/Components/actual-plan/exercise-performed.component';
-import { ColumnAndText } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'app-today-trening',

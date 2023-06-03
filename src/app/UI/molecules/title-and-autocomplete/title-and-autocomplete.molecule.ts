@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { TitleAndAutocomplete } from 'src/app/Interfaces/interfaces';
+import { TitleAndAutocomplete } from 'src/app/Interfaces/title-and-autocomplete.interface';
 
-type Position = 'vertical' | 'horizontal'
+type Position = 'vertical' | 'horizontal';
 
 @Component({
   selector: 'ui-title-and-autocomplete[data]',
@@ -12,5 +12,5 @@ export class TitleAndAutocompleteComponent {
   @Input()
   public data!: TitleAndAutocomplete;
   @Input()
-  public position: Position = 'horizontal'
+  public position: Position = 'horizontal';
 }

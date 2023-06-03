@@ -1,7 +1,7 @@
 import { ViewportRuler } from '@angular/cdk/scrolling';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
-import { ColumnAndText } from 'src/app/Interfaces/interfaces';
+import { ColumnAndText } from 'src/app/Interfaces/column-and-text.interface';
 
 @Component({
   selector: 'app-calendar-table',

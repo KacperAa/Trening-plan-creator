@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, Type } from '@angular/core';
 import { MatRow } from '@angular/material/table';
 import { detailExpand } from 'src/app/Animations/own-animations';
-import { TableRowAndCellKey } from 'src/app/Interfaces/interfaces';
+import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.interface';
 
 @Component({
   selector: 'app-table[columns][dataSource]',

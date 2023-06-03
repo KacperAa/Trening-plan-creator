@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TitleAndAutocomplete } from 'src/app/Interfaces/interfaces';
+import { TitleAndAutocomplete } from 'src/app/Interfaces/title-and-autocomplete.interface';
 
 @Component({
   selector: 'app-weekly-amount-increase[data]',

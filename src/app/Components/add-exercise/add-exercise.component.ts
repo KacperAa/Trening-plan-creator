@@ -5,12 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-
-import {
-  InputAndAutocompletesSwitcher,
-  TitleAndAutocomplete,
-} from 'src/app/Interfaces/interfaces';
 import { DecoratedInputsGroup } from 'src/app/Interfaces/decorated-inputs-group.interface';
+import { TitleAndAutocomplete } from 'src/app/Interfaces/title-and-autocomplete.interface';
+import { InputAndAutocompletesSwitcher } from 'src/app/Interfaces/input-and-autocompletes-switcher.interface';
 
 @Component({
   selector: 'app-add-exercise',

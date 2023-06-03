@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
-import {
-  InputTitleIcon,
-  TitleAndAutocomplete,
-} from 'src/app/Interfaces/interfaces';
+import { InputTitleIcon } from 'src/app/Interfaces/input-title-icon.interface';
+import { TitleAndAutocomplete } from 'src/app/Interfaces/title-and-autocomplete.interface';
 
 @Component({
   selector:

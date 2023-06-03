@@ -1,7 +1,8 @@
-import { InputAndTitle, TitleAndAutocomplete } from './interfaces';
+import { TitleAndAutocomplete } from './title-and-autocomplete.interface';
 import { MatSlider } from './mat-slider.interface';
 import { EditImage } from './edit-image.interface';
 import { TitleAndTextArea } from './title-and-text-area.interface';
+import { InputAndTitle } from './input-and-title.interface';
 
 export interface Options {
   title: string;

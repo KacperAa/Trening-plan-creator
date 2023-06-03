@@ -1,12 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
 import { Subscription } from 'rxjs';
-import {
-  ColumnAndText,
-  TableRowAndCellKey,
-} from 'src/app/Interfaces/interfaces';
 import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
+import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.interface';
 
 export interface ExerciseParams {
   ex: string;

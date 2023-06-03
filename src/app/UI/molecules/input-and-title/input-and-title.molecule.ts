@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { InputAndTitle } from 'src/app/Interfaces/interfaces';
+import { InputAndTitle } from 'src/app/Interfaces/input-and-title.interface';
 
 type Position = 'vertical' | 'horizontal';
 
