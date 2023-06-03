@@ -4,7 +4,7 @@ import { FullCalendarComponent } from '@fullcalendar/angular';
 import { Calendar, CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { BarData } from 'src/app/Interfaces/interfaces';
+import { BarData } from 'src/app/Interfaces/bar-data.interface';
 
 @Component({
   selector: 'app-calendar',
@@ -15,7 +15,8 @@ export class CalendarComponent implements AfterViewInit {
   @ViewChild('calendar') public calendarRef!: FullCalendarComponent;
 
   public barData: BarData = {
-    bar: { title: null, hasCloseButton: true },
+    title: null,
+    hasCloseButton: true,
   };
 
   public calendarOptions: CalendarOptions = {
@@ -55,14 +56,14 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   public clickEvent(eventClick: EventClickArg): void {
-    this.barData.bar.title = this._datePipe.transform(
+    this.barData.title = this._datePipe.transform(
       eventClick.event.start,
       'EEEE, yyyy MMMM dd'
     );
   }
 
   public closeTable(): void {
-    this.barData.bar.title = null;
+    this.barData.title = null;
   }
 
   private _getCalendarApi(): Calendar {

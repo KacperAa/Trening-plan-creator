@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MatDividerListData } from 'src/app/Interfaces/interfaces';
+import { MatDividerListData } from 'src/app/Interfaces/mat-divider-list-data.interface';
 import { IconLink } from 'src/app/Interfaces/icon-link.interface';
 
 @Component({

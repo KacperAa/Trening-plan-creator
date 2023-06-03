@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TextArea } from 'src/app/Interfaces/interfaces';
+import { TitleAndTextArea } from 'src/app/Interfaces/title-and-text-area.interface';
 
 @Component({
   selector: 'ui-textarea-and-title[data]',
@@ -8,5 +8,5 @@ import { TextArea } from 'src/app/Interfaces/interfaces';
 })
 export class TextareaAndTitleComponent {
   @Input()
-  public data?: TextArea | null;
+  public data?: TitleAndTextArea | null;
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Options } from 'src/app/Interfaces/interfaces';
+import { Options } from 'src/app/Interfaces/options.interface';
 
 @Component({
   selector: 'app-options-page[optionsPage]',

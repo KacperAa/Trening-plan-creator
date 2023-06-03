@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BarData } from 'src/app/Interfaces/interfaces';
+import { BarData } from 'src/app/Interfaces/bar-data.interface';
 
 @Component({
   selector: 'app-table-and-bar[barData]',

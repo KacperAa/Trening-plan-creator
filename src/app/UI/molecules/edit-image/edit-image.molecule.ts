@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { EditImage } from 'src/app/Interfaces/interfaces';
+import { EditImage } from 'src/app/Interfaces/edit-image.interface';
 
 @Component({
   selector: 'ui-edit-image[data]',

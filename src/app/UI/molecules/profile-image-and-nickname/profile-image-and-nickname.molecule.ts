@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Profile } from 'src/app/Interfaces/interfaces';
+import { Profile } from 'src/app/Interfaces/profile.interface';
 
 @Component({
   selector: 'ui-profile-image-and-nickname[data]',

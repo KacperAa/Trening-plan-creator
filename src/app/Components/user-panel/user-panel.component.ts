@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserPanelData } from 'src/app/Interfaces/interfaces';
+import { UserPanelData } from 'src/app/Interfaces/user-panel-data.interface';
 
 @Component({
   selector: 'app-user-panel[data]',

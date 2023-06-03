@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { EditImage, Options, OptionsForm } from 'src/app/Interfaces/interfaces';
+import { Options } from 'src/app/Interfaces/options.interface';
 
 @Component({
   selector: 'app-settings',

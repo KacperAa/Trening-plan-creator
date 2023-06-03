@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
-import { UserPanelData } from '../Interfaces/interfaces';
+import { UserPanelData } from 'src/app/Interfaces/user-panel-data.interface';
 
 @Component({
   selector: 'app-header',

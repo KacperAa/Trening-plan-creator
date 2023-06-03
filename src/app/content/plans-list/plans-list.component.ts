@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { BottomSheet } from 'src/app/Interfaces/interfaces';
+import { BottomSheet } from 'src/app/Interfaces/bottom-sheet.interface';
 
 @Component({
   selector: 'app-plans-list',
