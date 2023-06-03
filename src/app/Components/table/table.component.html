@@ -19,9 +19,9 @@
         <!-- ............................................... -->
 
         <!-- ----------------------   Appears when there are no clickable cell -------------------->
-        <ng-container *ngIf="!isClicableParams">{{
-          row[column.toLowerCase()]
-        }}</ng-container>
+        <ng-container *ngIf="!isClicableParams"
+          >{{ row[column.toLowerCase()] }}
+        </ng-container>
         <!--  .........................--------------------- -->
         <button *ngIf="column === icon.column" mat-icon-button>
           <mat-icon>{{ icon.icon }}</mat-icon>

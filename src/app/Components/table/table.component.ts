@@ -27,7 +27,6 @@ export class TableComponent {
   @Output()
   public tableRowAndCellLocation: EventEmitter<TableRowAndCellKey> =
     new EventEmitter<TableRowAndCellKey>();
-
   public dynamicComponent!: Type<Component>;
 
   public columnHasIcon(

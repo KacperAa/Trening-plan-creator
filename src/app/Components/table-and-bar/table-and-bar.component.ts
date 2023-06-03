@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BarAndTable } from 'src/app/Interfaces/interfaces';
 
 @Component({
@@ -9,6 +9,9 @@ import { BarAndTable } from 'src/app/Interfaces/interfaces';
 export class TableAndBarComponent {
   @Input()
   public tableAndBarData!: BarAndTable;
+
   @Output()
   public emitClick: EventEmitter<never> = new EventEmitter<never>();
+
+  constructor() {}
 }

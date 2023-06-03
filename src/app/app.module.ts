@@ -92,6 +92,7 @@ import { MatAutocomplateComponent } from './UI/molecules/input-autocomplete/inpu
 import { TitleAndAutocompleteComponent } from './UI/molecules/title-and-autocomplete/title-and-autocomplete.molecule';
 import { InputAndAutocompletesSwitcherComponent } from './Components/input-and-autocomplete-switcher/input-and-autocomplete-switcher.component';
 import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increase/weekly-amount-increase.component';
+import { CalendarTableComponent } from './Components/calendar-table/calendar-table.component';
 
 @NgModule({
   declarations: [
@@ -155,6 +156,7 @@ import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increa
     TitleAndAutocompleteComponent,
     InputAndAutocompletesSwitcherComponent,
     WeeklyAmountIncreaseComponent,
+    CalendarTableComponent,
   ],
   imports: [
     BrowserModule,

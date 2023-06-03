@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ExerciseParams } from 'src/app/Components/trening-day/trening-day.component';
 import { InputFormField } from 'src/app/Interfaces/interfaces';
 
 @Component({

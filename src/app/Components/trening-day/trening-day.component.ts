@@ -3,7 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatCell, MatRow } from '@angular/material/table';
 import { ro } from 'date-fns/locale';
 import { Subscription } from 'rxjs';
-import { TableRowAndCellKey } from 'src/app/Interfaces/interfaces';
+import {
+  ColumnAndText,
+  TableRowAndCellKey,
+} from 'src/app/Interfaces/interfaces';
 import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
 
 export interface ExerciseParams {
@@ -46,6 +49,13 @@ export class TreningDayComponent {
   public inputValue!: string;
   public rowAndCellKey!: TableRowAndCellKey;
   private _subs: Subscription = new Subscription();
+  /*   public columnsAndTexts: ColumnAndText[] = [
+    { column: 'ex', text: 'Ex' },
+    { column: 'series', text: 'Series' },
+    { column: 'reps', text: 'Reps' },
+    { column: 'rpe', text: 'RPE' },
+    { column: 'delete', text: 'Delete' },
+  ]; */
 
   constructor(private _dialog: MatDialog) {}
 

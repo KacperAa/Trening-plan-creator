@@ -17,7 +17,18 @@ export class CalendarComponent implements AfterViewInit {
   public tableAndBarData: BarAndTable = {
     bar: { title: null, hasCloseButton: true },
     table: {
-      columns: ['Ex', 'Series', 'Reps'],
+      columns: [
+        'Ex',
+        'Series',
+        'Serie 1',
+        'Reps',
+        'Serie 2',
+        'Reps',
+        'Serie 3',
+        'Reps',
+        'Reps',
+        'RPE',
+      ],
       dataSource: ELEMENT_DATA,
     },
   };
@@ -75,6 +86,7 @@ export interface ExerciseParams {
   series: number;
   reps: number;
   rpe: number;
+  icons: any;
 }
 
 const ELEMENT_DATA: ExerciseParams[] = [
@@ -83,11 +95,13 @@ const ELEMENT_DATA: ExerciseParams[] = [
     series: 3,
     reps: 12,
     rpe: 8,
+    icons: [{}],
   },
   {
     ex: 'Front Squad',
     series: 3,
     reps: 12,
     rpe: 9,
+    icons: [{}],
   },
 ];

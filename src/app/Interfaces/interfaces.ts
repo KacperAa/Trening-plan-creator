@@ -238,3 +238,8 @@ export interface TableRowAndCellKey {
   row: MatRow | any;
   cellKey: string;
 }
+
+export interface ColumnAndText {
+  column: string;
+  text: string;
+}
