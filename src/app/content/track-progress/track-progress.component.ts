@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TableWithSearchComponent } from 'src/app/Components/table-with-search/table-with-search.component';
-import { MatTabs } from 'src/app/Interfaces/interfaces';
+import { MatTabs } from 'src/app/Interfaces/mat-tabs.interface';
 
 @Component({
   selector: 'app-track-progress',

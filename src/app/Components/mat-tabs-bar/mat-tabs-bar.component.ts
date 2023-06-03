@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MatTabs } from 'src/app/Interfaces/interfaces';
+import { MatTabs } from 'src/app/Interfaces/mat-tabs.interface';
 
 @Component({
   selector: 'app-mat-tabs-bar[matTabsData]',

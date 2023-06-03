@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { InputFormField } from 'src/app/Interfaces/interfaces';
+import { InputFormField } from 'src/app/Interfaces/input-form-field.interface';
 
 @Component({
   selector: 'ui-login-or-register-form[title][inputsData][buttonsText]',

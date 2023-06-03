@@ -1,6 +1,8 @@
 .container {
   width: 50vh;
   padding: 30px 40px 30px 40px;
+  display: flex;
+  flex-wrap: wrap;
   .title {
     font-size: 22px;
     margin: 12px 0;

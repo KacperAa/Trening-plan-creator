@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ExerciseParams } from 'src/app/Components/trening-day/trening-day.component';
-import { InputFormField } from 'src/app/Interfaces/interfaces';
+import { InputFormField } from 'src/app/Interfaces/input-form-field.interface';
 
 @Component({
   selector: 'app-login-panel',

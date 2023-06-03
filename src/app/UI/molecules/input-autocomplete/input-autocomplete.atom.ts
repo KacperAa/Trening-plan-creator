@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { Observable, map, startWith } from 'rxjs';
-import { MatAutocompeteData } from 'src/app/Interfaces/interfaces';
+import { MatAutocompleteData } from 'src/app/Interfaces/mat-autocomplete-data.interface';
 
 @Component({
   selector: 'ui-input-autocomplete[data]',
@@ -10,7 +10,7 @@ import { MatAutocompeteData } from 'src/app/Interfaces/interfaces';
 })
 export class MatAutocomplateComponent implements OnInit {
   @Input()
-  public data!: MatAutocompeteData;
+  public data!: MatAutocompleteData;
   public keyOptionsFound!: Observable<string[]>;
   public autocomplete!: MatAutocomplete;
 

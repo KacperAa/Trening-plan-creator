@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RadioButtonOption } from 'src/app/Interfaces/interfaces';
+import { RadioButtonOption } from 'src/app/Interfaces/radio-button-option.interface';
 
 @Component({
   selector: 'app-radio-buttons-and-chart',

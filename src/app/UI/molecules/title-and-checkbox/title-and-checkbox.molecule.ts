@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CheckboxsAndTitle } from 'src/app/Interfaces/interfaces';
+import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interface';
 
 @Component({
   selector: 'ui-title-and-checkbox[data]',

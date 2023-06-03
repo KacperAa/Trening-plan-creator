@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/interfaces';
+import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-dialog-with-title.interace';
 
 @Component({
   selector: 'ui-title-and-radio-button[data]',

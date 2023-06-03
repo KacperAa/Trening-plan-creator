@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { BannerData, Guide, TextBox } from 'src/app/Interfaces/interfaces';
+import { TextBox } from 'src/app/Interfaces/text-box.interface';
+import { Guide } from 'src/app/Interfaces/guide.interface';
+import { BannerData } from 'src/app/Interfaces/banner-data.interface';
 
 @Component({
   selector: 'app-home-page',

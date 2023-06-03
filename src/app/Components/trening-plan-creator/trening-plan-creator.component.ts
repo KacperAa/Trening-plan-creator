@@ -4,12 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipListboxChange } from '@angular/material/chips';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Subscription, fromEvent } from 'rxjs';
-import {
-  CheckboxsAndTitle,
-  ChipsWithTitle,
-  RadioButtonsDialogWithTitle,
-} from 'src/app/Interfaces/interfaces';
+import { ChipsWithTitle } from 'src/app/Interfaces/interfaces';
 import { oneRequiredField } from 'src/app/Validators/validators';
+import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interface';
+import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-dialog-with-title.interace';
 
 @Component({
   selector: 'app-trening-plan-creator',

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { hamburgerMenuAnimation } from 'src/app/Animations/own-animations';
-import { IconLink, TitleAndMenu } from 'src/app/Interfaces/interfaces';
+import { IconLink } from 'src/app/Interfaces/icon-link.interface';
+import { TitleAndMenu } from 'src/app/Interfaces/title-and-menu.interface';
 
 @Component({
   selector: 'ui-navigation',

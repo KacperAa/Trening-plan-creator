@@ -2,132 +2,13 @@ import { Type } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { MatRow } from '@angular/material/table';
-
 import { Observable } from 'rxjs';
 import { RadioButtonsAndChartComponent } from '../Components/radio-buttons-and-chart/radio-buttons-and-chart.component';
 import { PeriodicElementt } from '../content/today-trening/today-trening.component';
-
-export interface IconLink {
-  style: string;
-  url: string;
-}
-
-export interface TitleAndMenu {
-  title: string;
-  menu: Menu[];
-  icon: string | null;
-}
-
-export interface Menu {
-  title: string;
-}
-
-export interface TextBox {
-  title: string;
-  contents: string[];
-}
-
-export interface Guide {
-  title: string;
-  content: string;
-  footerColor: string;
-}
-
-export interface CheckboxsAndTitle {
-  title: string;
-  formGroup: FormGroup;
-  buttons: CheckboxButton[];
-  additionalData?: GenericParam<string>;
-}
-
-export interface GenericParam<T> {
-  [name: string]: T;
-}
-
-export interface CheckboxButton {
-  formControlName: string;
-  text: string;
-}
-
-export interface BannerData {
-  header: string;
-  content: string;
-  buttonText: string;
-}
-
-export interface MatStepProperties {
-  formGroup: FormGroup;
-  title: string;
-  formControlName: string;
-}
-
-export interface DecoratedInputsGroup {
-  title: string;
-  inputs: InputFormField[];
-  /*   formControl: FormControl; */
-  hasButton?: boolean;
-  buttonTitle?: string;
-  customDecoration?: string;
-  additionalParam?: GenericParam<string>;
-}
-
-export interface AutocompleteFormProperties {
-  title: string;
-  placeholder: string;
-  formControlName: string;
-  findedOptions: Observable<string[]> | null;
-  hasDecoration?: boolean;
-}
-
-export interface MatDialogData {
-  title: string;
-  placeholder: string;
-  inputValue: string;
-  unit: string;
-}
-
-export interface RadioButtonsDialogWithTitle {
-  title: string;
-  buttons: RadioButtonOption[];
-  selectedOption: string;
-  dialogData?: MatDialogData;
-}
-
-export interface RadioButtonOption {
-  title: string;
-  hasDialog?: boolean;
-}
-
-export interface MatAutocompeteData {
-  matLabel: string;
-  placeholder: string;
-  formControl: FormControl;
-  options: string[];
-}
-
-export interface InputFormField {
-  matLabel: string;
-  placeholder: string;
-  appereance: MatFormFieldAppearance;
-}
-
-export interface DateAndFormat {
-  date: Date;
-  dateFormat: string;
-}
-
-export interface MatTabs {
-  labelName: string;
-  content: Type<TableWithOpenedGraphsComponent>;
-}
-
-export interface TableWithOpenedGraphsComponent {
-  dataSource: any;
-  columns: string[];
-  tableFinder: InputFormField;
-  additionalContentForRow: Type<RadioButtonsAndChartComponent>;
-  filteredRows$: Observable<PeriodicElementt[]>;
-}
+import { GenericParam } from './checkboxs-and-title.interface';
+import { MatDialogData } from './mat-dialog-data.interface';
+import { MatAutocompleteData } from './mat-autocomplete-data.interface';
+import { InputFormField } from './input-form-field.interface';
 
 export interface MatDividerListData {
   title: string;
@@ -219,7 +100,7 @@ export interface InputsAndTitle {
 
 export interface TitleAndAutocomplete {
   title: string;
-  autocomplete: MatAutocompeteData;
+  autocomplete: MatAutocompleteData;
 }
 
 export interface InputTitleIcon {

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { matCardAnimation } from 'src/app/Animations/own-animations';
-import { Guide } from 'src/app/Interfaces/interfaces';
+import { Guide } from 'src/app/Interfaces/guide.interface';
 
 @Component({
   selector: 'ui-guides[guide]',

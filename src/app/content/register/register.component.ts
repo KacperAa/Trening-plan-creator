@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { InputFormField } from 'src/app/Interfaces/interfaces';
+import { InputFormField } from 'src/app/Interfaces/input-form-field.interface';
 
 @Component({
   selector: 'app-register',

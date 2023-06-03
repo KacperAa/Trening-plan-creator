@@ -1,12 +1,9 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import {
-  ColumnAndText,
-  InputFormField,
-  TableWithOpenedGraphsComponent,
-} from 'src/app/Interfaces/interfaces';
+import { TableWithOpenedGraphsComponent } from 'src/app/Interfaces/table-with-opened-graphs-component.interface';
 import { PeriodicElementt } from 'src/app/content/today-trening/today-trening.component';
 import { RadioButtonsAndChartComponent } from '../radio-buttons-and-chart/radio-buttons-and-chart.component';
+import { InputFormField } from 'src/app/Interfaces/input-form-field.interface';
 
 @Component({
   selector: 'app-table-with-search',

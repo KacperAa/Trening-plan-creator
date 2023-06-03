@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  InputFormField,
-  MatStepProperties,
-} from 'src/app/Interfaces/interfaces';
+import { InputFormField } from 'src/app/Interfaces/input-form-field.interface';
+import { MatStepProperties } from 'src/app/Interfaces/mat-step-properties.interface';
 
 @Component({
   selector: 'app-exercise-performed',

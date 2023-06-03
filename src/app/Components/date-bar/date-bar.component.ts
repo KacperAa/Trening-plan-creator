@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { DateAndFormat } from 'src/app/Interfaces/interfaces';
+import { DateAndFormat } from 'src/app/Interfaces/date-and-format.interface';
 import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
 
 @Component({

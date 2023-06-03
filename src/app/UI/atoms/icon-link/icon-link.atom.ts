@@ -1,6 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { animationSocialMedia } from 'src/app/Animations/own-animations';
-import { IconLink } from 'src/app/Interfaces/interfaces';
+import { IconLink } from 'src/app/Interfaces/icon-link.interface';
 
 @Component({
   selector: 'ui-icon-link[socialMediaData]',

@@ -8,9 +8,9 @@ import {
 
 import {
   InputAndAutocompletesSwitcher,
-  DecoratedInputsGroup,
   TitleAndAutocomplete,
 } from 'src/app/Interfaces/interfaces';
+import { DecoratedInputsGroup } from 'src/app/Interfaces/decorated-inputs-group.interface';
 
 @Component({
   selector: 'app-add-exercise',

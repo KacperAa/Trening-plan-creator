@@ -5,10 +5,8 @@ import {
   OnChanges,
   Output,
 } from '@angular/core';
-import {
-  InputFormField,
-  DecoratedInputsGroup,
-} from 'src/app/Interfaces/interfaces';
+import { InputFormField } from 'src/app/Interfaces/input-form-field.interface';
+import { DecoratedInputsGroup } from 'src/app/Interfaces/decorated-inputs-group.interface';
 
 @Component({
   selector: 'ui-decorated-input-group[data]',

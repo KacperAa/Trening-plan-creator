@@ -1,11 +1,9 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogFormComponent } from '../../molecules/dialog-form/dialog-form.molecule';
-import {
-  MatDialogData,
-  RadioButtonOption,
-} from 'src/app/Interfaces/interfaces';
+import { RadioButtonOption } from 'src/app/Interfaces/radio-button-option.interface';
 import { Subscription } from 'rxjs';
+import { MatDialogData } from 'src/app/Interfaces/mat-dialog-data.interface';
 
 @Component({
   selector: 'ui-radio-dialog[button][dialogData][selectedOption]',

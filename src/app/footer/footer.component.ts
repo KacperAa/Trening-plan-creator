@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconLink } from '../Interfaces/interfaces';
+import { IconLink } from 'src/app/Interfaces/icon-link.interface';
 
 @Component({
   selector: 'app-footer',

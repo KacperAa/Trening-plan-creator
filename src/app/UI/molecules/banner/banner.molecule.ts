@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { BannerData } from 'src/app/Interfaces/interfaces';
+import { BannerData } from 'src/app/Interfaces/banner-data.interface';
 
 @Component({
   selector: 'ui-banner[data]',
