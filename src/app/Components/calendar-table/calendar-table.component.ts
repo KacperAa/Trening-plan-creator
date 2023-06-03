@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { ViewportRuler } from '@angular/cdk/scrolling';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, debounceTime, fromEvent } from 'rxjs';
 import { ColumnAndText } from 'src/app/Interfaces/interfaces';
 
 @Component({
@@ -6,7 +8,7 @@ import { ColumnAndText } from 'src/app/Interfaces/interfaces';
   templateUrl: './calendar-table.component.html',
   styleUrls: ['./calendar-table.component.scss'],
 })
-export class CalendarTableComponent {
+export class CalendarTableComponent implements OnInit, OnDestroy {
   public dataSource: PeriodicElement[] = ELEMENT_DATA;
   public columnsAndTexts: ColumnAndText[] = [
     {
@@ -59,9 +61,37 @@ export class CalendarTableComponent {
     },
   ];
 
-  public displayedColumns: string[] = this.columnsAndTexts.map(
+  public columns: string[] = this.columnsAndTexts.map(
     (columnAndText: ColumnAndText) => columnAndText.column
   );
+  public isSmallDevice: boolean = this._checkSmallDevice();
+  private _subs: Subscription = new Subscription();
+
+  constructor(private _viewportRuler: ViewportRuler) {}
+
+  public ngOnInit(): void {
+    this._checkSmallDevice();
+    this._trackWindowWidth();
+  }
+
+  public ngOnDestroy(): void {
+    this._subs.unsubscribe();
+  }
+
+  private _checkSmallDevice(): boolean {
+    const windowWidth = this._viewportRuler.getViewportSize().width;
+    return windowWidth < 845;
+  }
+
+  private _trackWindowWidth(): void {
+    this._subs.add(
+      fromEvent(window, 'resize')
+        .pipe(debounceTime(0))
+        .subscribe(() => {
+          this.isSmallDevice = this._checkSmallDevice();
+        })
+    );
+  }
 }
 
 export interface PeriodicElement {

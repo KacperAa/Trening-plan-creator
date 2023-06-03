@@ -1,17 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { BarAndTable } from 'src/app/Interfaces/interfaces';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { BarData } from 'src/app/Interfaces/interfaces';
 
 @Component({
-  selector: 'app-table-and-bar[tableAndBarData]',
+  selector: 'app-table-and-bar[barData]',
   templateUrl: './table-and-bar.component.html',
   styleUrls: ['./table-and-bar.component.scss'],
 })
 export class TableAndBarComponent {
   @Input()
-  public tableAndBarData!: BarAndTable;
-
+  public barData!: BarData;
   @Output()
   public emitClick: EventEmitter<never> = new EventEmitter<never>();
-
-  constructor() {}
 }

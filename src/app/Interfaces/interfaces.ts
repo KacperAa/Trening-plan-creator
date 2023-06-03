@@ -180,9 +180,8 @@ export interface BottomSheet {
   date: string;
 }
 
-export interface BarAndTable {
+export interface BarData {
   bar: { title: string | null; hasCloseButton: boolean };
-  table: { columns: string[]; dataSource: any };
 }
 
 export interface InputsFormFields {

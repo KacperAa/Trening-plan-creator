@@ -1,10 +1,10 @@
 <div class="overlay">
   <div class="container">
     <ui-title-on-bar
-      [title]="tableAndBarData.bar.title"
-      [hasCloseButton]="tableAndBarData.bar.hasCloseButton"
+      [title]="barData.bar.title"
+      [hasCloseButton]="barData.bar.hasCloseButton"
       (emitClick)="emitClick.emit()"
     ></ui-title-on-bar>
-    <div class="table"><app-calendar-table></app-calendar-table></div>
+    <div><app-calendar-table></app-calendar-table></div>
   </div>
 </div>

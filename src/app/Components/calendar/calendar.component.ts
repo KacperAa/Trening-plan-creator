@@ -4,7 +4,7 @@ import { FullCalendarComponent } from '@fullcalendar/angular';
 import { Calendar, CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { BarAndTable } from 'src/app/Interfaces/interfaces';
+import { BarData } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'app-calendar',
@@ -14,23 +14,8 @@ import { BarAndTable } from 'src/app/Interfaces/interfaces';
 export class CalendarComponent implements AfterViewInit {
   @ViewChild('calendar') public calendarRef!: FullCalendarComponent;
 
-  public tableAndBarData: BarAndTable = {
+  public barData: BarData = {
     bar: { title: null, hasCloseButton: true },
-    table: {
-      columns: [
-        'Ex',
-        'Series',
-        'Serie 1',
-        'Reps',
-        'Serie 2',
-        'Reps',
-        'Serie 3',
-        'Reps',
-        'Reps',
-        'RPE',
-      ],
-      dataSource: ELEMENT_DATA,
-    },
   };
 
   public calendarOptions: CalendarOptions = {
@@ -40,15 +25,19 @@ export class CalendarComponent implements AfterViewInit {
     events: [
       {
         id: '0',
-        title: 'trening',
+        title: 'Trening 2023-05-12 ',
         start: '2023-05-12',
-        extendedProps: { title: 'dupa' } /*  Add object date here */,
+        extendedProps: {
+          title: 'anyData',
+        } /*  Add trening plan object date here */,
       },
       {
         id: '1',
-        title: 'trening',
+        title: 'Trening 2023-05-14',
         start: '2023-05-14',
-        extendedProps: { title: 'dupa' } /*  Add object date here */,
+        extendedProps: {
+          title: 'anyData',
+        } /*  Add trening plan object date here */,
       },
     ],
     eventDisplay: 'block',
@@ -66,42 +55,17 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   public clickEvent(eventClick: EventClickArg): void {
-    this.tableAndBarData.bar.title = this._datePipe.transform(
+    this.barData.bar.title = this._datePipe.transform(
       eventClick.event.start,
       'EEEE, yyyy MMMM dd'
     );
   }
 
   public closeTable(): void {
-    this.tableAndBarData.bar.title = null;
+    this.barData.bar.title = null;
   }
 
   private _getCalendarApi(): Calendar {
     return this.calendarRef.getApi();
   }
 }
-
-export interface ExerciseParams {
-  ex: string;
-  series: number;
-  reps: number;
-  rpe: number;
-  icons: any;
-}
-
-const ELEMENT_DATA: ExerciseParams[] = [
-  {
-    ex: 'Bench Press',
-    series: 3,
-    reps: 12,
-    rpe: 8,
-    icons: [{}],
-  },
-  {
-    ex: 'Front Squad',
-    series: 3,
-    reps: 12,
-    rpe: 9,
-    icons: [{}],
-  },
-];

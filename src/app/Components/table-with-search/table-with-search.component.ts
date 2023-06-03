@@ -1,6 +1,7 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {
+  ColumnAndText,
   InputFormField,
   TableWithOpenedGraphsComponent,
 } from 'src/app/Interfaces/interfaces';
@@ -17,6 +18,7 @@ export class TableWithSearchComponent
 {
   public dataSource: PeriodicElementt[] = ELEMENT_DATA;
   public columns: string[] = ['ex', 'series', 'RPE'];
+
   public tableFinder: InputFormField = {
     matLabel: 'find exercise',
     placeholder: '...',

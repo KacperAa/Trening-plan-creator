@@ -1,5 +1,6 @@
 import { Component, Type } from '@angular/core';
 import { ExercisePerformedComponent } from 'src/app/Components/actual-plan/exercise-performed.component';
+import { ColumnAndText } from 'src/app/Interfaces/interfaces';
 
 @Component({
   selector: 'app-today-trening',
@@ -8,6 +9,7 @@ import { ExercisePerformedComponent } from 'src/app/Components/actual-plan/exerc
 })
 export class TodayTreningComponent {
   public columns: string[] = ['Ex', 'Series', 'Reps', 'Rpe', 'Edit'];
+
   public dataSource: PeriodicElementt[] = ELEMENT_DATA;
   public passedComponent: Type<ExercisePerformedComponent> =
     ExercisePerformedComponent;

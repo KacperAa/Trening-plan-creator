@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatCell, MatRow } from '@angular/material/table';
-import { ro } from 'date-fns/locale';
+
 import { Subscription } from 'rxjs';
 import {
   ColumnAndText,
@@ -49,13 +48,6 @@ export class TreningDayComponent {
   public inputValue!: string;
   public rowAndCellKey!: TableRowAndCellKey;
   private _subs: Subscription = new Subscription();
-  /*   public columnsAndTexts: ColumnAndText[] = [
-    { column: 'ex', text: 'Ex' },
-    { column: 'series', text: 'Series' },
-    { column: 'reps', text: 'Reps' },
-    { column: 'rpe', text: 'RPE' },
-    { column: 'delete', text: 'Delete' },
-  ]; */
 
   constructor(private _dialog: MatDialog) {}
 

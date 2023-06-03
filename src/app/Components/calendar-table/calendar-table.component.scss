@@ -1,4 +1,9 @@
-.columnText {
-  font-size: 12px;
-  margin: 0;
+.small-device-container {
+  width: 450px;
+  overflow: auto;
+
+  .columnText {
+    font-size: 12px;
+    margin: 0;
+  }
 }
