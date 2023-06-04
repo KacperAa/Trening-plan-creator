@@ -2,7 +2,7 @@
   <button mat-icon-button (click)="openNav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
-  <img class="logo" [src]="logoPath" />
+  <img [routerLink]="routerLinkText" class="logo" [src]="logoPath" />
   <ui-navigation
     [isHamburgerNav]="true"
     [isSmallDevice]="isSmallDevice"

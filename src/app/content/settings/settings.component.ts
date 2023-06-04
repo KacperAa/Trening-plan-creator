@@ -45,7 +45,7 @@ export class SettingsComponent {
           },
 
           {
-            title: 'adress',
+            title: 'Adress',
             inputData: {
               matLabel: 'adress',
               placeholder: '...',
@@ -94,7 +94,7 @@ export class SettingsComponent {
         autocomplete: {
           title: 'Lang',
           autocomplete: {
-            matLabel: 'dupa',
+            matLabel: 'Language',
             placeholder: '...',
             formControl: new FormControl(),
             options: ['Pl', 'EN'],

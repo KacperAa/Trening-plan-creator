@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { BannerData } from 'src/app/Interfaces/banner-data.interface';
 
 @Component({
-  selector: 'ui-banner[data]',
-  templateUrl: './banner.molecule.html',
-  styleUrls: ['./banner.molecule.scss'],
+  selector: 'app-banner[data]',
+  templateUrl: './banner.component.html',
+  styleUrls: ['./banner.component.scss'],
 })
 export class BannerComponent {
   @Input()

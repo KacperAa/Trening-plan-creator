@@ -7,7 +7,7 @@
     <app-trening-day
       *ngFor="let day of daysOfWeek"
       [dayOfWeek]="day"
-      (emitEvent)="openAddExercise()"
+      (emitOpen)="openAddExercise()"
     ></app-trening-day>
   </div>
   <button class="button" mat-raised-button color="accent">

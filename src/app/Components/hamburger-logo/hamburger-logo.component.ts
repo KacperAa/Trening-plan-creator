@@ -9,6 +9,8 @@ export class HamburgerLogoComponent {
   @Input()
   public logoPath!: string;
   @Input()
+  public routerLinkText!: string;
+  @Input()
   public isSmallDevice!: boolean;
   @Input()
   public hamburgerMenuState!: string;

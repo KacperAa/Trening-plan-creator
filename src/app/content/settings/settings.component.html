@@ -4,6 +4,7 @@
     <button
       *ngFor="let text of buttonsText; let i = index"
       [ngStyle]="i === 0 ? { 'border-radius': '10px 0 0 0' } : null"
+      [ngClass]="{ 'activated-button': selectedOption === text }"
       (click)="selectOption(text)"
       class="button"
       mat-button

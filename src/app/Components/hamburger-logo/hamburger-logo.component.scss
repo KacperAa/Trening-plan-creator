@@ -6,4 +6,9 @@
     height: 45px;
     opacity: 0.8;
   }
+  .logo:hover {
+    cursor: pointer;
+    opacity: 1;
+    scale: 1.1;
+  }
 }

@@ -33,7 +33,7 @@ import { TodayTreningComponent } from './content/today-trening/today-trening.com
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatTreeModule } from '@angular/material/tree';
-import { BannerComponent } from './UI/molecules/banner/banner.molecule';
+import { BannerComponent } from './Components/banner/banner.component';
 import { PageInformationBarComponent } from './UI/atoms/page-information-bar.atom/page-information-bar.atom';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TitleAndCheckboxComponent } from './UI/molecules/title-and-checkbox/title-and-checkbox.molecule';

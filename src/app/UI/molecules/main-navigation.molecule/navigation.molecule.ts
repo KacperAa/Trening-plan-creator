@@ -19,13 +19,32 @@ export class NavigationComponent {
   public navigationButtons: TitleAndMenu[] = [
     {
       title: 'Trening plan',
-      menu: [{ title: 'Your plans' }, { title: 'Create plan' }],
+      menu: [
+        { title: 'Your plans', routerLink: '/plans' },
+        { title: 'Create plan', routerLink: '/create-plan' },
+      ],
       icon: 'fa-solid fa-ellipsis-vertical',
+      routerLink: null,
     },
-    { title: 'Track progress', menu: [], icon: null },
-    { title: 'Statistics', menu: [], icon: null },
-    { title: 'Options', menu: [], icon: null },
-    { title: 'Your Profile', menu: [], icon: null },
+    {
+      title: 'Track progress',
+      menu: [],
+      icon: null,
+      routerLink: '/track-progress',
+    },
+    {
+      title: 'Todays Trening',
+      menu: [],
+      icon: null,
+      routerLink: '/todays-plan',
+    },
+    { title: 'Options', menu: [], icon: null, routerLink: '/options' },
+    {
+      title: 'Your Profile',
+      menu: [],
+      icon: null,
+      routerLink: '/your-profile',
+    },
   ];
   public socialMediaData: IconLink[] = [
     {

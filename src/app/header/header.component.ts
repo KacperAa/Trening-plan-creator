@@ -16,6 +16,7 @@ import { UserPanelData } from 'src/app/Interfaces/user-panel-data.interface';
 })
 export class HeaderComponent implements OnDestroy, OnInit {
   public logoPath: string = 'assets/logo.png';
+  public routerLinkText: string = '/home';
   public isSmallDevice: boolean = this._checkSmallDevice();
   public hamburgerMenuState: string = 'closed';
   public userPanelData: UserPanelData = {
@@ -23,6 +24,8 @@ export class HeaderComponent implements OnDestroy, OnInit {
     buttonText: 'Logut',
     matIcon: 'arrow_right_alt',
     matTooltipText: 'Logged in as:',
+    routerLinkTextImg: '/your-profile',
+    routerLinkTextButton: 'login',
   };
   private _subs = new Subscription();
 

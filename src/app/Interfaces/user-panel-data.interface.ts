@@ -3,4 +3,6 @@ export interface UserPanelData {
   buttonText: string;
   matIcon: string;
   matTooltipText: string;
+  routerLinkTextImg: string;
+  routerLinkTextButton: string;
 }

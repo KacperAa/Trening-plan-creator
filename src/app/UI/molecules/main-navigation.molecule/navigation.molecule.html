@@ -6,6 +6,7 @@
   >
     <ng-container *ngFor="let button of navigationButtons">
       <button
+        [routerLink]="button.routerLink"
         mat-button
         [matMenuTriggerFor]="
         button.menu.length > 0 && !isHamburgerNav ? menu : null
@@ -16,13 +17,22 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngFor="let menu of button.menu">
+        <button
+          mat-menu-item
+          *ngFor="let menu of button.menu"
+          [routerLink]="menu.routerLink"
+        >
           {{ menu.title }}
         </button>
       </mat-menu>
 
       <ng-container *ngIf="isHamburgerNav">
-        <button class="sub-point" *ngFor="let menu of button.menu" mat-button>
+        <button
+          class="sub-point"
+          *ngFor="let menu of button.menu"
+          [routerLink]="menu.routerLink"
+          mat-button
+        >
           {{ menu.title }}
         </button>
       </ng-container>

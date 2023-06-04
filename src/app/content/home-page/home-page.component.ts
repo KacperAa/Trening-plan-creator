@@ -11,8 +11,9 @@ import { BannerData } from 'src/app/Interfaces/banner-data.interface';
 export class HomePageComponent {
   public text: BannerData = {
     header: 'Plan Creator',
-    content: 'Efekty takie - że japierdole...',
+    content: 'Lorem Ipsum - is simply...',
     buttonText: 'Get started',
+    routerLinkText: '/register',
   };
   public headersAndContents: TextBox[] = [
     {
@@ -41,7 +42,7 @@ export class HomePageComponent {
   public guides: Guide[] = [
     {
       title: 'Register',
-      content: 'Register your account and japierdole',
+      content: 'Register your account trening regulary',
       footerColor: 'red',
     },
     {

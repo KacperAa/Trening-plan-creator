@@ -4,7 +4,8 @@
       <h1 class="text-and-button-box__header">{{ data.header }}</h1>
     </header>
     <h3 class="text-and-button-box__text">{{ data.content }}</h3>
-
-    <button mat-raised-button color="accent">{{data.buttonText}}</button>
+    <button [routerLink]="data.routerLinkText" mat-raised-button color="accent">
+      {{ data.buttonText }}
+    </button>
   </div>
 </section>
