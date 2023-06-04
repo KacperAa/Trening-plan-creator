@@ -1,6 +1,11 @@
 import { ViewportRuler } from '@angular/cdk/scrolling';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControlOptions,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatChipListboxChange } from '@angular/material/chips';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Subscription, fromEvent } from 'rxjs';
@@ -30,7 +35,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
           saturday: false,
           sunday: false,
         },
-        { validators: [oneRequiredField] }
+        { validators: oneRequiredField } as AbstractControlOptions
       ),
       secondWeek: this._formBuilder.group(
         {
@@ -42,7 +47,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
           saturday: false,
           sunday: false,
         },
-        { validators: [oneRequiredField] }
+        { validators: oneRequiredField } as AbstractControlOptions
       ),
     }),
   });
