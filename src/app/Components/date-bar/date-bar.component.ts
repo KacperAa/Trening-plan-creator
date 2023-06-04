@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { DateAndFormat } from 'src/app/Interfaces/date-and-format.interface';
 import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
+import { DialogWithDateFieldComponent } from '../dialog-with-date-field/dialog-with-date-field.component';
 
 @Component({
   selector: 'app-date-bar',
@@ -25,10 +26,8 @@ export class DateBarComponent implements OnDestroy {
   };
 
   public openDialog(): void {
-    const dialogRef = this._dialog.open(DialogFormComponent, {
+    const dialogRef = this._dialog.open(DialogWithDateFieldComponent, {
       data: {
-        title: 'Move your training to',
-        placeholder: '...',
         inputValue: this.inputValue,
       },
     });
@@ -36,6 +35,7 @@ export class DateBarComponent implements OnDestroy {
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue) => {
         this.inputValue = inputValue;
+        console.log(this.inputValue);
       })
     );
   }

@@ -40,7 +40,6 @@ import { TitleAndCheckboxComponent } from './UI/molecules/title-and-checkbox/tit
 import { TableComponent } from './Components/table/table.component';
 import { ExerciseStepsComponent } from './Components/exercise-steps/exercise-steps.component';
 import { ExercisePerformedComponent } from './Components/actual-plan/exercise-performed.component';
-import { InputCalendarComponent } from './Components/calendar-input/calendar-input.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -54,7 +53,6 @@ import { TimerComponent } from './UI/atoms/timer/timer.molecule';
 import { TitleOnBarComponent } from './UI/atoms/title-on-bar/title-on-bar.atom';
 import { CloseButtonComponent } from './UI/atoms/close-button/close-button.atom';
 import { InputFormFieldComponent } from './UI/atoms/input-form-field/input-form-field.atom';
-import { DataPickerComponent } from './UI/atoms/data-picker/data-picker.atom';
 import { TrackProgressComponent } from './content/track-progress/track-progress.component';
 import { MatTabsBarComponent } from './Components/mat-tabs-bar/mat-tabs-bar.component';
 import { TableWithSearchComponent } from './Components/table-with-search/table-with-search.component';
@@ -93,6 +91,7 @@ import { InputAndAutocompletesSwitcherComponent } from './Components/input-and-a
 import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increase/weekly-amount-increase.component';
 import { CalendarTableComponent } from './Components/calendar-table/calendar-table.component';
 import { CheckboxAndAgreementComponent } from './Components/checkbox-and-agreement/checkbox-and-agreement.component';
+import { DialogWithDateFieldComponent } from './Components/dialog-with-date-field/dialog-with-date-field.component';
 
 @NgModule({
   declarations: [
@@ -114,7 +113,6 @@ import { CheckboxAndAgreementComponent } from './Components/checkbox-and-agreeme
     TableComponent,
     ExerciseStepsComponent,
     ExercisePerformedComponent,
-    InputCalendarComponent,
     DecoratedInputGroup,
     TitleAndChipsComponent,
     TitleAndRadioButtonComponent,
@@ -126,7 +124,6 @@ import { CheckboxAndAgreementComponent } from './Components/checkbox-and-agreeme
     CloseButtonComponent,
     InputFormFieldComponent,
     DateBarComponent,
-    DataPickerComponent,
     TrackProgressComponent,
     MatTabsBarComponent,
     TableWithSearchComponent,
@@ -157,6 +154,7 @@ import { CheckboxAndAgreementComponent } from './Components/checkbox-and-agreeme
     WeeklyAmountIncreaseComponent,
     CalendarTableComponent,
     CheckboxAndAgreementComponent,
+    DialogWithDateFieldComponent,
   ],
   imports: [
     BrowserModule,

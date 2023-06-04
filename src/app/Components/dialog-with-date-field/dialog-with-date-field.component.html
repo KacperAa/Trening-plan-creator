@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 mat-dialog-title>Date</h1>
+  <ui-close-button (emitEvent)="closeDialog()"></ui-close-button>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [(ngModel)]="data.inputValue" [matDatepicker]="picker" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.inputValue" cdkFocusInitial>
+      Accept
+    </button>
+  </div>
+</div>
