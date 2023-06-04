@@ -14,5 +14,9 @@ export class InputFormFieldComponent {
   @Input()
   public appereance!: MatFormFieldAppearance;
   @Input()
+  public inputType: string = 'text';
+  @Input()
   public width!: string;
+  @Input()
+  public labelFontSize!: string;
 }

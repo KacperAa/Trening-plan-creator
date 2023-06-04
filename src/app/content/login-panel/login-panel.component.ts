@@ -21,5 +21,5 @@ export class LoginPanelComponent {
     },
   ];
   public referencesText: string[] = ['Register', 'Recover password'];
-  public buttonsText: string[] = ['login'];
+  public buttonText: string = 'Login';
 }

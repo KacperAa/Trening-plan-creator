@@ -1,0 +1,11 @@
+.checkbox-and-agreement {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  &__agreement {
+    width: 200px;
+    color: gray;
+    font-size: 8px;
+    margin: 0;
+  }
+}

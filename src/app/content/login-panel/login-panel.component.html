@@ -1,8 +1,20 @@
 <div class="container">
-  <ui-login-or-register-form
-    [title]="title"
-    [inputsData]="inputsData"
-    [referencesText]="referencesText"
-    [buttonsText]="buttonsText"
-  ></ui-login-or-register-form>
+  <div class="login-panel">
+    <h3 class="title">Login</h3>
+    <ui-input-form-field
+      *ngFor="let data of inputsData"
+      [matLabel]="data.matLabel"
+      [placeholder]="data.placeholder"
+      [appereance]="data.appereance"
+      [labelFontSize]="'12px'"
+    ></ui-input-form-field>
+    <button mat-raised-button color="primary">{{ buttonText }}</button>
+    <div class="register-and-remind-password">
+      <span
+        class="register-and-remind-password__text"
+        *ngFor="let text of referencesText"
+        >{{ text }}</span
+      >
+    </div>
+  </div>
 </div>

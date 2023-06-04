@@ -1,4 +1,8 @@
 <mat-form-field [ngStyle]="{'width': width}" [appearance]="appereance">
-  <mat-label>{{matLabel}}</mat-label>
-  <input type="text" matInput placeholder="{{placeholder}}" />
+  <mat-label
+    ><span [ngStyle]="{'fontSize': labelFontSize}"
+      >{{matLabel}}</span
+    ></mat-label
+  >
+  <input type="{{inputType}}" matInput placeholder="{{placeholder}}" />
 </mat-form-field>

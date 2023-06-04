@@ -15,7 +15,7 @@ import { DecoratedInputsGroup } from 'src/app/Interfaces/decorated-inputs-group.
 })
 export class DecoratedInputGroup implements OnChanges {
   @Input()
-  public data!: DecoratedInputsGroup;
+  public data!: DecoratedInputsGroup<string>;
   @Output()
   public emitClickEvent: EventEmitter<never> = new EventEmitter<never>();
   public partingDecoration!: string;

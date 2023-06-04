@@ -1,5 +1,40 @@
 .container {
   display: flex;
   justify-content: center;
-  min-height: 55vh;
+  align-items: center;
+  min-height: 82.3vh;
+  background-color: rgb(212, 84, 84);
+
+  .login-panel {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 6px 0px rgba(66, 68, 90, 1);
+    padding: 20px;
+    border-radius: 10px;
+    align-items: center;
+    .title {
+      font-size: 22px;
+      color: gray;
+      font-weight: 500;
+    }
+
+    .register-and-remind-password {
+      display: flex;
+      padding-top: 10px;
+      gap: 10px;
+      &__text {
+        font-size: 11px;
+        color: gray;
+        font-style: italic;
+      }
+
+      &__text:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
 }

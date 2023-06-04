@@ -72,7 +72,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     },
   };
 
-  public checkboxsData: CheckboxsAndTitle[] = [
+  public checkboxsData: CheckboxsAndTitle<string>[] = [
     {
       title: 'Select trening days:',
       formGroup: this._getScenariosFormGroup('firstWeek'),
@@ -85,7 +85,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
         { text: 'Saturday', formControlName: 'saturday' },
         { text: 'Sunday', formControlName: 'sunday' },
       ],
-      additionalData: { type: 'Regular' },
+      additionalData: 'Regular',
     },
 
     {
@@ -100,7 +100,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
         { text: 'Saturday', formControlName: 'saturday' },
         { text: 'Sunday', formControlName: 'sunday' },
       ],
-      additionalData: { type: 'Elastic' },
+      additionalData: 'Elastic',
     },
   ];
   private _subs = new Subscription();
@@ -121,7 +121,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     this.checkboxesViewScenario = chipChange.value;
   }
 
-  public getCheckboxesDataScenario(): CheckboxsAndTitle[] {
+  public getCheckboxesDataScenario(): CheckboxsAndTitle<string>[] {
     return this.checkboxesViewScenario === 'Regular'
       ? this._getRegularScenario()
       : this.checkboxsData;
@@ -137,10 +137,10 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     return this.getCheckboxesScenariosFormGroup.get(key) as FormGroup;
   }
 
-  private _getRegularScenario(): CheckboxsAndTitle[] {
+  private _getRegularScenario(): CheckboxsAndTitle<string>[] {
     return this.checkboxsData.filter(
-      (checkboxsField: CheckboxsAndTitle) =>
-        checkboxsField.additionalData!['type'] === 'Regular'
+      (checkboxsField: CheckboxsAndTitle<string>) =>
+        checkboxsField.additionalData === 'Regular'
     );
   }
 

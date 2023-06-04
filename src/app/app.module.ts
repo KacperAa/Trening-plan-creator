@@ -70,7 +70,6 @@ import { ProfileListComponent } from './UI/molecules/profile-list/profile-list.c
 import { ListItemAndDividerComponent } from './Components/list-item-and-divider/list-item-and-divider.component';
 import { ProfileImageAndNicknameComponent } from './UI/molecules/profile-image-and-nickname/profile-image-and-nickname.molecule';
 import { LoginPanelComponent } from './content/login-panel/login-panel.component';
-import { LoginFormComponent } from './UI/molecules/login-or-register-form/login-or-register.molecule';
 import { RegisterComponent } from './content/register/register.component';
 import { SettingsComponent } from './content/settings/settings.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -93,6 +92,7 @@ import { TitleAndAutocompleteComponent } from './UI/molecules/title-and-autocomp
 import { InputAndAutocompletesSwitcherComponent } from './Components/input-and-autocomplete-switcher/input-and-autocomplete-switcher.component';
 import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increase/weekly-amount-increase.component';
 import { CalendarTableComponent } from './Components/calendar-table/calendar-table.component';
+import { CheckboxAndAgreementComponent } from './Components/checkbox-and-agreement/checkbox-and-agreement.component';
 
 @NgModule({
   declarations: [
@@ -140,7 +140,6 @@ import { CalendarTableComponent } from './Components/calendar-table/calendar-tab
     ListItemAndDividerComponent,
     ProfileImageAndNicknameComponent,
     LoginPanelComponent,
-    LoginFormComponent,
     RegisterComponent,
     SettingsComponent,
     OptionsFormComponent,
@@ -157,6 +156,7 @@ import { CalendarTableComponent } from './Components/calendar-table/calendar-tab
     InputAndAutocompletesSwitcherComponent,
     WeeklyAmountIncreaseComponent,
     CalendarTableComponent,
+    CheckboxAndAgreementComponent,
   ],
   imports: [
     BrowserModule,

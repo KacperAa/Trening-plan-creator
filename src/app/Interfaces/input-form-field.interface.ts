@@ -4,4 +4,5 @@ export interface InputFormField {
   matLabel: string;
   placeholder: string;
   appereance: MatFormFieldAppearance;
+  inputType?: string;
 }

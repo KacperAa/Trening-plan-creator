@@ -1,5 +1,31 @@
 .container {
   display: flex;
   justify-content: center;
-  min-height: 55vh;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgb(212, 84, 84);
+
+  .register-panel {
+    .passwords-box {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 6px 0px rgba(66, 68, 90, 1);
+    border-radius: 10px;
+
+    .title {
+      font-size: 22px;
+      color: gray;
+      font-weight: 500;
+    }
+  }
 }

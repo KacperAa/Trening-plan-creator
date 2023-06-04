@@ -1,7 +1,33 @@
 <div class="container">
-  <ui-login-or-register-form
-    [title]="title"
-    [inputsData]="inputsData"
-    [buttonsText]="buttonsText"
-  ></ui-login-or-register-form>
+  <div class="register-panel">
+    <h3 class="title">Register</h3>
+    <ng-container *ngFor="let data of inputsData">
+      <ui-input-form-field
+        *ngIf="!checkIsPasswordBoxElement(data.matLabel)"
+        [matLabel]="data.matLabel"
+        [placeholder]="data.placeholder"
+        [appereance]="data.appereance"
+        [labelFontSize]="'12px'"
+      ></ui-input-form-field>
+    </ng-container>
+
+    <div class="passwords-box">
+      <ng-container *ngFor="let data of inputsData">
+        <ui-input-form-field
+          *ngIf="checkIsPasswordBoxElement(data.matLabel)"
+          [matLabel]="data.matLabel"
+          [placeholder]="data.placeholder"
+          [appereance]="data.appereance"
+          [labelFontSize]="'12px'"
+          [width]="'150px'"
+          [inputType]="data.inputType!"
+        ></ui-input-form-field>
+      </ng-container>
+    </div>
+    <app-checkbox-and-agreement
+      [text]="agreementText"
+    ></app-checkbox-and-agreement>
+
+    <button mat-raised-button color="primary">Register</button>
+  </div>
 </div>

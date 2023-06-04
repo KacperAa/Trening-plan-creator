@@ -128,7 +128,7 @@ export class AddExercise {
     ) as InputAndAutocompletesSwitcher;
   }
 
-  public repsRateAndBreakFields: DecoratedInputsGroup[] = [
+  public repsRateAndBreakFields: DecoratedInputsGroup<string>[] = [
     {
       title: 'Reps',
       inputs: [
@@ -142,7 +142,7 @@ export class AddExercise {
       hasButton: true,
       buttonTitle: 'Save series separitly',
       customDecoration: '-',
-      additionalParam: { scenario: 'auto' },
+      additionalParam: 'auto',
     },
     {
       title: 'Reps',
@@ -153,7 +153,7 @@ export class AddExercise {
       ],
       hasButton: true,
       buttonTitle: 'back',
-      additionalParam: { scenario: 'manual' },
+      additionalParam: 'manual',
     },
     {
       title: 'Rate',
@@ -174,28 +174,30 @@ export class AddExercise {
     },
   ];
 
-  get rateAndBreakFields(): DecoratedInputsGroup[] {
+  get rateAndBreakFields(): DecoratedInputsGroup<string>[] {
     return this.repsRateAndBreakFields.filter(
-      (field: DecoratedInputsGroup) => field.title !== 'Reps'
+      (field: DecoratedInputsGroup<string>) => field.title !== 'Reps'
     );
   }
 
-  public repsRangeViewScenario: DecoratedInputsGroup =
+  public repsRangeViewScenario: DecoratedInputsGroup<string> =
     this._setRepsRangeViewScenario('auto');
 
   constructor(private _formBuilder: FormBuilder) {}
 
   public changeRepsRangeViewScenario(): void {
-    this.repsRangeViewScenario.additionalParam!['scenario'] === 'auto'
+    this.repsRangeViewScenario.additionalParam === 'auto'
       ? (this.repsRangeViewScenario = this._setRepsRangeViewScenario('manual'))
       : (this.repsRangeViewScenario = this._setRepsRangeViewScenario('auto'));
   }
 
-  public _setRepsRangeViewScenario(scenario: string): DecoratedInputsGroup {
+  public _setRepsRangeViewScenario(
+    scenario: string
+  ): DecoratedInputsGroup<string> {
     return this.repsRateAndBreakFields.find(
-      (option: DecoratedInputsGroup) =>
-        option.additionalParam!['scenario'] === scenario
-    ) as DecoratedInputsGroup;
+      (option: DecoratedInputsGroup<string>) =>
+        option.additionalParam === scenario
+    ) as DecoratedInputsGroup<string>;
   }
 
   private _getFormControl(controlName: string): FormControl {
