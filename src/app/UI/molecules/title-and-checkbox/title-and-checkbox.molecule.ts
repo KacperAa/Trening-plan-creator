@@ -8,5 +8,5 @@ import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interf
 })
 export class TitleAndCheckboxComponent {
   @Input()
-  public data!: CheckboxsAndTitle<string>;
+  public data!: CheckboxsAndTitle;
 }

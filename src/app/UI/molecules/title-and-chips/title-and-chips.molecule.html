@@ -1,8 +1,9 @@
 <h3 class="title">{{data.title}}</h3>
-<mat-chip-listbox (change)="chipChange.emit($event)">
+<mat-chip-listbox>
   <mat-chip-option
     [selected]="chip.selected"
     *ngFor="let chip of data.chips"
+    (click)="chipChange.emit(chip.text)"
     color="accent"
     >{{chip.text}}</mat-chip-option
   >

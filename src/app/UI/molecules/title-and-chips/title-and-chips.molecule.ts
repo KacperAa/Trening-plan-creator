@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { MatChipListboxChange } from '@angular/material/chips';
 import { ChipsWithTitle } from 'src/app/Interfaces/chips-with-title.interface';
 
 @Component({
@@ -11,5 +10,5 @@ export class TitleAndChipsComponent {
   @Input()
   public data!: ChipsWithTitle;
   @Output()
-  public chipChange = new EventEmitter<MatChipListboxChange>();
+  public chipChange = new EventEmitter<string>();
 }

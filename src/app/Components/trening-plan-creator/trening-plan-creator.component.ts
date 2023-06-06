@@ -7,9 +7,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { MatChipListboxChange } from '@angular/material/chips';
 import { StepperOrientation } from '@angular/material/stepper';
-import { Observable, Subscription, fromEvent, startWith } from 'rxjs';
+import { Subscription, fromEvent } from 'rxjs';
 import { ChipsWithTitle } from 'src/app/Interfaces/chips-with-title.interface';
 import { oneRequiredField } from 'src/app/Validators/validators';
 import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interface';
@@ -22,95 +21,29 @@ import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-di
 })
 export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
   public stepperOrientation: StepperOrientation = this._checkSmallDevice();
-  public checkboxesViewScenario: string = 'Regular';
-  public planCreatorForm: FormGroup = this._formBuilder.group({
-    createTemplate: this._formBuilder.group({
-      firstControl: new FormControl('Single week', Validators.required),
-    }),
-    checkboxesScenarios: this._formBuilder.group({
-      firstWeek: this._formBuilder.group(
-        {
-          monday: false,
-          tuesday: false,
-          wednesday: false,
-          thursday: false,
-          friday: false,
-          saturday: false,
-          sunday: false,
-        },
-        { validators: oneRequiredField } as AbstractControlOptions
-      ),
-    }),
-  });
-
-  get checkWeeksOptionFormGroup(): FormGroup {
-    return this.planCreatorForm.get('createTemplate') as FormGroup;
+  public planCreatorForm!: FormGroup;
+  public checkboxsData!: CheckboxsAndTitle[];
+  public matChipsData!: ChipsWithTitle;
+  public radioButtonsData!: RadioButtonsDialogWithTitle;
+  get tableGenerationForm(): FormGroup {
+    return this.planCreatorForm.get('tableGenerationForm') as FormGroup;
   }
-
   get getCheckboxesScenariosFormGroup(): FormGroup {
-    return this.planCreatorForm.get('checkboxesScenarios') as FormGroup;
+    return this.planCreatorForm.get('checkboxesScenariosForms') as FormGroup;
   }
-
-  public matChipsData: ChipsWithTitle = {
-    title:
-      'Regular training (in case of predetermined days) / flexible (in case of different training days)',
-    chips: [{ text: 'Regular', selected: true }, { text: 'Elastic' }],
-  };
-
-  public radioButtonsData: RadioButtonsDialogWithTitle = {
-    title: 'Create template',
-    buttons: [
-      { title: 'Single week', hasDialog: false },
-      { title: 'A few weeks', hasDialog: true },
-    ],
-    selectedOption: '',
-    dialogData: {
-      title: 'trening',
-      placeholder: 'number',
-      inputValue: '',
-      unit: 'times a week',
-    },
-  };
-
-  public checkboxsData: CheckboxsAndTitle<string>[] = [
-    {
-      title: 'Select trening days:',
-      formGroup: this._getScenariosFormGroup('firstWeek'),
-      buttons: [
-        { text: 'Monday', formControlName: 'monday' },
-        { text: 'Tuesday', formControlName: 'tuesday' },
-        { text: 'Wednesday', formControlName: 'wednesday' },
-        { text: 'Thursday', formControlName: 'thursday' },
-        { text: 'Friday', formControlName: 'friday' },
-        { text: 'Saturday', formControlName: 'saturday' },
-        { text: 'Sunday', formControlName: 'sunday' },
-      ],
-      additionalData: 'Regular',
-    },
-
-    {
-      title: 'Select trening days:',
-      formGroup: this._getScenariosFormGroup('secondWeek'),
-      buttons: [
-        { text: 'Monday', formControlName: 'monday' },
-        { text: 'Tuesday', formControlName: 'tuesday' },
-        { text: 'Wednesday', formControlName: 'wednesday' },
-        { text: 'Thursday', formControlName: 'thursday' },
-        { text: 'Friday', formControlName: 'friday' },
-        { text: 'Saturday', formControlName: 'saturday' },
-        { text: 'Sunday', formControlName: 'sunday' },
-      ],
-      additionalData: 'Elastic',
-    },
-  ];
   private _subs = new Subscription();
 
   constructor(
     private _formBuilder: FormBuilder,
     private _viewportRuler: ViewportRuler
-  ) {}
+  ) {
+    this._setFormGroup();
+  }
 
   public ngOnInit(): void {
+    this._setRadioButtonsData();
+    this._setChipsData();
+    this._setCheckboxData();
     this._trackWindowWidth();
   }
   public ngOnDestroy(): void {
@@ -121,27 +54,88 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     formGroup.markAsTouched();
   }
 
-  public captureChipValue(chipChange: MatChipListboxChange): void {
-    this.checkboxesViewScenario = chipChange.value;
+  public checkIsMainFormValid(): void {
+    console.log(this.planCreatorForm.valid);
   }
 
-  public getCheckboxesDataScenario(): CheckboxsAndTitle<string>[] {
-    return this.checkboxesViewScenario === 'Regular'
-      ? this._getRegularScenario()
-      : this.checkboxsData;
+  public chooseCheckboxesScenario(scenario: string): void {
+    if (scenario === 'Elastic' && this.checkboxsData.length < 2) {
+      this._setElasticScenario();
+    } else if (this.checkboxsData.length > 1) {
+      this._setRegularScenario();
+    }
   }
 
-  public setCheckboxesFormScenario(): FormGroup {
-    return this.checkboxesViewScenario === 'Regular'
-      ? this._getScenariosFormGroup('firstWeek')
-      : this._addSecondWeek();
+  private _setFormGroup(): void {
+    this.planCreatorForm = this._formBuilder.group({
+      tableGenerationForm: this._formBuilder.group({
+        firstControl: new FormControl('Single week', Validators.required),
+      }),
+      checkboxesScenariosForms: this._formBuilder.group({
+        firstWeek: this._formBuilder.group(
+          {
+            monday: false,
+            tuesday: false,
+            wednesday: false,
+            thursday: false,
+            friday: false,
+            saturday: false,
+            sunday: false,
+          },
+          { validators: oneRequiredField } as AbstractControlOptions
+        ),
+      }),
+    });
+  }
+
+  private _setRadioButtonsData(): void {
+    this.radioButtonsData = {
+      title: 'Create template',
+      buttons: [
+        { title: 'Single week', hasDialog: false },
+        { title: 'A few weeks', hasDialog: true },
+      ],
+
+      dialogData: {
+        title: 'trening',
+        placeholder: 'number',
+        inputValue: '',
+        unit: 'times a week',
+      },
+    };
+  }
+
+  private _setChipsData(): void {
+    this.matChipsData = {
+      title:
+        'Regular training (in case of predetermined days) / flexible (in case of different training days)',
+      chips: [{ text: 'Regular', selected: true }, { text: 'Elastic' }],
+    };
+  }
+
+  private _setCheckboxData(): void {
+    this.checkboxsData = [
+      {
+        title: 'Select trening days:',
+        formGroup: this._getScenariosFormGroup('firstWeek'),
+        buttons: [
+          { text: 'Monday', formControlName: 'monday' },
+          { text: 'Tuesday', formControlName: 'tuesday' },
+          { text: 'Wednesday', formControlName: 'wednesday' },
+          { text: 'Thursday', formControlName: 'thursday' },
+          { text: 'Friday', formControlName: 'friday' },
+          { text: 'Saturday', formControlName: 'saturday' },
+          { text: 'Sunday', formControlName: 'sunday' },
+        ],
+      },
+    ];
   }
 
   private _getScenariosFormGroup(key: string): FormGroup {
     return this.getCheckboxesScenariosFormGroup.get(key) as FormGroup;
   }
 
-  private _addSecondWeek(): FormGroup {
+  private _addSecondScenarioFormGroup(): FormGroup {
     const secondWeek = this._formBuilder.group(
       {
         monday: false,
@@ -154,22 +148,32 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
       },
       { validators: oneRequiredField } as AbstractControlOptions
     );
-
     this.getCheckboxesScenariosFormGroup.addControl('secondWeek', secondWeek);
 
     return this.getCheckboxesScenariosFormGroup;
   }
 
-  private _getRegularScenario(): CheckboxsAndTitle<string>[] {
-    return this.checkboxsData.filter(
-      (checkboxsField: CheckboxsAndTitle<string>) =>
-        checkboxsField.additionalData === 'Regular'
-    );
+  private _setElasticScenario(): void {
+    this._addSecondScenarioFormGroup();
+    this.checkboxsData.push({
+      title: 'Select trening days:',
+      formGroup: this._getScenariosFormGroup('secondWeek'),
+      buttons: [
+        { text: 'Monday', formControlName: 'monday' },
+        { text: 'Tuesday', formControlName: 'tuesday' },
+        { text: 'Wednesday', formControlName: 'wednesday' },
+        { text: 'Thursday', formControlName: 'thursday' },
+        { text: 'Friday', formControlName: 'friday' },
+        { text: 'Saturday', formControlName: 'saturday' },
+        { text: 'Sunday', formControlName: 'sunday' },
+      ],
+    });
   }
 
-  public test(): void {
-    console.log(this.planCreatorForm.valid);
+  private _setRegularScenario(): void {
+    this.checkboxsData.pop();
   }
+
   private _checkSmallDevice(): StepperOrientation {
     const windowWidth = this._viewportRuler.getViewportSize().width;
     return windowWidth < 820 ? 'vertical' : 'horizontal';

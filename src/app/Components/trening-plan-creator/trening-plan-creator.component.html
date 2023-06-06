@@ -6,8 +6,8 @@
   #stepper
 >
   <!-- Step 1: Create template -->
-  <ng-container [formGroup]="checkWeeksOptionFormGroup">
-    <mat-step [stepControl]="checkWeeksOptionFormGroup">
+  <ng-container [formGroup]="tableGenerationForm">
+    <mat-step [stepControl]="tableGenerationForm">
       <ng-template matStepLabel>Create template</ng-template>
       <ui-title-and-radio-button
         formControlName="firstControl"
@@ -20,23 +20,23 @@
   </ng-container>
   <!-- Step 2: How often do you want to train? -->
 
-  <mat-step [stepControl]="setCheckboxesFormScenario()">
+  <mat-step [stepControl]="getCheckboxesScenariosFormGroup">
     <ng-template matStepLabel>How often do you want to train?</ng-template>
     <ui-title-and-chips
       [data]="matChipsData"
-      (chipChange)="captureChipValue($event)"
+      (chipChange)="chooseCheckboxesScenario($event)"
     ></ui-title-and-chips>
     <div>
       <ui-title-and-checkbox
-        *ngFor="let scenario of getCheckboxesDataScenario()"
+        *ngFor="let scenario of checkboxsData"
         [data]="scenario"
       >
       </ui-title-and-checkbox>
     </div>
     <mat-error
       *ngIf="
-        setCheckboxesFormScenario().invalid &&
-        setCheckboxesFormScenario().touched
+        getCheckboxesScenariosFormGroup.invalid &&
+        getCheckboxesScenariosFormGroup.touched
       "
       ><span class="error-message"
         >At least one field is required!</span
@@ -46,7 +46,7 @@
       <button
         mat-button
         matStepperNext
-        (click)="markFormAsTouched(setCheckboxesFormScenario())"
+        (click)="markFormAsTouched(getCheckboxesScenariosFormGroup)"
       >
         Next
       </button>
@@ -59,6 +59,6 @@
     <p>You are now done.</p>
     <button mat-button matStepperPrevious>Back</button>
     <button mat-button (click)="stepper.reset()">Reset</button>
-    <button mat-button (click)="test()">Create template</button>
+    <button mat-button (click)="checkIsMainFormValid()">Create template</button>
   </mat-step>
 </mat-stepper>
