@@ -1,9 +1,11 @@
 <mat-stepper
+  [formGroup]="planCreatorForm"
   [linear]="true"
   [orientation]="stepperOrientation"
   [labelPosition]="'bottom'"
   #stepper
 >
+  <!-- Step 1: Create template -->
   <ng-container [formGroup]="checkWeeksOptionFormGroup">
     <mat-step [stepControl]="checkWeeksOptionFormGroup">
       <ng-template matStepLabel>Create template</ng-template>
@@ -16,6 +18,7 @@
       </div>
     </mat-step>
   </ng-container>
+  <!-- Step 2: How often do you want to train? -->
   <mat-step [stepControl]="setCheckboxesFormScenario()">
     <ng-template matStepLabel>How often do you want to train?</ng-template>
     <ui-title-and-chips
@@ -29,16 +32,31 @@
       >
       </ui-title-and-checkbox>
     </div>
+    <mat-error
+      *ngIf="
+        setCheckboxesFormScenario().invalid &&
+        setCheckboxesFormScenario().touched
+      "
+      ><span class="error-message"
+        >At least one field is required!</span
+      ></mat-error
+    >
     <div>
-      <button mat-button matStepperNext>Next</button>
+      <button
+        mat-button
+        matStepperNext
+        (click)="markFormAsTouched(setCheckboxesFormScenario())"
+      >
+        Next
+      </button>
     </div>
   </mat-step>
-
+  <!-- Step 3: Done -->
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
     <button mat-button matStepperPrevious>Back</button>
     <button mat-button (click)="stepper.reset()">Reset</button>
-    <button mat-button>Create template</button>
+    <button mat-button (click)="test()">Create template</button>
   </mat-step>
 </mat-stepper>

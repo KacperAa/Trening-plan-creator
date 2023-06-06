@@ -129,6 +129,10 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     this._subs.unsubscribe();
   }
 
+  public markFormAsTouched(formGroup: FormGroup): void {
+    formGroup.markAsTouched();
+  }
+
   public captureChipValue(chipChange: MatChipListboxChange): void {
     this.checkboxesViewScenario = chipChange.value;
   }
@@ -143,6 +147,10 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     return this.checkboxesViewScenario === 'Regular'
       ? this._getScenariosFormGroup('firstWeek')
       : this.getCheckboxesScenariosFormGroup;
+  }
+
+  public test(): void {
+    console.log(this.planCreatorForm.valid);
   }
 
   private _getScenariosFormGroup(key: string): FormGroup {
