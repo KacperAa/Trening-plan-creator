@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { MatChipListboxChange } from '@angular/material/chips';
 import { StepperOrientation } from '@angular/material/stepper';
-import { Subscription, fromEvent } from 'rxjs';
+import { Observable, Subscription, fromEvent, startWith } from 'rxjs';
 import { ChipsWithTitle } from 'src/app/Interfaces/chips-with-title.interface';
 import { oneRequiredField } from 'src/app/Validators/validators';
 import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interface';
@@ -29,18 +29,6 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     }),
     checkboxesScenarios: this._formBuilder.group({
       firstWeek: this._formBuilder.group(
-        {
-          monday: false,
-          tuesday: false,
-          wednesday: false,
-          thursday: false,
-          friday: false,
-          saturday: false,
-          sunday: false,
-        },
-        { validators: oneRequiredField } as AbstractControlOptions
-      ),
-      secondWeek: this._formBuilder.group(
         {
           monday: false,
           tuesday: false,
@@ -146,15 +134,30 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
   public setCheckboxesFormScenario(): FormGroup {
     return this.checkboxesViewScenario === 'Regular'
       ? this._getScenariosFormGroup('firstWeek')
-      : this.getCheckboxesScenariosFormGroup;
-  }
-
-  public test(): void {
-    console.log(this.planCreatorForm.valid);
+      : this._addSecondWeek();
   }
 
   private _getScenariosFormGroup(key: string): FormGroup {
     return this.getCheckboxesScenariosFormGroup.get(key) as FormGroup;
+  }
+
+  private _addSecondWeek(): FormGroup {
+    const secondWeek = this._formBuilder.group(
+      {
+        monday: false,
+        tuesday: false,
+        wednesday: false,
+        thursday: false,
+        friday: false,
+        saturday: false,
+        sunday: false,
+      },
+      { validators: oneRequiredField } as AbstractControlOptions
+    );
+
+    this.getCheckboxesScenariosFormGroup.addControl('secondWeek', secondWeek);
+
+    return this.getCheckboxesScenariosFormGroup;
   }
 
   private _getRegularScenario(): CheckboxsAndTitle<string>[] {
@@ -164,6 +167,9 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     );
   }
 
+  public test(): void {
+    console.log(this.planCreatorForm.valid);
+  }
   private _checkSmallDevice(): StepperOrientation {
     const windowWidth = this._viewportRuler.getViewportSize().width;
     return windowWidth < 820 ? 'vertical' : 'horizontal';
