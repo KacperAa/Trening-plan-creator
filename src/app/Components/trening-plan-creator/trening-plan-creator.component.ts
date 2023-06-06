@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControlOptions,
   FormBuilder,
+  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -23,7 +24,9 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
   public stepperOrientation: StepperOrientation = this._checkSmallDevice();
   public checkboxesViewScenario: string = 'Regular';
   public planCreatorForm: FormGroup = this._formBuilder.group({
-    createTemplate: ['', Validators.required],
+    createTemplate: this._formBuilder.group({
+      firstControl: new FormControl('Single week', Validators.required),
+    }),
     checkboxesScenarios: this._formBuilder.group({
       firstWeek: this._formBuilder.group(
         {
@@ -52,6 +55,10 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     }),
   });
 
+  get checkWeeksOptionFormGroup(): FormGroup {
+    return this.planCreatorForm.get('createTemplate') as FormGroup;
+  }
+
   get getCheckboxesScenariosFormGroup(): FormGroup {
     return this.planCreatorForm.get('checkboxesScenarios') as FormGroup;
   }
@@ -68,7 +75,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
       { title: 'Single week', hasDialog: false },
       { title: 'A few weeks', hasDialog: true },
     ],
-    selectedOption: 'Single week',
+    selectedOption: '',
     dialogData: {
       title: 'trening',
       placeholder: 'number',

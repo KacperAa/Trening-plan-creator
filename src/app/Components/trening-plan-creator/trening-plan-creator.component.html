@@ -4,15 +4,18 @@
   [labelPosition]="'bottom'"
   #stepper
 >
-  <mat-step>
-    <ng-template matStepLabel>Create template</ng-template>
-    <ui-title-and-radio-button
-      [data]="radioButtonsData"
-    ></ui-title-and-radio-button>
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
+  <ng-container [formGroup]="checkWeeksOptionFormGroup">
+    <mat-step [stepControl]="checkWeeksOptionFormGroup">
+      <ng-template matStepLabel>Create template</ng-template>
+      <ui-title-and-radio-button
+        formControlName="firstControl"
+        [data]="radioButtonsData"
+      ></ui-title-and-radio-button>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  </ng-container>
   <mat-step [stepControl]="setCheckboxesFormScenario()">
     <ng-template matStepLabel>How often do you want to train?</ng-template>
     <ui-title-and-chips
