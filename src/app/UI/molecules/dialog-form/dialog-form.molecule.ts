@@ -14,6 +14,17 @@ export class DialogFormComponent {
   ) {}
 
   public closeDialog(): void {
-    this._dialogRef.close();
+    this.data.inputValue.markAsTouched();
+    this.data.inputValue.valid ? this._dialogRef.close() : null;
+  }
+
+  public getErrorMessage(): string {
+    if (this.data.inputValue.hasError('required')) {
+      return 'The field is required!';
+    }
+    if (this.data.inputValue.hasError('pattern')) {
+      return 'Only numbers 1-9 can be entered';
+    }
+    return '';
   }
 }

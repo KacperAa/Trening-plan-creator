@@ -4,6 +4,7 @@ import { DialogFormComponent } from '../dialog-form/dialog-form.molecule';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { RadioButtonOption } from 'src/app/Interfaces/radio-button-option.interface';
 
 @Component({
   selector: 'ui-title-and-radio-button[data]',
@@ -27,9 +28,14 @@ export class TitleAndRadioButtonComponent
   public value!: string;
   public onChange!: (value: string) => void;
   public onTouched!: () => void;
+
   private _subs: Subscription = new Subscription();
 
   constructor(private _dialog: MatDialog) {}
+
+  public ngOnDestroy(): void {
+    this._subs.unsubscribe();
+  }
   public writeValue(obj: string): void {
     this.value = obj;
   }
@@ -45,23 +51,20 @@ export class TitleAndRadioButtonComponent
     this.onTouched();
   }
 
-  public ngOnDestroy(): void {
-    this._subs.unsubscribe();
-  }
-
-  public openDialog(): void {
+  public openDialog(button: RadioButtonOption): void {
     const dialogRef = this._dialog.open(DialogFormComponent, {
       data: {
-        title: this.data.dialogData?.title,
-        placeholder: this.data.dialogData?.placeholder,
-        inputValue: this.dialogInputValue,
-        unit: this.data.dialogData?.unit,
+        title: button.dialogData?.title,
+        placeholder: button.dialogData?.placeholder,
+        inputValue: button.dialogData?.inputValue,
+        unit: button.dialogData?.unit,
       },
     });
 
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue) => {
         this.dialogInputValue = inputValue;
+        console.log(inputValue);
       })
     );
   }

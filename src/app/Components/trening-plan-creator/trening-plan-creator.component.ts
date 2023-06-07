@@ -93,15 +93,20 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
       title: 'Create template',
       buttons: [
         { title: 'Single week', hasDialog: false },
-        { title: 'A few weeks', hasDialog: true },
+        {
+          title: 'A few weeks',
+          hasDialog: true,
+          dialogData: {
+            title: 'trening',
+            placeholder: 'number',
+            inputValue: new FormControl('2', [
+              Validators.required,
+              Validators.pattern(/^[0-9]+$/),
+            ]),
+            unit: 'times a week',
+          },
+        },
       ],
-
-      dialogData: {
-        title: 'trening',
-        placeholder: 'number',
-        inputValue: '',
-        unit: 'times a week',
-      },
     };
   }
 
@@ -136,7 +141,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
   }
 
   private _addSecondScenarioFormGroup(): FormGroup {
-    const secondWeek = this._formBuilder.group(
+    const secondWeek: FormGroup = this._formBuilder.group(
       {
         monday: false,
         tuesday: false,
@@ -175,7 +180,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
   }
 
   private _checkSmallDevice(): StepperOrientation {
-    const windowWidth = this._viewportRuler.getViewportSize().width;
+    const windowWidth: number = this._viewportRuler.getViewportSize().width;
     return windowWidth < 820 ? 'vertical' : 'horizontal';
   }
 

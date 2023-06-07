@@ -3,7 +3,7 @@
   <ng-container *ngFor="let button of data.buttons">
     <mat-radio-button
       [value]="button.title"
-      (click)="button.hasDialog ? openDialog() : null; setValue(button.title)"
+      (click)="button.hasDialog ? openDialog(button) : null; setValue(button.title)"
       >{{ button.title }}
     </mat-radio-button>
   </ng-container>
