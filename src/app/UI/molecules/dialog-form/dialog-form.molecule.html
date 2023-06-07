@@ -1,13 +1,13 @@
 <div class="container">
   <h1 mat-dialog-title>
-    {{ data.title }} {{ data.inputValue.value }} {{ data.unit }}
+    {{ data.title }} {{ data.formControl.value }} {{ data.unit }}
   </h1>
   <ui-close-button (emitEvent)="closeDialog()"></ui-close-button>
   <div mat-dialog-content>
     <mat-form-field appearance="fill">
       <mat-label>{{ data.placeholder }}</mat-label>
-      <input name="inputValue" matInput [formControl]="data.inputValue" />
-      <mat-error *ngIf="data.inputValue.invalid"
+      <input name="inputValue" matInput [formControl]="data.formControl" />
+      <mat-error *ngIf="data.formControl.invalid"
         >{{getErrorMessage()}}</mat-error
       >
     </mat-form-field>
@@ -15,9 +15,9 @@
 
   <div mat-dialog-actions>
     <button
-      [disabled]="data.inputValue.invalid"
+      [disabled]="data.formControl.invalid"
       mat-button
-      [mat-dialog-close]="data.inputValue.value"
+      [mat-dialog-close]="data.formControl.value"
       cdkFocusInitial
     >
       Accept

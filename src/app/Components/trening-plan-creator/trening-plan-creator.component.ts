@@ -97,13 +97,13 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
           title: 'A few weeks',
           hasDialog: true,
           dialogData: {
-            title: 'trening',
+            title: 'Generate on:',
             placeholder: 'number',
-            inputValue: new FormControl('2', [
+            formControl: new FormControl('2', [
               Validators.required,
               Validators.pattern(/^[0-9]+$/),
             ]),
-            unit: 'times a week',
+            unit: 'Weeks',
           },
         },
       ],

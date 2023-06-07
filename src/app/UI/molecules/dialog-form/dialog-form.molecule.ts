@@ -1,5 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { MatDialogData } from 'src/app/Interfaces/mat-dialog-data.interface';
 
 @Component({
@@ -7,24 +8,47 @@ import { MatDialogData } from 'src/app/Interfaces/mat-dialog-data.interface';
   templateUrl: './dialog-form.molecule.html',
   styleUrls: ['./dialog-form.molecule.scss'],
 })
-export class DialogFormComponent {
+export class DialogFormComponent implements OnInit, OnDestroy {
+  private _subs: Subscription = new Subscription();
   constructor(
     private _dialogRef: MatDialogRef<DialogFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: MatDialogData
   ) {}
 
+  public ngOnInit(): void {
+    this._trackFormStatus();
+  }
+
+  public ngOnDestroy(): void {
+    this._subs.unsubscribe();
+  }
+
   public closeDialog(): void {
-    this.data.inputValue.markAsTouched();
-    this.data.inputValue.valid ? this._dialogRef.close() : null;
+    this.data.formControl.markAsTouched();
+    this.data.formControl.valid ? this._dialogRef.close() : null;
   }
 
   public getErrorMessage(): string {
-    if (this.data.inputValue.hasError('required')) {
+    if (this.data.formControl.hasError('required')) {
       return 'The field is required!';
     }
-    if (this.data.inputValue.hasError('pattern')) {
+    if (this.data.formControl.hasError('pattern')) {
       return 'Only numbers 1-9 can be entered';
     }
     return '';
+  }
+
+  private _trackFormStatus(): void {
+    this._subs.add(
+      this.data.formControl.statusChanges.subscribe(() => {
+        this._markInputAsTouched();
+      })
+    );
+  }
+
+  private _markInputAsTouched(): void {
+    this.data.formControl.invalid
+      ? this.data.formControl.markAsTouched()
+      : null;
   }
 }

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
 import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.interface';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 export interface ExerciseParams {
   ex: string;
@@ -55,10 +55,13 @@ export class TreningDayComponent {
 
   private _openDialog(): void {
     const dialogRef = this._dialog.open(DialogFormComponent, {
+      disableClose: true,
       data: {
-        title: this.rowAndCellKey.row[this.rowAndCellKey.cellKey] + ' - ',
         placeholder: '...',
-        inputValue: new FormControl(),
+        formControl: new FormControl(
+          this.rowAndCellKey.row[this.rowAndCellKey.cellKey],
+          [Validators.required]
+        ),
         unit: this.rowAndCellKey.cellKey,
       },
     });

@@ -53,10 +53,11 @@ export class TitleAndRadioButtonComponent
 
   public openDialog(button: RadioButtonOption): void {
     const dialogRef = this._dialog.open(DialogFormComponent, {
+      disableClose: true,
       data: {
         title: button.dialogData?.title,
         placeholder: button.dialogData?.placeholder,
-        inputValue: button.dialogData?.inputValue,
+        formControl: button.dialogData?.formControl,
         unit: button.dialogData?.unit,
       },
     });
