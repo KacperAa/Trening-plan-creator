@@ -51,6 +51,7 @@ export class TreningDayComponent implements OnDestroy {
   public tableColumns: string[] = ['Ex', 'Series', 'Reps', 'RPE', 'Delete'];
   public inputValue!: string;
   public rowAndCellKey!: TableRowAndCellKey;
+  public initialValue!: string | number;
   private _subs: Subscription = new Subscription();
 
   constructor(private _dialog: MatDialog) {}
@@ -59,6 +60,7 @@ export class TreningDayComponent implements OnDestroy {
   }
 
   public captureCellValue(cellValue: string | number) {
+    this.initialValue = cellValue;
     this._openDialog(cellValue);
   }
 
@@ -78,11 +80,16 @@ export class TreningDayComponent implements OnDestroy {
 
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue) => {
-        if (typeof cellValue === 'number') {
-          this.rowAndCellKey.row[this.rowAndCellKey.cellKey] =
-            Number(inputValue);
+        if (inputValue) {
+          if (typeof cellValue === 'number') {
+            this.rowAndCellKey.row[this.rowAndCellKey.cellKey] =
+              Number(inputValue);
+          } else {
+            this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = inputValue;
+          }
         } else {
-          this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = inputValue;
+          this.rowAndCellKey.row[this.rowAndCellKey.cellKey] =
+            this.initialValue;
         }
       })
     );
