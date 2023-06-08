@@ -25,7 +25,7 @@ export class DialogFormComponent implements OnInit, OnDestroy {
 
   public closeDialog(): void {
     this.data.formControl.markAsTouched();
-    this.data.formControl.valid ? this._dialogRef.close() : null;
+    this._dialogRef.close();
   }
 
   public getErrorMessage(): string {

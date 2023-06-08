@@ -81,18 +81,27 @@ export class TreningDayComponent implements OnDestroy {
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue) => {
         if (inputValue) {
-          if (typeof cellValue === 'number') {
-            this.rowAndCellKey.row[this.rowAndCellKey.cellKey] =
-              Number(inputValue);
-          } else {
-            this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = inputValue;
-          }
+          this._convertAndAssignDialogValue(cellValue, inputValue);
         } else {
-          this.rowAndCellKey.row[this.rowAndCellKey.cellKey] =
-            this.initialValue;
+          this._setInitialValue();
         }
       })
     );
+  }
+
+  private _convertAndAssignDialogValue(
+    cellValue: string | number,
+    inputValue: string | number
+  ) {
+    if (typeof cellValue === 'number') {
+      this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = Number(inputValue);
+    } else if (typeof cellValue === 'string') {
+      this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = String(inputValue);
+    }
+  }
+
+  private _setInitialValue(): void {
+    this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = this.initialValue;
   }
 
   private _setValidator(cellValue: string | number): FormControl {
