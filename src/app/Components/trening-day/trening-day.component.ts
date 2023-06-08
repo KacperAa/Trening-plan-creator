@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
 import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.interface';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export interface ExerciseParams {
   ex: string;
@@ -11,6 +11,7 @@ export interface ExerciseParams {
   reps: number;
   rpe: number;
   icons: any;
+  dialogData?: any;
 }
 
 const ELEMENT_DATA: ExerciseParams[] = [
@@ -44,24 +45,39 @@ export class TreningDayComponent {
   public tableColumns: string[] = ['Ex', 'Series', 'Reps', 'RPE', 'Delete'];
   public inputValue!: string;
   public rowAndCellKey!: TableRowAndCellKey;
+
   private _subs: Subscription = new Subscription();
 
   constructor(private _dialog: MatDialog) {}
 
-  public captureRowAndCellKey(rowAndCellKey: TableRowAndCellKey): void {
-    this.rowAndCellKey = rowAndCellKey;
-    this._openDialog();
+  public captureCellValue(cellValue: string | number) {
+    /*  if (typeof cellValue === 'string') {
+    } */
+
+    this._openDialog(cellValue);
   }
 
-  private _openDialog(): void {
+  public captureRowAndCellKey(rowAndCellKey: TableRowAndCellKey): void {
+    this.rowAndCellKey = rowAndCellKey;
+    /*     this._openDialog(); */
+  }
+
+  private _openDialog(cellValue: string | number): void {
+    let formControl: FormControl = new FormControl(
+      this.rowAndCellKey.row[this.rowAndCellKey.cellKey],
+      [Validators.required]
+    );
+    if (typeof cellValue === 'string') {
+      formControl.addValidators(Validators.pattern(/^[a-zA-Z ]+$/));
+    } else {
+      formControl.addValidators(Validators.pattern(/^[0-9]+$/));
+    }
+
     const dialogRef = this._dialog.open(DialogFormComponent, {
       disableClose: true,
       data: {
         placeholder: '...',
-        formControl: new FormControl(
-          this.rowAndCellKey.row[this.rowAndCellKey.cellKey],
-          [Validators.required]
-        ),
+        formControl: formControl,
         unit: this.rowAndCellKey.cellKey,
       },
     });

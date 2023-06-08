@@ -27,6 +27,8 @@ export class TableComponent {
   @Output()
   public tableRowAndCellLocation: EventEmitter<TableRowAndCellKey> =
     new EventEmitter<TableRowAndCellKey>();
+  @Output()
+  public clickCell: EventEmitter<string> = new EventEmitter<string>();
   public dynamicComponent!: Type<Component>;
 
   public columnHasIcon(
@@ -50,6 +52,7 @@ export class TableComponent {
 
   public displayCellValue(row: MatRow | any, column: string): string {
     const key = column.toLowerCase();
+
     return row[key];
   }
 

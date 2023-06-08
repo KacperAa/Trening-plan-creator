@@ -5,6 +5,7 @@
   [isClicableRows]="false"
   [isClicableParams]="true"
   (tableRowAndCellLocation)="captureRowAndCellKey($event)"
+  (clickCell)="captureCellValue($event)"
 ></app-table>
 
 <button
