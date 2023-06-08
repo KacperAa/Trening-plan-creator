@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioButtonOption } from 'src/app/Interfaces/radio-button-option.interface';
+import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'ui-title-and-radio-button[data]',
@@ -28,10 +29,14 @@ export class TitleAndRadioButtonComponent
   public value!: string;
   public onChange!: (value: string) => void;
   public onTouched!: () => void;
-
+  private _scrollStrategy: ScrollStrategy =
+    this._scrollStrategyOptions.reposition();
   private _subs: Subscription = new Subscription();
 
-  constructor(private _dialog: MatDialog) {}
+  constructor(
+    private _dialog: MatDialog,
+    private _scrollStrategyOptions: ScrollStrategyOptions
+  ) {}
 
   public ngOnDestroy(): void {
     this._subs.unsubscribe();
@@ -53,6 +58,8 @@ export class TitleAndRadioButtonComponent
 
   public openDialog(button: RadioButtonOption): void {
     const dialogRef = this._dialog.open(DialogFormComponent, {
+      maxWidth: 280,
+      scrollStrategy: this._scrollStrategy,
       disableClose: true,
       data: {
         title: button.dialogData?.title,
@@ -65,7 +72,6 @@ export class TitleAndRadioButtonComponent
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue) => {
         this.dialogInputValue = inputValue;
-        console.log(inputValue);
       })
     );
   }

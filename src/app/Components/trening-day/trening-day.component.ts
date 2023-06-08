@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
 import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.interface';
 import { FormControl, Validators } from '@angular/forms';
+import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 
 export interface ExerciseParams {
   ex: string;
@@ -52,9 +53,14 @@ export class TreningDayComponent implements OnDestroy {
   public inputValue!: string;
   public rowAndCellKey!: TableRowAndCellKey;
   public initialValue!: string | number;
+  private _scrollStrategy: ScrollStrategy =
+    this._scrollStrategyOptions.reposition();
   private _subs: Subscription = new Subscription();
 
-  constructor(private _dialog: MatDialog) {}
+  constructor(
+    private _dialog: MatDialog,
+    private _scrollStrategyOptions: ScrollStrategyOptions
+  ) {}
   public ngOnDestroy(): void {
     this._subs.unsubscribe();
   }
@@ -71,6 +77,8 @@ export class TreningDayComponent implements OnDestroy {
   private _openDialog(cellValue: string | number): void {
     const dialogRef = this._dialog.open(DialogFormComponent, {
       disableClose: true,
+      maxWidth: 280,
+      scrollStrategy: this._scrollStrategy,
       data: {
         placeholder: '...',
         formControl: this._setValidator(cellValue),
