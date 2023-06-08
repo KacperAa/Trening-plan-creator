@@ -10,7 +10,6 @@
       <ng-container *ngFor="let icon of row.icons">
         <!-----------------------   Appears when it is possible to click on cells ------------------>
         <button
-          #button
           (click)="emitTableRowAndCellLocation(row, column)"
           (click)="clickCell.emit(displayCellValue(row, column))"
           *ngIf="isClicableParams && !columnHasIcon(column, icon)"

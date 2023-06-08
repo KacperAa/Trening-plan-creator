@@ -52,7 +52,6 @@ export class TableComponent {
 
   public displayCellValue(row: MatRow | any, column: string): string {
     const key = column.toLowerCase();
-
     return row[key];
   }
 

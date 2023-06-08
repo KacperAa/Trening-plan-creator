@@ -1,9 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-form.molecule';
 import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.interface';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 export interface ExerciseParams {
   ex: string;
@@ -36,7 +42,7 @@ const ELEMENT_DATA: ExerciseParams[] = [
   templateUrl: './trening-day.component.html',
   styleUrls: ['./trening-day.component.scss'],
 })
-export class TreningDayComponent {
+export class TreningDayComponent implements OnDestroy {
   @Input()
   public dayOfWeek!: string;
   @Output()
@@ -45,47 +51,52 @@ export class TreningDayComponent {
   public tableColumns: string[] = ['Ex', 'Series', 'Reps', 'RPE', 'Delete'];
   public inputValue!: string;
   public rowAndCellKey!: TableRowAndCellKey;
-
   private _subs: Subscription = new Subscription();
 
   constructor(private _dialog: MatDialog) {}
+  public ngOnDestroy(): void {
+    this._subs.unsubscribe();
+  }
 
   public captureCellValue(cellValue: string | number) {
-    /*  if (typeof cellValue === 'string') {
-    } */
-
     this._openDialog(cellValue);
   }
 
   public captureRowAndCellKey(rowAndCellKey: TableRowAndCellKey): void {
     this.rowAndCellKey = rowAndCellKey;
-    /*     this._openDialog(); */
   }
 
   private _openDialog(cellValue: string | number): void {
-    let formControl: FormControl = new FormControl(
-      this.rowAndCellKey.row[this.rowAndCellKey.cellKey],
-      [Validators.required]
-    );
-    if (typeof cellValue === 'string') {
-      formControl.addValidators(Validators.pattern(/^[a-zA-Z ]+$/));
-    } else {
-      formControl.addValidators(Validators.pattern(/^[0-9]+$/));
-    }
-
     const dialogRef = this._dialog.open(DialogFormComponent, {
       disableClose: true,
       data: {
         placeholder: '...',
-        formControl: formControl,
+        formControl: this._setValidator(cellValue),
         unit: this.rowAndCellKey.cellKey,
       },
     });
 
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue) => {
-        this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = inputValue;
+        if (typeof cellValue === 'number') {
+          this.rowAndCellKey.row[this.rowAndCellKey.cellKey] =
+            Number(inputValue);
+        } else {
+          this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = inputValue;
+        }
       })
     );
+  }
+
+  private _setValidator(cellValue: string | number): FormControl {
+    const formControl: FormControl = new FormControl(cellValue, [
+      Validators.required,
+    ]);
+    if (typeof cellValue === 'string') {
+      formControl.addValidators(Validators.pattern(/^[a-zA-Z ]+$/));
+    } else if (typeof cellValue === 'number') {
+      formControl.addValidators(Validators.pattern(/^[0-9]+$/));
+    }
+    return formControl;
   }
 }
