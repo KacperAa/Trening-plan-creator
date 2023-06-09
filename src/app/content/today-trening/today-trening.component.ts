@@ -8,10 +8,8 @@ import { ExercisePerformedComponent } from 'src/app/Components/actual-plan/exerc
 })
 export class TodayTreningComponent {
   public columns: string[] = ['Ex', 'Series', 'Reps', 'Rpe', 'Edit'];
-
   public dataSource: PeriodicElementt[] = ELEMENT_DATA;
-  public passedComponent: Type<ExercisePerformedComponent> =
-    ExercisePerformedComponent;
+  public passedComponent: Type<Component | any> = ExercisePerformedComponent;
 }
 
 export interface PeriodicElementt {

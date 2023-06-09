@@ -12,32 +12,6 @@ import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.in
 import { FormControl, Validators } from '@angular/forms';
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 
-export interface ExerciseParams {
-  ex: string;
-  series: number;
-  reps: number;
-  rpe: number;
-  icons: any;
-  dialogData?: any;
-}
-
-const ELEMENT_DATA: ExerciseParams[] = [
-  {
-    ex: 'Bench Press',
-    series: 3,
-    reps: 12,
-    rpe: 8,
-    icons: [{ column: 'Delete', icon: 'delete' }],
-  },
-  {
-    ex: 'Front Squad',
-    series: 3,
-    reps: 12,
-    rpe: 9,
-    icons: [{ column: 'Delete', icon: 'delete' }],
-  },
-];
-
 @Component({
   selector: 'app-trening-day[dayOfWeek]',
   templateUrl: './trening-day.component.html',
@@ -124,3 +98,29 @@ export class TreningDayComponent implements OnDestroy {
     return formControl;
   }
 }
+
+export interface ExerciseParams {
+  ex: string;
+  series: number;
+  reps: number;
+  rpe: number;
+  icons: any;
+  dialogData?: any;
+}
+
+const ELEMENT_DATA: ExerciseParams[] = [
+  {
+    ex: 'Bench Press',
+    series: 3,
+    reps: 12,
+    rpe: 8,
+    icons: [{ column: 'Delete', icon: 'delete' }],
+  },
+  {
+    ex: 'Front Squad',
+    series: 3,
+    reps: 12,
+    rpe: 9,
+    icons: [{ column: 'Delete', icon: 'delete' }],
+  },
+];

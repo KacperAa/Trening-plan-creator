@@ -17,17 +17,22 @@ import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-di
 export class ValueAccesorComponent implements ControlValueAccessor {
   @Input()
   public data!: RadioButtonsDialogWithTitle;
+  public value!: string;
+  public onChange!: (value: string) => void;
+  public onTouched!: () => void;
 
-  writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+  public writeValue(obj: string): void {
+    this.value = obj;
   }
-  registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+  public registerOnChange(fn: any): void {
+    this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+  public registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+
+  public setValue(value: string): void {
+    this.onChange(value);
+    this.onTouched();
   }
 }

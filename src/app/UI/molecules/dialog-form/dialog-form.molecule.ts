@@ -1,9 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogConfig,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { MatDialogData } from 'src/app/Interfaces/mat-dialog-data.interface';
 
@@ -37,7 +33,10 @@ export class DialogFormComponent implements OnInit, OnDestroy {
       return 'The field is required!';
     }
     if (this.data.formControl.hasError('pattern')) {
-      return 'Only numbers 1-9 can be entered';
+      const patternError = this.data.formControl.getError('pattern');
+      return patternError.requiredPattern === '/^[0-9]+$/'
+        ? 'Only numbers can be entered'
+        : 'Only letters can be entered';
     }
     return '';
   }

@@ -99,7 +99,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
           dialogData: {
             title: 'Generate on:',
             placeholder: 'number',
-            formControl: new FormControl('2', [
+            formControl: new FormControl(2, [
               Validators.required,
               Validators.pattern(/^[0-9]+$/),
             ]),

@@ -25,7 +25,7 @@ export class TitleAndRadioButtonComponent
   @Input()
   public data!: RadioButtonsDialogWithTitle;
   @Input()
-  public dialogInputValue: string = '';
+  public dialogInputValue!: string | number;
   public value!: string;
   public onChange!: (value: string) => void;
   public onTouched!: () => void;
@@ -70,9 +70,21 @@ export class TitleAndRadioButtonComponent
     });
 
     this._subs.add(
-      dialogRef.afterClosed().subscribe((inputValue) => {
-        this.dialogInputValue = inputValue;
+      dialogRef.afterClosed().subscribe((inputValue: string) => {
+        this._convertAndAssingInputValue(button, inputValue);
       })
     );
+  }
+
+  private _convertAndAssingInputValue(
+    button: RadioButtonOption,
+    inputValue: string
+  ): void {
+    this.dialogInputValue =
+      typeof button.dialogData?.formControl.value === 'number'
+        ? Number(inputValue)
+        : typeof button.dialogData?.formControl.value === 'string'
+        ? String(inputValue)
+        : inputValue;
   }
 }
