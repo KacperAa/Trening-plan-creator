@@ -1,0 +1,17 @@
+.form-styles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  .column-direction {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .row-direction {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+}

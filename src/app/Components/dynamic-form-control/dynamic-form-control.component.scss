@@ -1,0 +1,22 @@
+.label-text {
+  font-size: 12px;
+}
+
+.checkbox-styles {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__error-message {
+    font-size: 11px;
+  }
+
+  .checkbox-and-text {
+    display: flex;
+    &__text {
+      font-size: 11px;
+      color: gray;
+    }
+  }
+}

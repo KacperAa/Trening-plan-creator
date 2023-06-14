@@ -60,7 +60,6 @@ import { TableFinderComponent } from './Components/table-finder/table-finder.com
 import { ExerciseDataChartComponent } from './Components/exercise-data-chart/exercise-data-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { RadioButtonsAndChartComponent } from './Components/radio-buttons-and-chart/radio-buttons-and-chart.component';
-
 import { ProfileComponent } from './content/profile/profile.component';
 import { ProfileCardComponent } from './Components/profile-card/profile-card.component';
 import { ProfileImageComponent } from './UI/atoms/profile-image/profile-image.atom';
@@ -92,7 +91,8 @@ import { WeeklyAmountIncreaseComponent } from './Components/weekly-amount-increa
 import { CalendarTableComponent } from './Components/calendar-table/calendar-table.component';
 import { CheckboxAndAgreementComponent } from './Components/checkbox-and-agreement/checkbox-and-agreement.component';
 import { DialogWithDateFieldComponent } from './Components/dialog-with-date-field/dialog-with-date-field.component';
-import { ValueAccesorComponent } from './Components/value-accesor/value-accesor.component';
+import { DynamicFormControlComponent } from './Components/dynamic-form-control/dynamic-form-control.component';
+import { DynamicFormComponent } from './Components/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +130,6 @@ import { ValueAccesorComponent } from './Components/value-accesor/value-accesor.
     TableWithSearchComponent,
     TableFinderComponent,
     RadioButtonsAndChartComponent,
-
     ProfileComponent,
     ProfileCardComponent,
     ProfileImageComponent,
@@ -156,7 +155,8 @@ import { ValueAccesorComponent } from './Components/value-accesor/value-accesor.
     CalendarTableComponent,
     CheckboxAndAgreementComponent,
     DialogWithDateFieldComponent,
-    ValueAccesorComponent,
+    DynamicFormControlComponent,
+    DynamicFormComponent,
   ],
   imports: [
     BrowserModule,

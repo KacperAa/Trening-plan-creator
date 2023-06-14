@@ -26,7 +26,6 @@ export class TreningDayComponent implements OnDestroy {
   public tableColumns: string[] = ['Ex', 'Series', 'Reps', 'RPE', 'Delete'];
   public inputValue!: string;
   public rowAndCellKey!: TableRowAndCellKey;
-  public initialValue!: string | number;
   private _scrollStrategy: ScrollStrategy =
     this._scrollStrategyOptions.reposition();
   private _subs: Subscription = new Subscription();
@@ -40,7 +39,6 @@ export class TreningDayComponent implements OnDestroy {
   }
 
   public captureCellValue(cellValue: string | number) {
-    this.initialValue = cellValue;
     this._openDialog(cellValue);
   }
 
@@ -61,12 +59,10 @@ export class TreningDayComponent implements OnDestroy {
     });
 
     this._subs.add(
+      /*  take on destroy */
       dialogRef.afterClosed().subscribe((inputValue) => {
-        if (inputValue) {
+        if (inputValue)
           this._convertAndAssignDialogValue(cellValue, inputValue);
-        } else {
-          this._setInitialValue();
-        }
       })
     );
   }
@@ -80,10 +76,6 @@ export class TreningDayComponent implements OnDestroy {
     } else if (typeof cellValue === 'string') {
       this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = String(inputValue);
     }
-  }
-
-  private _setInitialValue(): void {
-    this.rowAndCellKey.row[this.rowAndCellKey.cellKey] = this.initialValue;
   }
 
   private _setValidator(cellValue: string | number): FormControl {

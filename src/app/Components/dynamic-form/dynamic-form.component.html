@@ -1,0 +1,24 @@
+<div>
+  <form class="form-styles" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <ng-container *ngFor="let controlsDirection of controlsDirection">
+      <div
+        [ngClass]="{
+          'column-direction': controlsDirection.direction === 'column',
+          'row-direction': controlsDirection.direction === 'row'
+        }"
+      >
+        <ng-container *ngFor="let control of controlsDirection.controls">
+          <app-dynamic-form-control
+            [control]="control"
+            [form]="form"
+          ></app-dynamic-form-control>
+        </ng-container>
+      </div>
+    </ng-container>
+    <div class="form-row">
+      <button mat-raised-button [color]="'primary'" [disabled]="!form.valid">
+        Register
+      </button>
+    </div>
+  </form>
+</div>

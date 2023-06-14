@@ -1,0 +1,49 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="control.controlType">
+    <mat-form-field *ngSwitchCase="'input'">
+      <mat-label
+        ><span class="label-text">{{ control.label }}</span></mat-label
+      >
+      <input
+        matInput
+        [formControlName]="control.key"
+        [id]="control.key"
+        [type]="control.type"
+      />
+      <mat-error *ngIf="!isValid"
+        >{{ control.label }} is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field *ngSwitchCase="'password'" [appearance]="'outline'">
+      <mat-label
+        ><span class="label-text">{{ control.label }}</span></mat-label
+      >
+      <input
+        matInput
+        [formControlName]="control.key"
+        [id]="control.key"
+        [type]="control.type"
+      />
+      <mat-error *ngIf="!isValid"
+        >{{ control.label }} is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <div *ngSwitchCase="'checkbox'" class="checkbox-styles">
+      <div class="checkbox-and-text">
+        <mat-checkbox
+          #checkbox
+          (change)="setInvalidCheckboxIfNoChecked(checkbox)"
+          [formControlName]="control.key"
+        ></mat-checkbox
+        ><span class="checkbox-and-text__text">{{ control.label }}</span>
+      </div>
+      <mat-error
+        *ngIf="!isValid && formControl.touched"
+        class="checkbox-styles__error-message"
+        >This field is <strong>required*</strong></mat-error
+      >
+    </div>
+  </div>
+</div>
