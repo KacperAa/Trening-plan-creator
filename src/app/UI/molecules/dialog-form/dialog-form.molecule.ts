@@ -30,14 +30,11 @@ export class DialogFormComponent implements OnInit, OnDestroy {
 
   public getErrorMessage(): string {
     if (this.data.formControl.hasError('required')) {
-      return 'The field is required!';
+      return this._getRequiredError();
     }
-    if (this.data.formControl.hasError('pattern')) {
-      const patternError = this.data.formControl.getError('pattern');
 
-      return patternError.requiredPattern === '/^[0-9]+$/'
-        ? 'Only numbers can be entered'
-        : 'Only letters can be entered';
+    if (this.data.formControl.hasError('pattern')) {
+      return this._getPatternError();
     }
     return '';
   }
@@ -54,5 +51,17 @@ export class DialogFormComponent implements OnInit, OnDestroy {
     this.data.formControl.invalid
       ? this.data.formControl.markAsTouched()
       : null;
+  }
+
+  private _getRequiredError(): string {
+    return 'The field is required!';
+  }
+
+  private _getPatternError(): string {
+    const patternError = this.data.formControl.getError('pattern');
+
+    return patternError.requiredPattern === '/^[0-9]+$/'
+      ? 'Only numbers can be entered'
+      : 'Only letters can be entered';
   }
 }

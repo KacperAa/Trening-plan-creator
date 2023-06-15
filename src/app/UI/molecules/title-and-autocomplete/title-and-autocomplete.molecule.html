@@ -3,5 +3,22 @@
   [ngClass]="position === 'vertical' ? 'vertical-position' : null"
 >
   <h3 class="title">{{data.title}}</h3>
-  <ui-input-autocomplete [data]="data.autocomplete"></ui-input-autocomplete>
+  <mat-form-field appearance="fill">
+    <mat-label>{{ autocompleteData.matLabel }}</mat-label>
+    <input
+      type="text"
+      placeholder="{{ autocompleteData.matLabel }}"
+      matInput
+      [formControl]="autocompleteData.formControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of keyOptionsFound | async"
+        [value]="option"
+      >
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 </div>

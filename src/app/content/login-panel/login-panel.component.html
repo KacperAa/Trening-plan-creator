@@ -1,19 +1,17 @@
 <div class="container">
   <div class="login-panel">
     <h3 class="title">Login</h3>
-    <ui-input-form-field
-      *ngFor="let data of inputsData"
-      [matLabel]="data.matLabel"
-      [placeholder]="data.placeholder"
-      [appereance]="data.appereance"
-      [labelFontSize]="'12px'"
-    ></ui-input-form-field>
-    <button mat-raised-button color="primary">{{ buttonText }}</button>
+    <app-dynamic-form
+      [controlsDirection]="inputsData$ | async"
+      [buttonText]="'Login'"
+    ></app-dynamic-form>
+
     <div class="register-and-remind-password">
       <span
         class="register-and-remind-password__text"
-        *ngFor="let text of referencesText"
-        >{{ text }}</span
+        *ngFor="let pathAndText of routerPathAndText"
+        [routerLink]="pathAndText.path"
+        >{{ pathAndText.text }}</span
       >
     </div>
   </div>

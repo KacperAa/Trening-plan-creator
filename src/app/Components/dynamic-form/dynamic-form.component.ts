@@ -5,13 +5,15 @@ import { FormControlService } from 'src/app/Services/form-control.service';
 import { ControlsDirection } from 'src/app/Interfaces/controls-direction.interface';
 
 @Component({
-  selector: 'app-dynamic-form[controlsDirection]',
+  selector: 'app-dynamic-form[controlsDirection][buttonText]',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
 })
 export class DynamicFormComponent implements OnInit {
   @Input()
   public controlsDirection: ControlsDirection<string>[] | null = [];
+  @Input()
+  public buttonText!: string;
   public form!: FormGroup;
   private get _controls(): FormBase<string>[] {
     return this.controlsDirection?.flatMap(

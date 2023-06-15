@@ -3,13 +3,13 @@
     <ui-close-button (click)="close.emit()" />
     <h3 class="title">Add Exercise</h3>
     <mat-stepper
-      [linear]="false"
+      [linear]="true"
       [labelPosition]="'bottom'"
       #stepper
       class="stepper"
     >
       <form>
-        <mat-step>
+        <mat-step [stepControl]="_getFormControl('findExercise')">
           <ng-template matStepLabel
             ><span class="step-title">Exercise</span></ng-template
           >

@@ -200,8 +200,12 @@ export class AddExercise {
     ) as DecoratedInputsGroup<string>;
   }
 
-  private _getFormControl(controlName: string): FormControl {
+  public _getFormControl(controlName: string): FormControl {
     return this.addExerciseForm.get(controlName) as FormControl;
+  }
+
+  public setErrorMessage(): string {
+    return '';
   }
 }
 
