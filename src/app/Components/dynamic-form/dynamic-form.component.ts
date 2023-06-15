@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 import { FormBase } from 'src/app/Classes/form-base';
 import { FormControlService } from 'src/app/Services/form-control.service';
 import { ControlsDirection } from 'src/app/Interfaces/controls-direction.interface';
@@ -19,7 +19,14 @@ export class DynamicFormComponent implements OnInit {
     ) as FormBase<string>[];
   }
 
-  constructor(private _formControlService: FormControlService) {}
+  constructor(private _formControlService: FormControlService) {
+    setTimeout(() => {
+      const getPasswordsInputs = this._controls.filter(
+        (e: any) => e.type === 'password'
+      );
+      const japa = getPasswordsInputs.every((e) => e.value === e.value);
+    }, 0);
+  }
 
   public ngOnInit(): void {
     this.form = this._formControlService.toFormGroup(

@@ -25,4 +25,50 @@ export class DynamicFormControlComponent {
       ? this.form.controls[this.control.key].setErrors({ invalid: true })
       : null;
   }
+
+  public setErrorMessage(): string {
+    if (this.formControl.hasError('required')) {
+      return this._getRequiredError();
+    }
+
+    if (this.formControl.hasError('maxlength')) {
+      return this._getMaxLengthError();
+    }
+
+    if (this.formControl.hasError('pattern')) {
+      return this._getPatternError();
+    }
+
+    if (this.formControl.hasError('email')) {
+      return this._getEmailError();
+    }
+
+    if (this.formControl.hasError('repeatPasswordError')) {
+      return this._getRepeatPasswordError();
+    }
+
+    return '';
+  }
+
+  private _getRequiredError(): string {
+    return this.control.label + ' is <strong>required</strong>';
+  }
+
+  private _getMaxLengthError(): string {
+    const getMaxLength = this.formControl.getError('maxlength').requiredLength;
+
+    return `Maximum character length is <strong>${getMaxLength}</strong>`;
+  }
+
+  private _getPatternError(): string {
+    return '<strong>Capital letter</strong>,one <strong>special character</strong> and number required';
+  }
+
+  private _getEmailError(): string {
+    return 'Invalid email <strong>format</strong>';
+  }
+
+  private _getRepeatPasswordError(): string {
+    return 'Wrong <strong>password</strong>';
+  }
 }

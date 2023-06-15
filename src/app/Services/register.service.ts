@@ -20,7 +20,7 @@ export class RegisterService {
             key: 'nickname',
             label: 'Nickname',
             required: true,
-            pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{3,}$',
+            pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.])(?=\\S+$).{6,}$',
           }),
           new InputControl({
             key: 'email',
@@ -37,14 +37,12 @@ export class RegisterService {
           new PasswordControl({
             key: 'password',
             label: 'Password',
-            type: 'password',
-            required: true,
+            pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.])(?=\\S+$).{6,}$',
           }),
           new PasswordControl({
             key: 'repeatPassword',
             label: 'Repeat password',
-            type: 'password',
-            required: true,
+            pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.])(?=\\S+$).{6,}$',
           }),
         ],
         order: 2,

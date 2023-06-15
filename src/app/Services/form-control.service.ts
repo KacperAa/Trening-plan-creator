@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBase } from '../Classes/form-base';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { repeatPasswordValidator } from '../Validators/validators';
 
 @Injectable({
   providedIn: 'root',
@@ -26,8 +27,12 @@ export class FormControlService {
         group[control.key].addValidators(Validators.maxLength(16));
       }
 
-      if (control.pattern !== '' && control.controlType === 'input') {
+      if (control.pattern !== '') {
         group[control.key].addValidators(Validators.pattern(control.pattern));
+      }
+
+      if (control.key === 'repeatPassword') {
+        group[control.key].addValidators(repeatPasswordValidator('password'));
       }
     });
 

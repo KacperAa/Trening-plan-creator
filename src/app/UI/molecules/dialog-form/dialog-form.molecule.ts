@@ -34,6 +34,7 @@ export class DialogFormComponent implements OnInit, OnDestroy {
     }
     if (this.data.formControl.hasError('pattern')) {
       const patternError = this.data.formControl.getError('pattern');
+
       return patternError.requiredPattern === '/^[0-9]+$/'
         ? 'Only numbers can be entered'
         : 'Only letters can be entered';

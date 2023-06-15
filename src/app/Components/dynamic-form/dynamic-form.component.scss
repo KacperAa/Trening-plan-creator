@@ -2,16 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
   .column-direction {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 40px;
   }
 
   .row-direction {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    flex-wrap: wrap;
   }
 }

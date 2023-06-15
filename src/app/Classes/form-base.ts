@@ -33,7 +33,9 @@ export class InputControl extends FormBase<string> {
 }
 
 export class PasswordControl extends FormBase<string> {
+  override required: boolean = true;
   override controlType: string = 'password';
+  override type: string = 'password';
 }
 
 export class CheckboxControl extends FormBase<string> {

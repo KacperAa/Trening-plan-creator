@@ -10,9 +10,11 @@
         [id]="control.key"
         [type]="control.type"
       />
-      <mat-error *ngIf="!isValid"
-        >{{ control.label }} is <strong>required</strong></mat-error
-      >
+      <mat-error
+        class="error-style"
+        *ngIf="!isValid"
+        [innerHtml]="setErrorMessage()"
+      ></mat-error>
     </mat-form-field>
 
     <mat-form-field *ngSwitchCase="'password'" [appearance]="'outline'">
@@ -25,9 +27,7 @@
         [id]="control.key"
         [type]="control.type"
       />
-      <mat-error *ngIf="!isValid"
-        >{{ control.label }} is <strong>required</strong></mat-error
-      >
+      <mat-error *ngIf="!isValid" [innerHtml]="setErrorMessage()"></mat-error>
     </mat-form-field>
 
     <div *ngSwitchCase="'checkbox'" class="checkbox-styles">
@@ -42,7 +42,7 @@
       <mat-error
         *ngIf="!isValid && formControl.touched"
         class="checkbox-styles__error-message"
-        >This field is <strong>required*</strong></mat-error
+        >This field is <strong>required</strong></mat-error
       >
     </div>
   </div>
