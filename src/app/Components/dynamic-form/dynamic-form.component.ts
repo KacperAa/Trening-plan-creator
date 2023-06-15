@@ -11,11 +11,11 @@ import { ControlsDirection } from 'src/app/Interfaces/controls-direction.interfa
 })
 export class DynamicFormComponent implements OnInit {
   @Input()
-  public controlsDirection: ControlsDirection[] | null = [];
+  public controlsDirection: ControlsDirection<string>[] | null = [];
   public form!: FormGroup;
   private get _controls(): FormBase<string>[] {
     return this.controlsDirection?.flatMap(
-      (controlDirection: ControlsDirection) => controlDirection.controls
+      (controlDirection: ControlsDirection<string>) => controlDirection.controls
     ) as FormBase<string>[];
   }
 

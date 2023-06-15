@@ -20,9 +20,9 @@ export function repeatPasswordValidator(passwordFieldKey: string): ValidatorFn {
       return { repeatPasswordError: true };
     }
 
-    if (control.parent?.get(passwordFieldKey) === null) {
+    if (!control.parent?.get(passwordFieldKey)) {
       throw new Error(
-        `Form control with key ${passwordFieldKey} does not exist`
+        `Form control with key ${passwordFieldKey} does not exist!`
       );
     }
 

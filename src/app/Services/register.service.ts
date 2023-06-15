@@ -11,8 +11,8 @@ import { ControlsDirection } from '../Interfaces/controls-direction.interface';
   providedIn: 'root',
 })
 export class RegisterService {
-  public getControls(): Observable<ControlsDirection[]> {
-    const controlsCollection: ControlsDirection[] = [
+  public getControls(): Observable<ControlsDirection<string>[]> {
+    const controlsCollection: ControlsDirection<string>[] = [
       {
         direction: 'column',
         controls: [

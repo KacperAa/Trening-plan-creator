@@ -9,7 +9,7 @@ import { ControlsDirection } from 'src/app/Interfaces/controls-direction.interfa
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  public registerFormControls$: Observable<ControlsDirection[]> =
+  public registerFormControls$: Observable<ControlsDirection<string>[]> =
     this._registerService.getControls();
 
   constructor(private _registerService: RegisterService) {}

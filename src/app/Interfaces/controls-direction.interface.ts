@@ -1,8 +1,8 @@
 import { FormBase } from '../Classes/form-base';
 import { Direction } from '../Types/directions';
 
-export interface ControlsDirection {
+export interface ControlsDirection<T> {
   direction: Direction;
-  controls: FormBase<string>[];
+  controls: FormBase<T>[];
   order: number;
 }
