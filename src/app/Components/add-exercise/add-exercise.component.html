@@ -9,6 +9,8 @@
       class="stepper"
     >
       <form>
+        <!--     Step 1. -->
+
         <mat-step [stepControl]="_getFormControl('findExercise')">
           <ng-template matStepLabel
             ><span class="step-title">Exercise</span></ng-template
@@ -18,6 +20,8 @@
             <button mat-button matStepperNext>Next</button>
           </div>
         </mat-step>
+
+        <!--     Step 2. -->
 
         <ng-container *ngIf="seriesSwitcher.inputAndTitle.input.formControl">
           <mat-step
@@ -42,6 +46,9 @@
             </div>
           </mat-step>
         </ng-container>
+
+        <!--     Step 3. -->
+
         <mat-step>
           <ng-template matStepLabel
             ><span class="step-title">{{
@@ -58,6 +65,8 @@
           </div>
         </mat-step>
 
+        <!--     Step 4. -->
+
         <mat-step>
           <ng-template matStepLabel
             ><span class="step-title">Reps</span></ng-template
@@ -70,6 +79,9 @@
             <button mat-button matStepperNext>Next</button>
           </div>
         </mat-step>
+
+        <!--     Step 5 , 6. -->
+
         <mat-step *ngFor="let data of rateAndBreakFields">
           <ng-template matStepLabel
             ><span class="step-title">{{ data.title }}</span></ng-template
@@ -79,6 +91,9 @@
             <button mat-button matStepperNext>Next</button>
           </div>
         </mat-step>
+
+        <!--     Step 7. -->
+
         <mat-step>
           <ng-template matStepLabel
             ><span class="step-title">RPE</span></ng-template

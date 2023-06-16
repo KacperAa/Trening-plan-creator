@@ -20,23 +20,23 @@ export class AddExercise {
   public close: EventEmitter<never> = new EventEmitter<never>();
   public addExerciseForm: FormGroup = this._formBuilder.group({
     findExercise: ['' /* Validators.required */],
-    specifySeriesScenarioOne: ['', Validators.required],
+    specifySeriesScenarioOne: ['' /* Validators.required */],
     specifySeriesScenarioTwo: this._formBuilder.group({
-      firstField: ['', Validators.required],
-      secondField: ['', Validators.required],
+      firstField: ['' /* Validators.required */],
+      secondField: ['' /* Validators.required */],
     }),
-    specifyReps: ['', Validators.required],
-    specifyWeightScenarioOne: ['', Validators.required],
+    specifyReps: ['' /* Validators.required */],
+    specifyWeightScenarioOne: ['' /* Validators.required */],
     specifyWeightScenarioTwo: this._formBuilder.group({
-      firstField: ['', Validators.required],
-      secondField: ['', Validators.required],
+      firstField: ['' /* Validators.required */],
+      secondField: ['' /* Validators.required */],
     }),
-    specifyRate: ['', Validators.required],
-    specifyBreak: ['', Validators.required],
-    specifyRpeScenarioOne: ['', Validators.required],
+    specifyRate: ['' /* Validators.required */],
+    specifyBreak: ['' /* Validators.required */],
+    specifyRpeScenarioOne: ['' /* Validators.required */],
     specifyRpeScenarioTwo: this._formBuilder.group({
-      firstField: ['', Validators.required],
-      secondField: ['', Validators.required],
+      firstField: ['' /* Validators.required */],
+      secondField: ['' /* Validators.required */],
     }),
   });
 
@@ -149,7 +149,7 @@ export class AddExercise {
           matLabel: 'RPE',
           placeholder: '...',
           appereance: 'fill',
-          formControl: new FormControl(),
+          formControl: this._getFormControl('specifyRpeScenarioOne'),
         },
       },
 
@@ -159,7 +159,9 @@ export class AddExercise {
           autocomplete: {
             matLabel: 'RPE...',
             placeholder: '...',
-            formControl: new FormControl(),
+            formControl: this.specifyRpeScenarioTwo.get(
+              'firstField'
+            ) as FormControl,
             options: ['+1', '+2', '+3'],
           },
         },
@@ -168,7 +170,9 @@ export class AddExercise {
           autocomplete: {
             matLabel: 'weeks',
             placeholder: '....',
-            formControl: new FormControl(),
+            formControl: this.specifyRpeScenarioTwo.get(
+              'secondField'
+            ) as FormControl,
             options: ['One week', 'Two weeks', 'Three weeks'],
           },
         },
@@ -258,14 +262,16 @@ export class AddExercise {
     viewState: SwitcherViewState,
     switcher: InputAndAutocompletesSwitcher
   ): void {
-    if (switcher.inputAndTitle.title === 'Series') {
-      this.seriesViewScenario = viewState;
-    }
-    if (switcher.inputAndTitle.title === 'Weight') {
-      this.weightViewScenario = viewState;
-    }
-    if (switcher.inputAndTitle.title === 'RPE') {
-      this.rpeViewScenario = viewState;
+    switch (switcher.inputAndTitle.title) {
+      case 'Series':
+        this.seriesViewScenario = viewState;
+        break;
+      case 'Weight':
+        this.weightViewScenario = viewState;
+        break;
+      case 'RPE':
+        this.rpeViewScenario = viewState;
+        break;
     }
   }
 
