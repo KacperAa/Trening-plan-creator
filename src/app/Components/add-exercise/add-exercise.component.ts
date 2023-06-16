@@ -25,14 +25,30 @@ export class AddExercise {
       firstField: ['' /* Validators.required */],
       secondField: ['' /* Validators.required */],
     }),
-    specifyReps: ['' /* Validators.required */],
+    specifyRepsFirstScenario: this._formBuilder.group({
+      firstField: ['', Validators.required],
+      secondField: ['', Validators.required],
+    }),
+    specifyRepsSecondScenario: this._formBuilder.group({
+      firstField: ['', Validators.required],
+      secondField: ['', Validators.required],
+      thirdField: ['', Validators.required],
+    }),
     specifyWeightScenarioOne: ['' /* Validators.required */],
     specifyWeightScenarioTwo: this._formBuilder.group({
       firstField: ['' /* Validators.required */],
       secondField: ['' /* Validators.required */],
     }),
-    specifyRate: ['' /* Validators.required */],
-    specifyBreak: ['' /* Validators.required */],
+    specifyRate: this._formBuilder.group({
+      firstField: ['', Validators.required],
+      secondField: ['', Validators.required],
+      thirdField: ['', Validators.required],
+      fourthField: ['', Validators.required],
+    }),
+    specifyBreak: this._formBuilder.group({
+      firstField: ['', Validators.required],
+      secondField: ['', Validators.required],
+    }),
     specifyRpeScenarioOne: ['' /* Validators.required */],
     specifyRpeScenarioTwo: this._formBuilder.group({
       firstField: ['' /* Validators.required */],
@@ -205,11 +221,21 @@ export class AddExercise {
     {
       title: 'Reps',
       inputs: [
-        { matLabel: 'Form', placeholder: '...', appereance: 'outline' },
+        {
+          matLabel: 'Form',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyRepsFirstScenario').get(
+            'firstField'
+          ) as FormControl,
+        },
         {
           matLabel: 'To',
           placeholder: '...',
           appereance: 'outline',
+          formControl: this._getFormGroup('specifyRepsFirstScenario').get(
+            'secondField'
+          ) as FormControl,
         },
       ],
       hasButton: true,
@@ -220,9 +246,30 @@ export class AddExercise {
     {
       title: 'Reps',
       inputs: [
-        { matLabel: 'S1', placeholder: '...', appereance: 'outline' },
-        { matLabel: 'S2', placeholder: '...', appereance: 'outline' },
-        { matLabel: 'S3', placeholder: '...', appereance: 'outline' },
+        {
+          matLabel: 'S1',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyRepsSecondScenario').get(
+            'firstField'
+          ) as FormControl,
+        },
+        {
+          matLabel: 'S2',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyRepsSecondScenario').get(
+            'secondField'
+          ) as FormControl,
+        },
+        {
+          matLabel: 'S3',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyRepsSecondScenario').get(
+            'thirdField'
+          ) as FormControl,
+        },
       ],
       hasButton: true,
       buttonTitle: 'back',
@@ -231,17 +278,59 @@ export class AddExercise {
     {
       title: 'Rate',
       inputs: [
-        { matLabel: '1', placeholder: '...', appereance: 'outline' },
-        { matLabel: '2', placeholder: '...', appereance: 'outline' },
-        { matLabel: '3', placeholder: '...', appereance: 'outline' },
-        { matLabel: '3', placeholder: '...', appereance: 'outline' },
+        {
+          matLabel: '1',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyRate').get(
+            'firstField'
+          ) as FormControl,
+        },
+        {
+          matLabel: '2',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyRate').get(
+            'secondField'
+          ) as FormControl,
+        },
+        {
+          matLabel: '3',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyRate').get(
+            'thirdField'
+          ) as FormControl,
+        },
+        {
+          matLabel: '3',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyRate').get(
+            'fourthField'
+          ) as FormControl,
+        },
       ],
     },
     {
       title: 'Time',
       inputs: [
-        { matLabel: 'Min', placeholder: '...', appereance: 'outline' },
-        { matLabel: 'Sec', placeholder: '...', appereance: 'outline' },
+        {
+          matLabel: 'Min',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyBreak').get(
+            'firstField'
+          ) as FormControl,
+        },
+        {
+          matLabel: 'Sec',
+          placeholder: '...',
+          appereance: 'outline',
+          formControl: this._getFormGroup('specifyBreak').get(
+            'secondField'
+          ) as FormControl,
+        },
       ],
       customDecoration: ':',
     },
@@ -256,7 +345,11 @@ export class AddExercise {
   public repsRangeViewScenario: DecoratedInputsGroup<string> =
     this._setRepsRangeViewScenario('auto');
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder) {
+    setTimeout(() => {
+      console.log(this.repsRangeViewScenario);
+    }, 0);
+  }
 
   public captureSwitcherViewScenario(
     viewState: SwitcherViewState,

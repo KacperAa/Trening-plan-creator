@@ -67,7 +67,13 @@
 
         <!--     Step 4. -->
 
-        <mat-step>
+        <mat-step
+          [stepControl]="
+            repsRangeViewScenario.additionalParam === 'auto'
+              ? _getFormControl('specifyRepsFirstScenario')
+              : _getFormControl('specifyRepsSecondScenario')
+          "
+        >
           <ng-template matStepLabel
             ><span class="step-title">Reps</span></ng-template
           >
