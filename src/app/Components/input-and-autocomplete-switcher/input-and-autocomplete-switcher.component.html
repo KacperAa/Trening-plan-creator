@@ -2,19 +2,28 @@
   <ng-container *ngIf="viewState === 'default'">
     <div class="title-and-icon-box">
       <h3 class="title-and-icon-box__title">{{ inputData.title }}</h3>
-      <button class="title-and-icon-box__icon"  (click)="menageViewState()" mat-icon-button>
+      <button
+        class="title-and-icon-box__icon"
+        (click)="menageViewState()"
+        mat-icon-button
+      >
         <mat-icon>{{ inputData.icon }}</mat-icon>
       </button>
     </div>
-    <ui-input-form-field
-      [matLabel]="inputData.input.matLabel"
-      [placeholder]="inputData.input.placeholder"
-      [appereance]="inputData.input.appereance"
-    ></ui-input-form-field>
+
+    <mat-form-field *ngIf="input.formControl">
+      <mat-label>{{ input.matLabel }}</mat-label>
+      <input
+        type="text"
+        matInput
+        [formControl]="input.formControl"
+        placeholder="{{ input.placeholder }}"
+      />
+    </mat-form-field>
   </ng-container>
   <app-weekly-amount-increase
     *ngIf="viewState === 'additionalOptions'"
     (back)="menageViewState()"
-    [data]="additionalOptionsData"
+    [data]="additionalOptionsData.titlesAndAutocompletes"
   ></app-weekly-amount-increase>
 </div>

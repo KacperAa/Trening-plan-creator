@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 export interface InputFormField {
@@ -5,4 +6,5 @@ export interface InputFormField {
   placeholder: string;
   appereance: MatFormFieldAppearance;
   inputType?: string;
+  formControl?: FormControl;
 }

@@ -18,22 +18,50 @@
             <button mat-button matStepperNext>Next</button>
           </div>
         </mat-step>
-        <ng-container *ngFor="let data of inputAndAutocompletesSwitchers">
-          <mat-step *ngIf="data.inputAndTitle.title !== 'RPE'">
+
+        <ng-container *ngIf="seriesSwitcher.inputAndTitle.input.formControl">
+          <mat-step
+            [stepControl]="
+              seriesViewScenario === 'default'
+                ? seriesSwitcher.inputAndTitle.input.formControl
+                : specifySeriesScenarioTwo
+            "
+          >
             <ng-template matStepLabel
               ><span class="step-title">{{
-                data.inputAndTitle.title
+                seriesSwitcher.inputAndTitle.title
               }}</span></ng-template
             >
             <div class="element-and-button-box">
               <app-input-and-autocomplete-switcher
-                [inputData]="data.inputAndTitle"
-                [additionalOptionsData]="data.autocompletesAndTitles"
+                (scenario)="captureSwitcherViewScenario($event, seriesSwitcher)"
+                [inputData]="seriesSwitcher.inputAndTitle"
+                [additionalOptionsData]="
+                  seriesSwitcher.autocompletesAndTitleFormGroup
+                "
               ></app-input-and-autocomplete-switcher>
               <button mat-button matStepperNext>Next</button>
             </div>
           </mat-step>
         </ng-container>
+        <mat-step>
+          <ng-template matStepLabel
+            ><span class="step-title">{{
+              weighSwitcher.inputAndTitle.title
+            }}</span></ng-template
+          >
+          <div class="element-and-button-box">
+            <app-input-and-autocomplete-switcher
+              (scenario)="captureSwitcherViewScenario($event, weighSwitcher)"
+              [inputData]="weighSwitcher.inputAndTitle"
+              [additionalOptionsData]="
+                weighSwitcher.autocompletesAndTitleFormGroup
+              "
+            ></app-input-and-autocomplete-switcher>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+
         <mat-step>
           <ng-template matStepLabel
             ><span class="step-title">Reps</span></ng-template
@@ -62,7 +90,9 @@
           <div class="element-and-button-box">
             <app-input-and-autocomplete-switcher
               [inputData]="getRpeSwitcher.inputAndTitle"
-              [additionalOptionsData]="getRpeSwitcher.autocompletesAndTitles"
+              [additionalOptionsData]="
+                getRpeSwitcher.autocompletesAndTitleFormGroup
+              "
             ></app-input-and-autocomplete-switcher>
             <button mat-button matStepperNext>Next</button>
           </div>

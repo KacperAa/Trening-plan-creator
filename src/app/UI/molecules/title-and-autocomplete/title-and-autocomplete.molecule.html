@@ -20,5 +20,6 @@
         {{ option }}
       </mat-option>
     </mat-autocomplete>
+    <mat-error *ngIf="!isValid" [innerHTML]="getErrorMessage()"></mat-error>
   </mat-form-field>
 </div>

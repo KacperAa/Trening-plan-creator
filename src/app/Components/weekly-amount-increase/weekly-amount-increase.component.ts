@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { TitleAndAutocomplete } from 'src/app/Interfaces/title-and-autocomplete.interface';
 
 @Component({
@@ -9,8 +10,11 @@ import { TitleAndAutocomplete } from 'src/app/Interfaces/title-and-autocomplete.
 export class WeeklyAmountIncreaseComponent {
   @Input()
   public data!: TitleAndAutocomplete[];
+
   @Output()
   public back: EventEmitter<never> = new EventEmitter<never>();
+
+  ngOnInit() {}
 
   public isNotLastAutocomplete(autocomplete: TitleAndAutocomplete): boolean {
     return this.data.indexOf(autocomplete) !== this.data.length - 1;
