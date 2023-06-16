@@ -33,7 +33,11 @@ export class AddExercise {
     }),
     specifyRate: ['', Validators.required],
     specifyBreak: ['', Validators.required],
-    specifyRpe: ['', Validators.required],
+    specifyRpeScenarioOne: ['', Validators.required],
+    specifyRpeScenarioTwo: this._formBuilder.group({
+      firstField: ['', Validators.required],
+      secondField: ['', Validators.required],
+    }),
   });
 
   public get specifySeriesScenarioTwo(): FormGroup {
@@ -42,6 +46,10 @@ export class AddExercise {
 
   public get specifyWeightScenarioTwo(): FormGroup {
     return this.addExerciseForm.get('specifyWeightScenarioTwo') as FormGroup;
+  }
+
+  get specifyRpeScenarioTwo(): FormGroup {
+    return this.addExerciseForm.get('specifyRpeScenarioTwo') as FormGroup;
   }
 
   public seriesViewScenario: SwitcherViewState = 'default';
@@ -70,32 +78,31 @@ export class AddExercise {
           formControl: this._getFormControl('specifySeriesScenarioOne'),
         },
       },
-      autocompletesAndTitleFormGroup: {
-        titlesAndAutocompletes: [
-          {
-            title: 'Series',
-            autocomplete: {
-              matLabel: 'series...',
-              placeholder: '...',
-              formControl: this.specifySeriesScenarioTwo?.get(
-                'firstField'
-              ) as FormControl,
-              options: ['+1', '+2', '+3'],
-            },
+
+      titlesAndAutocompletes: [
+        {
+          title: 'Series',
+          autocomplete: {
+            matLabel: 'series...',
+            placeholder: '...',
+            formControl: this.specifySeriesScenarioTwo?.get(
+              'firstField'
+            ) as FormControl,
+            options: ['+1', '+2', '+3'],
           },
-          {
-            title: 'Weeks',
-            autocomplete: {
-              matLabel: 'weeks',
-              placeholder: '....',
-              formControl: this.specifySeriesScenarioTwo?.get(
-                'secondField'
-              ) as FormControl,
-              options: ['One week', 'Two weeks', 'Three weeks'],
-            },
+        },
+        {
+          title: 'Weeks',
+          autocomplete: {
+            matLabel: 'weeks',
+            placeholder: '....',
+            formControl: this.specifySeriesScenarioTwo?.get(
+              'secondField'
+            ) as FormControl,
+            options: ['One week', 'Two weeks', 'Three weeks'],
           },
-        ],
-      },
+        },
+      ],
     },
     {
       inputAndTitle: {
@@ -108,32 +115,31 @@ export class AddExercise {
           formControl: this._getFormControl('specifyWeightScenarioOne'),
         },
       },
-      autocompletesAndTitleFormGroup: {
-        titlesAndAutocompletes: [
-          {
-            title: 'Weight',
-            autocomplete: {
-              matLabel: 'weight...',
-              placeholder: '...',
-              formControl: this.specifyWeightScenarioTwo.get(
-                'firstField'
-              ) as FormControl,
-              options: ['+1', '+2', '+3'],
-            },
+
+      titlesAndAutocompletes: [
+        {
+          title: 'Weight',
+          autocomplete: {
+            matLabel: 'weight...',
+            placeholder: '...',
+            formControl: this.specifyWeightScenarioTwo.get(
+              'firstField'
+            ) as FormControl,
+            options: ['+1', '+2', '+3'],
           },
-          {
-            title: 'Weeks',
-            autocomplete: {
-              matLabel: 'weeks',
-              placeholder: '....',
-              formControl: this.specifyWeightScenarioTwo.get(
-                'secondField'
-              ) as FormControl,
-              options: ['One week', 'Two weeks', 'Three weeks'],
-            },
+        },
+        {
+          title: 'Weeks',
+          autocomplete: {
+            matLabel: 'weeks',
+            placeholder: '....',
+            formControl: this.specifyWeightScenarioTwo.get(
+              'secondField'
+            ) as FormControl,
+            options: ['One week', 'Two weeks', 'Three weeks'],
           },
-        ],
-      },
+        },
+      ],
     },
     {
       inputAndTitle: {
@@ -146,28 +152,27 @@ export class AddExercise {
           formControl: new FormControl(),
         },
       },
-      autocompletesAndTitleFormGroup: {
-        titlesAndAutocompletes: [
-          {
-            title: 'RPE',
-            autocomplete: {
-              matLabel: 'RPE...',
-              placeholder: '...',
-              formControl: new FormControl(),
-              options: ['+1', '+2', '+3'],
-            },
+
+      titlesAndAutocompletes: [
+        {
+          title: 'RPE',
+          autocomplete: {
+            matLabel: 'RPE...',
+            placeholder: '...',
+            formControl: new FormControl(),
+            options: ['+1', '+2', '+3'],
           },
-          {
-            title: 'Weeks',
-            autocomplete: {
-              matLabel: 'weeks',
-              placeholder: '....',
-              formControl: new FormControl(),
-              options: ['One week', 'Two weeks', 'Three weeks'],
-            },
+        },
+        {
+          title: 'Weeks',
+          autocomplete: {
+            matLabel: 'weeks',
+            placeholder: '....',
+            formControl: new FormControl(),
+            options: ['One week', 'Two weeks', 'Three weeks'],
           },
-        ],
-      },
+        },
+      ],
     },
   ];
 

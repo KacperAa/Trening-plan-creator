@@ -36,9 +36,7 @@
               <app-input-and-autocomplete-switcher
                 (scenario)="captureSwitcherViewScenario($event, seriesSwitcher)"
                 [inputData]="seriesSwitcher.inputAndTitle"
-                [additionalOptionsData]="
-                  seriesSwitcher.autocompletesAndTitleFormGroup
-                "
+                [additionalOptionsData]="seriesSwitcher.titlesAndAutocompletes"
               ></app-input-and-autocomplete-switcher>
               <button mat-button matStepperNext>Next</button>
             </div>
@@ -54,9 +52,7 @@
             <app-input-and-autocomplete-switcher
               (scenario)="captureSwitcherViewScenario($event, weighSwitcher)"
               [inputData]="weighSwitcher.inputAndTitle"
-              [additionalOptionsData]="
-                weighSwitcher.autocompletesAndTitleFormGroup
-              "
+              [additionalOptionsData]="weighSwitcher.titlesAndAutocompletes"
             ></app-input-and-autocomplete-switcher>
             <button mat-button matStepperNext>Next</button>
           </div>
@@ -90,9 +86,7 @@
           <div class="element-and-button-box">
             <app-input-and-autocomplete-switcher
               [inputData]="getRpeSwitcher.inputAndTitle"
-              [additionalOptionsData]="
-                getRpeSwitcher.autocompletesAndTitleFormGroup
-              "
+              [additionalOptionsData]="getRpeSwitcher.titlesAndAutocompletes"
             ></app-input-and-autocomplete-switcher>
             <button mat-button matStepperNext>Next</button>
           </div>
