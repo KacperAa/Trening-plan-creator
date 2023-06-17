@@ -2,12 +2,19 @@
   <h3 class="title">{{data.title}}</h3>
   <div class="inputs-and-decorations-box">
     <ng-container *ngFor="let input of data.inputs">
-      <ui-input-form-field
-        [matLabel]="input.matLabel"
-        [placeholder]="input.placeholder"
-        [appereance]="input.appereance"
-        [width]="'70px'"
-      ></ui-input-form-field>
+      <mat-form-field
+        *ngIf="input.formControl"
+        [appearance]="input.appereance"
+        [ngStyle]="{width: '70px'}"
+      >
+        <mat-label>{{input.matLabel}}</mat-label>
+        <input
+          matInput
+          [placeholder]="input.placeholder"
+          [formControl]="input.formControl"
+        />
+      </mat-form-field>
+
       <div
         class="inputs-and-decorations-box__decoration"
         *ngIf="isNotLastInput(input)"

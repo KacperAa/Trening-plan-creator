@@ -64,7 +64,7 @@ export class AddExercise {
     return this.addExerciseForm.get('specifyWeightScenarioTwo') as FormGroup;
   }
 
-  get specifyRpeScenarioTwo(): FormGroup {
+  public get specifyRpeScenarioTwo(): FormGroup {
     return this.addExerciseForm.get('specifyRpeScenarioTwo') as FormGroup;
   }
 
@@ -77,7 +77,7 @@ export class AddExercise {
     autocomplete: {
       matLabel: 'Name',
       placeholder: 'Find exercise..',
-      formControl: this._getFormControl('findExercise'),
+      formControl: this.getFormControl('findExercise'),
       options: ['one', 'two', 'three'],
     },
   };
@@ -91,7 +91,7 @@ export class AddExercise {
           matLabel: 'Series',
           placeholder: '...',
           appereance: 'fill',
-          formControl: this._getFormControl('specifySeriesScenarioOne'),
+          formControl: this.getFormControl('specifySeriesScenarioOne'),
         },
       },
 
@@ -128,7 +128,7 @@ export class AddExercise {
           matLabel: 'weight',
           placeholder: '...',
           appereance: 'fill',
-          formControl: this._getFormControl('specifyWeightScenarioOne'),
+          formControl: this.getFormControl('specifyWeightScenarioOne'),
         },
       },
 
@@ -165,7 +165,7 @@ export class AddExercise {
           matLabel: 'RPE',
           placeholder: '...',
           appereance: 'fill',
-          formControl: this._getFormControl('specifyRpeScenarioOne'),
+          formControl: this.getFormControl('specifyRpeScenarioOne'),
         },
       },
 
@@ -203,7 +203,7 @@ export class AddExercise {
     ) as InputAndAutocompletesSwitcher;
   }
 
-  get weighSwitcher(): InputAndAutocompletesSwitcher {
+  get weightSwitcher(): InputAndAutocompletesSwitcher {
     return this.inputAndAutocompletesSwitchers.find(
       (switcher: InputAndAutocompletesSwitcher) =>
         switcher.inputAndTitle.title === 'Weight'
@@ -225,7 +225,7 @@ export class AddExercise {
           matLabel: 'Form',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRepsFirstScenario').get(
+          formControl: this.getFormGroup('specifyRepsFirstScenario').get(
             'firstField'
           ) as FormControl,
         },
@@ -233,7 +233,7 @@ export class AddExercise {
           matLabel: 'To',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRepsFirstScenario').get(
+          formControl: this.getFormGroup('specifyRepsFirstScenario').get(
             'secondField'
           ) as FormControl,
         },
@@ -250,7 +250,7 @@ export class AddExercise {
           matLabel: 'S1',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRepsSecondScenario').get(
+          formControl: this.getFormGroup('specifyRepsSecondScenario').get(
             'firstField'
           ) as FormControl,
         },
@@ -258,7 +258,7 @@ export class AddExercise {
           matLabel: 'S2',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRepsSecondScenario').get(
+          formControl: this.getFormGroup('specifyRepsSecondScenario').get(
             'secondField'
           ) as FormControl,
         },
@@ -266,7 +266,7 @@ export class AddExercise {
           matLabel: 'S3',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRepsSecondScenario').get(
+          formControl: this.getFormGroup('specifyRepsSecondScenario').get(
             'thirdField'
           ) as FormControl,
         },
@@ -282,7 +282,7 @@ export class AddExercise {
           matLabel: '1',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRate').get(
+          formControl: this.getFormGroup('specifyRate').get(
             'firstField'
           ) as FormControl,
         },
@@ -290,7 +290,7 @@ export class AddExercise {
           matLabel: '2',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRate').get(
+          formControl: this.getFormGroup('specifyRate').get(
             'secondField'
           ) as FormControl,
         },
@@ -298,7 +298,7 @@ export class AddExercise {
           matLabel: '3',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRate').get(
+          formControl: this.getFormGroup('specifyRate').get(
             'thirdField'
           ) as FormControl,
         },
@@ -306,7 +306,7 @@ export class AddExercise {
           matLabel: '3',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyRate').get(
+          formControl: this.getFormGroup('specifyRate').get(
             'fourthField'
           ) as FormControl,
         },
@@ -319,7 +319,7 @@ export class AddExercise {
           matLabel: 'Min',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyBreak').get(
+          formControl: this.getFormGroup('specifyBreak').get(
             'firstField'
           ) as FormControl,
         },
@@ -327,7 +327,7 @@ export class AddExercise {
           matLabel: 'Sec',
           placeholder: '...',
           appereance: 'outline',
-          formControl: this._getFormGroup('specifyBreak').get(
+          formControl: this.getFormGroup('specifyBreak').get(
             'secondField'
           ) as FormControl,
         },
@@ -345,11 +345,7 @@ export class AddExercise {
   public repsRangeViewScenario: DecoratedInputsGroup<string> =
     this._setRepsRangeViewScenario('auto');
 
-  constructor(private _formBuilder: FormBuilder) {
-    setTimeout(() => {
-      console.log(this.repsRangeViewScenario);
-    }, 0);
-  }
+  constructor(private _formBuilder: FormBuilder) {}
 
   public captureSwitcherViewScenario(
     viewState: SwitcherViewState,
@@ -374,20 +370,20 @@ export class AddExercise {
       : (this.repsRangeViewScenario = this._setRepsRangeViewScenario('auto'));
   }
 
-  public _setRepsRangeViewScenario(
+  public getFormControl(controlName: string): FormControl {
+    return this.addExerciseForm.get(controlName) as FormControl;
+  }
+
+  public getFormGroup(groupName: string): FormGroup {
+    return this.addExerciseForm.get(groupName) as FormGroup;
+  }
+
+  private _setRepsRangeViewScenario(
     scenario: string
   ): DecoratedInputsGroup<string> {
     return this.repsRateAndBreakFields.find(
       (option: DecoratedInputsGroup<string>) =>
         option.additionalParam === scenario
     ) as DecoratedInputsGroup<string>;
-  }
-
-  public _getFormControl(controlName: string): FormControl {
-    return this.addExerciseForm.get(controlName) as FormControl;
-  }
-
-  public _getFormGroup(groupName: string): FormGroup {
-    return this.addExerciseForm.get(groupName) as FormGroup;
   }
 }

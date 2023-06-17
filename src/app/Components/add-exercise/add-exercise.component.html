@@ -11,7 +11,7 @@
       <form>
         <!--     Step 1. -->
 
-        <mat-step [stepControl]="_getFormControl('findExercise')">
+        <mat-step [stepControl]="getFormControl('findExercise')">
           <ng-template matStepLabel
             ><span class="step-title">Exercise</span></ng-template
           >
@@ -48,30 +48,36 @@
         </ng-container>
 
         <!--     Step 3. -->
-
-        <mat-step>
-          <ng-template matStepLabel
-            ><span class="step-title">{{
-              weighSwitcher.inputAndTitle.title
-            }}</span></ng-template
+        <ng-container *ngIf="weightSwitcher.inputAndTitle.input.formControl">
+          <mat-step
+            [stepControl]="
+              seriesViewScenario === 'default'
+                ? weightSwitcher.inputAndTitle.input.formControl
+                : getFormControl('specifyWeightScenarioTwo')
+            "
           >
-          <div class="element-and-button-box">
-            <app-input-and-autocomplete-switcher
-              (scenario)="captureSwitcherViewScenario($event, weighSwitcher)"
-              [inputData]="weighSwitcher.inputAndTitle"
-              [additionalOptionsData]="weighSwitcher.titlesAndAutocompletes"
-            ></app-input-and-autocomplete-switcher>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </mat-step>
-
+            <ng-template matStepLabel
+              ><span class="step-title">{{
+                weightSwitcher.inputAndTitle.title
+              }}</span></ng-template
+            >
+            <div class="element-and-button-box">
+              <app-input-and-autocomplete-switcher
+                (scenario)="captureSwitcherViewScenario($event, weightSwitcher)"
+                [inputData]="weightSwitcher.inputAndTitle"
+                [additionalOptionsData]="weightSwitcher.titlesAndAutocompletes"
+              ></app-input-and-autocomplete-switcher>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+        </ng-container>
         <!--     Step 4. -->
 
         <mat-step
           [stepControl]="
             repsRangeViewScenario.additionalParam === 'auto'
-              ? _getFormControl('specifyRepsFirstScenario')
-              : _getFormControl('specifyRepsSecondScenario')
+              ? getFormControl('specifyRepsFirstScenario')
+              : getFormControl('specifyRepsSecondScenario')
           "
         >
           <ng-template matStepLabel
@@ -88,7 +94,14 @@
 
         <!--     Step 5 , 6. -->
 
-        <mat-step *ngFor="let data of rateAndBreakFields">
+        <mat-step
+          [stepControl]="
+            data.title === 'Rate'
+              ? getFormGroup('specifyRate')
+              : getFormGroup('specifyBreak')
+          "
+          *ngFor="let data of rateAndBreakFields"
+        >
           <ng-template matStepLabel
             ><span class="step-title">{{ data.title }}</span></ng-template
           >
