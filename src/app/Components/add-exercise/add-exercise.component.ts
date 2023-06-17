@@ -19,11 +19,11 @@ export class AddExercise {
   @Output()
   public close: EventEmitter<never> = new EventEmitter<never>();
   public addExerciseForm: FormGroup = this._formBuilder.group({
-    findExercise: ['' /* Validators.required */],
-    specifySeriesScenarioOne: ['' /* Validators.required */],
+    findExercise: ['', Validators.required],
+    specifySeriesScenarioOne: ['', Validators.required],
     specifySeriesScenarioTwo: this._formBuilder.group({
-      firstField: ['' /* Validators.required */],
-      secondField: ['' /* Validators.required */],
+      firstField: ['', Validators.required],
+      secondField: ['', Validators.required],
     }),
     specifyRepsFirstScenario: this._formBuilder.group({
       firstField: ['', Validators.required],
@@ -34,10 +34,10 @@ export class AddExercise {
       secondField: ['', Validators.required],
       thirdField: ['', Validators.required],
     }),
-    specifyWeightScenarioOne: ['' /* Validators.required */],
+    specifyWeightScenarioOne: ['', Validators.required],
     specifyWeightScenarioTwo: this._formBuilder.group({
-      firstField: ['' /* Validators.required */],
-      secondField: ['' /* Validators.required */],
+      firstField: ['', Validators.required],
+      secondField: ['', Validators.required],
     }),
     specifyRate: this._formBuilder.group({
       firstField: ['', Validators.required],
@@ -49,10 +49,10 @@ export class AddExercise {
       firstField: ['', Validators.required],
       secondField: ['', Validators.required],
     }),
-    specifyRpeScenarioOne: ['' /* Validators.required */],
+    specifyRpeScenarioOne: ['', Validators.required],
     specifyRpeScenarioTwo: this._formBuilder.group({
-      firstField: ['' /* Validators.required */],
-      secondField: ['' /* Validators.required */],
+      firstField: ['', Validators.required],
+      secondField: ['', Validators.required],
     }),
   });
 
@@ -210,7 +210,7 @@ export class AddExercise {
     ) as InputAndAutocompletesSwitcher;
   }
 
-  get getRpeSwitcher(): InputAndAutocompletesSwitcher {
+  get rpeSwitcher(): InputAndAutocompletesSwitcher {
     return this.inputAndAutocompletesSwitchers.find(
       (switcher: InputAndAutocompletesSwitcher) =>
         switcher.inputAndTitle.title === 'RPE'

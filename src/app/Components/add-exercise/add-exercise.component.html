@@ -51,9 +51,9 @@
         <ng-container *ngIf="weightSwitcher.inputAndTitle.input.formControl">
           <mat-step
             [stepControl]="
-              seriesViewScenario === 'default'
+              weightViewScenario === 'default'
                 ? weightSwitcher.inputAndTitle.input.formControl
-                : getFormControl('specifyWeightScenarioTwo')
+                : specifyWeightScenarioTwo
             "
           >
             <ng-template matStepLabel
@@ -112,19 +112,27 @@
         </mat-step>
 
         <!--     Step 7. -->
-
-        <mat-step>
-          <ng-template matStepLabel
-            ><span class="step-title">RPE</span></ng-template
-          >
-          <div class="element-and-button-box">
-            <app-input-and-autocomplete-switcher
-              [inputData]="getRpeSwitcher.inputAndTitle"
-              [additionalOptionsData]="getRpeSwitcher.titlesAndAutocompletes"
-            ></app-input-and-autocomplete-switcher>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </mat-step>
+        <ng-container *ngIf="rpeSwitcher.inputAndTitle.input.formControl">
+          <mat-step
+            [stepControl]="
+              rpeViewScenario === 'default'
+                ? rpeSwitcher.inputAndTitle.input.formControl
+                : getFormGroup('specifyRpeScenarioTwo')
+            "
+            >>
+            <ng-template matStepLabel
+              ><span class="step-title">RPE</span></ng-template
+            >
+            <div class="element-and-button-box">
+              <app-input-and-autocomplete-switcher
+                (scenario)="captureSwitcherViewScenario($event, rpeSwitcher)"
+                [inputData]="rpeSwitcher.inputAndTitle"
+                [additionalOptionsData]="rpeSwitcher.titlesAndAutocompletes"
+              ></app-input-and-autocomplete-switcher>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+        </ng-container>
       </form>
     </mat-stepper>
   </section>
