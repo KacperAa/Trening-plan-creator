@@ -1,15 +1,20 @@
-<mat-stepper class="stepper" #stepper>
+<mat-stepper [linear]="true" class="stepper" #stepper>
   <mat-step *ngFor="let step of steps" [stepControl]="step.formGroup">
     <ng-template matStepLabel>{{ step.title }}</ng-template>
     <div class="inputs-and-button-box">
-      <div class="inputs-and-button-box__inputs">
-        <ui-input-form-field
-          *ngFor="let inputParam of inputParams"
-          [matLabel]="inputParam.matLabel"
-          [placeholder]="inputParam.placeholder"
-          [appereance]="inputParam.appereance"
-          [width]="'70px'"
-        ></ui-input-form-field>
+      <div class="inputs">
+        <mat-form-field
+          class="inputs__input"
+          *ngFor="let input of step.inputsData"
+          [appearance]="input.appereance"
+        >
+          <mat-label>{{ input.matLabel }}</mat-label>
+          <input
+            matInput
+            [formControl]="input.formControl!"
+            [placeholder]="input.placeholder"
+          />
+        </mat-form-field>
       </div>
       <ui-timer></ui-timer>
       <button mat-raised-button matStepperNext>Next</button>

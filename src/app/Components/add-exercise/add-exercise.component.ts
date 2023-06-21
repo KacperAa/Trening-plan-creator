@@ -387,3 +387,5 @@ export class AddExercise {
     ) as DecoratedInputsGroup<string>;
   }
 }
+
+/* ten komponent do poprawy a konkretnie to moze niepotrzebne sa gety albo funkcje ktore zwracaja form group ? */

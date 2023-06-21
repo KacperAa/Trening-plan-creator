@@ -1,7 +1,8 @@
 import { FormGroup } from '@angular/forms';
+import { InputFormField } from './input-form-field.interface';
 
 export interface MatStepProperties {
-  formGroup: FormGroup;
   title: string;
-  formControlName: string;
+  inputsData: InputFormField[];
+  formGroup: FormGroup;
 }

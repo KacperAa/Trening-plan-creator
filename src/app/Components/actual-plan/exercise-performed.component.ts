@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InputFormField } from 'src/app/Interfaces/input-form-field.interface';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatStepProperties } from 'src/app/Interfaces/mat-step-properties.interface';
 
 @Component({
@@ -8,38 +12,102 @@ import { MatStepProperties } from 'src/app/Interfaces/mat-step-properties.interf
   templateUrl: './exercise-performed.component.html',
   styleUrls: ['./exercise-performed.component.scss'],
 })
-export class ExercisePerformedComponent {
+export class ExercisePerformedComponent implements OnInit {
   public header: string = 'Bench press 3series 12/12/12';
-  public formGroup: FormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
+  public performSeriesFormGroup!: FormGroup;
+  public steps!: MatStepProperties[];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder) {
+    this._setFormGroup();
+  }
 
-  public steps: MatStepProperties[] = [
-    {
-      formGroup: this.formGroup,
-      title: 'Serie One',
-      formControlName: 'firstCtrl',
-    },
-    {
-      formGroup: this.formGroup,
-      title: 'Serie Two',
-      formControlName: 'firstCtrl',
-    },
-    {
-      formGroup: this.formGroup,
-      title: 'Serie Three',
-      formControlName: 'firstCtrl',
-    },
-  ]; /* będzie do zmiany po pracy nad formsami */
+  public ngOnInit(): void {
+    this._setSteps();
+  }
 
-  public inputParams: InputFormField[] = [
-    {
-      matLabel: 'Reps',
-      placeholder: '...',
-      appereance: 'outline',
-    },
-    { matLabel: 'RPE', placeholder: '...', appereance: 'outline' },
-  ];
+  private _setFormGroup(): void {
+    this.performSeriesFormGroup = this._formBuilder.group({
+      firstStep: this._formBuilder.group({
+        repsControl: ['', Validators.required],
+        rpeControl: ['', Validators.required],
+      }),
+      secondStep: this._formBuilder.group({
+        repsControl: ['', Validators.required],
+        rpeControl: ['', Validators.required],
+      }),
+      thirdStep: this._formBuilder.group({
+        repsControl: ['', Validators.required],
+        rpeControl: ['', Validators.required],
+      }),
+    });
+  }
+
+  public get firstStep(): FormGroup {
+    return this.performSeriesFormGroup.get('firstStep') as FormGroup;
+  }
+  public get secondStep(): FormGroup {
+    return this.performSeriesFormGroup.get('secondStep') as FormGroup;
+  }
+  public get thirdStep(): FormGroup {
+    return this.performSeriesFormGroup.get('thirdStep') as FormGroup;
+  }
+
+  private _setSteps(): void {
+    this.steps = [
+      {
+        title: 'Serie One',
+        formGroup: this.firstStep,
+        inputsData: [
+          {
+            matLabel: 'Reps',
+            placeholder: '...',
+            appereance: 'outline',
+            formControl: this.firstStep.get('repsControl') as FormControl,
+          },
+          {
+            matLabel: 'RPE',
+            placeholder: '...',
+            appereance: 'outline',
+            formControl: this.firstStep.get('rpeControl') as FormControl,
+          },
+        ],
+      },
+      {
+        title: 'Serie Two',
+        formGroup: this.secondStep,
+        inputsData: [
+          {
+            matLabel: 'Reps',
+            placeholder: '...',
+            appereance: 'outline',
+            formControl: this.secondStep.get('repsControl') as FormControl,
+          },
+          {
+            matLabel: 'RPE',
+            placeholder: '...',
+            appereance: 'outline',
+            formControl: this.secondStep.get('rpeControl') as FormControl,
+          },
+        ],
+      },
+      {
+        title: 'Serie Three',
+        formGroup: this.thirdStep,
+        inputsData: [
+          {
+            matLabel: 'Reps',
+            placeholder: '...',
+            appereance: 'outline',
+            formControl: this.thirdStep.get('repsControl') as FormControl,
+          },
+          {
+            matLabel: 'RPE',
+            placeholder: '...',
+            appereance: 'outline',
+            formControl: this.thirdStep.get('rpeControl') as FormControl,
+          },
+        ],
+      },
+    ];
+  }
 }
