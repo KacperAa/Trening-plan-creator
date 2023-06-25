@@ -1,12 +1,11 @@
 import { ViewportRuler } from '@angular/cdk/scrolling';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   AbstractControlOptions,
   FormBuilder,
   FormControl,
-  FormControlOptions,
   FormGroup,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { StepperOrientation } from '@angular/material/stepper';
@@ -15,15 +14,6 @@ import { ChipsWithTitle } from 'src/app/Interfaces/chips-with-title.interface';
 import { oneRequiredField } from 'src/app/Validators/validators';
 import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interface';
 import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-dialog-with-title.interace';
-
-const atLeastOneValidControl = (
-  formGroup: FormGroup
-): ValidationErrors | null => {
-  const controls = Object.values(formGroup.controls);
-  const isValid = controls.some((control) => control.valid);
-
-  return isValid ? null : { atLeastOneValidControl: true };
-};
 
 @Component({
   selector: 'app-trening-plan-creator',
@@ -79,15 +69,10 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
 
   private _setFormGroup(): void {
     this.planCreatorForm = this._formBuilder.group({
-      tableGenerationForm: this._formBuilder.group(
-        {
-          firstControl: new FormControl('Single week'),
-          matDialogControl: new FormControl(2, [
-            Validators.pattern(/^[0-9]+$/),
-          ]),
-        },
-        { validators: atLeastOneValidControl } as FormControlOptions
-      ),
+      tableGenerationForm: this._formBuilder.group({
+        firstControl: new FormControl('Single week'),
+        matDialogControl: new FormControl(2, [Validators.pattern(/^[0-9]+$/)]),
+      }),
       checkboxesScenariosForms: this._formBuilder.group({
         firstWeek: this._formBuilder.group(
           {

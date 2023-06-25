@@ -60,7 +60,7 @@ export class TitleAndRadioButtonComponent
     const dialogRef = this._dialog.open(DialogFormComponent, {
       maxWidth: 280,
       scrollStrategy: this._scrollStrategy,
-      disableClose: true,
+
       data: {
         title: button.dialogData?.title,
         placeholder: button.dialogData?.placeholder,
@@ -71,6 +71,9 @@ export class TitleAndRadioButtonComponent
 
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue: string) => {
+        if (button.dialogData?.formControl.invalid) {
+          button.dialogData?.formControl.setValue('2');
+        }
         this._convertAndAssingInputValue(button, inputValue);
       })
     );
