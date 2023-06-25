@@ -4,6 +4,7 @@ import { MatAutocomplete } from '@angular/material/autocomplete';
 import { Observable, map, startWith } from 'rxjs';
 import { MatAutocompleteData } from 'src/app/Interfaces/mat-autocomplete-data.interface';
 import { TitleAndAutocomplete } from 'src/app/Interfaces/title-and-autocomplete.interface';
+import { FormsErrorsService } from 'src/app/Services/forms-errors.service';
 
 type Position = 'vertical' | 'horizontal';
 
@@ -26,16 +27,15 @@ export class TitleAndAutocompleteComponent {
   }
   public isValid!: boolean;
 
+  constructor(private _errorFormService: FormsErrorsService) {}
+
   public ngOnInit(): void {
     this._setIsValid();
     this._setKeyOptionsFound();
   }
 
   public getErrorMessage(): string {
-    if (this.formControl.hasError('required')) {
-      return this._setRequiredError();
-    }
-    return '';
+    return this._errorFormService.setErrorMessage(this.formControl);
   }
 
   private _setKeyOptionsFound(): void {
@@ -57,7 +57,5 @@ export class TitleAndAutocompleteComponent {
     this.isValid = this.autocompleteData.formControl.valid;
   }
 
-  private _setRequiredError(): string {
-    return 'This field is <strong>required</strong>';
-  }
+
 }

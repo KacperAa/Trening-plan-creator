@@ -71,6 +71,9 @@ export class TitleAndRadioButtonComponent
 
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue: string) => {
+        /*   if (button.dialogData?.formControl.invalid) {
+          button.dialogData?.formControl.setValue('2');
+        } */
         this._convertAndAssingInputValue(button, inputValue);
       })
     );

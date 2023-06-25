@@ -3,23 +3,9 @@
     <ng-template matStepLabel>{{ step.title }}</ng-template>
     <div class="inputs-and-button-box">
       <div class="inputs">
-        <mat-form-field
-          class="inputs__input"
-          *ngFor="let input of step.inputsData"
-          [appearance]="input.appereance"
-        >
-          <mat-label>{{ input.matLabel }}</mat-label>
-          <input
-            matInput
-            [formControl]="input.formControl!"
-            [placeholder]="input.placeholder"
-          />
-
-          <mat-error
-            class="error-message"
-            [innerHTML]="setErrorsMessages(input.formControl!)"
-          ></mat-error>
-        </mat-form-field>
+        <ui-decorated-input-group
+          [data]="createDecoratedInputs(step)"
+        ></ui-decorated-input-group>
       </div>
 
       <ui-timer></ui-timer>

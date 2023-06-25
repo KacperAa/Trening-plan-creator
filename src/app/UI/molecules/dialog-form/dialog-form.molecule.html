@@ -7,9 +7,10 @@
     <mat-form-field appearance="fill">
       <mat-label>{{ data.placeholder }}</mat-label>
       <input name="inputValue" matInput [formControl]="data.formControl" />
-      <mat-error *ngIf="data.formControl.invalid"
-        >{{getErrorMessage()}}</mat-error
-      >
+      <mat-error
+        *ngIf="data.formControl.invalid"
+        [innerHTML]="getErrorMessage()"
+      ></mat-error>
     </mat-form-field>
   </div>
 

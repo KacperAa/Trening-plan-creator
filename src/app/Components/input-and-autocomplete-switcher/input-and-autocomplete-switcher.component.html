@@ -19,6 +19,10 @@
         [formControl]="input.formControl"
         placeholder="{{ input.placeholder }}"
       />
+      <mat-error
+        *ngIf="input.formControl.invalid"
+        [innerHTML]="getErrorMessage()"
+      ></mat-error>
     </mat-form-field>
   </ng-container>
   <app-weekly-amount-increase

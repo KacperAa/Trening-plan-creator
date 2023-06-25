@@ -4,7 +4,9 @@ import {
   AbstractControlOptions,
   FormBuilder,
   FormControl,
+  FormControlOptions,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { StepperOrientation } from '@angular/material/stepper';
@@ -13,6 +15,15 @@ import { ChipsWithTitle } from 'src/app/Interfaces/chips-with-title.interface';
 import { oneRequiredField } from 'src/app/Validators/validators';
 import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interface';
 import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-dialog-with-title.interace';
+
+const atLeastOneValidControl = (
+  formGroup: FormGroup
+): ValidationErrors | null => {
+  const controls = Object.values(formGroup.controls);
+  const isValid = controls.some((control) => control.valid);
+
+  return isValid ? null : { atLeastOneValidControl: true };
+};
 
 @Component({
   selector: 'app-trening-plan-creator',
@@ -68,9 +79,15 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
 
   private _setFormGroup(): void {
     this.planCreatorForm = this._formBuilder.group({
-      tableGenerationForm: this._formBuilder.group({
-        firstControl: new FormControl('Single week', Validators.required),
-      }),
+      tableGenerationForm: this._formBuilder.group(
+        {
+          firstControl: new FormControl('Single week'),
+          matDialogControl: new FormControl(2, [
+            Validators.pattern(/^[0-9]+$/),
+          ]),
+        },
+        { validators: atLeastOneValidControl } as FormControlOptions
+      ),
       checkboxesScenariosForms: this._formBuilder.group({
         firstWeek: this._formBuilder.group(
           {
@@ -99,10 +116,9 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
           dialogData: {
             title: 'Generate on:',
             placeholder: 'number',
-            formControl: new FormControl(2, [
-              Validators.required,
-              Validators.pattern(/^[0-9]+$/),
-            ]),
+            formControl: this.tableGenerationForm.get(
+              'matDialogControl'
+            ) as FormControl,
             unit: 'Weeks',
           },
         },

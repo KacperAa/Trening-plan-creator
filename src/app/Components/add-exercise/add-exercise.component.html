@@ -11,7 +11,7 @@
       <form>
         <!--     Step 1. -->
 
-        <mat-step [stepControl]="getFormControl('findExercise')">
+        <mat-step [stepControl]="findExercise">
           <ng-template matStepLabel
             ><span class="step-title">Exercise</span></ng-template
           >
@@ -76,8 +76,8 @@
         <mat-step
           [stepControl]="
             repsRangeViewScenario.additionalParam === 'auto'
-              ? getFormControl('specifyRepsFirstScenario')
-              : getFormControl('specifyRepsSecondScenario')
+              ? specifyRepsFirstScenario
+              : specifyRepsSecondScenario
           "
         >
           <ng-template matStepLabel
@@ -95,11 +95,7 @@
         <!--     Step 5 , 6. -->
 
         <mat-step
-          [stepControl]="
-            data.title === 'Rate'
-              ? getFormGroup('specifyRate')
-              : getFormGroup('specifyBreak')
-          "
+          [stepControl]="data.title === 'Rate' ? specifyRate : specifyBreak"
           *ngFor="let data of rateAndBreakFields"
         >
           <ng-template matStepLabel
@@ -117,7 +113,7 @@
             [stepControl]="
               rpeViewScenario === 'default'
                 ? rpeSwitcher.inputAndTitle.input.formControl
-                : getFormGroup('specifyRpeScenarioTwo')
+                : specifyRpeScenarioTwo
             "
             >>
             <ng-template matStepLabel

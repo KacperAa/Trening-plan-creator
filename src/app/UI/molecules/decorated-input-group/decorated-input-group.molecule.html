@@ -13,6 +13,11 @@
           [placeholder]="input.placeholder"
           [formControl]="input.formControl"
         />
+        <mat-error
+          class="error-message"
+          *ngIf="input.formControl.invalid"
+          [innerHTML]="setErrorMessage(input.formControl)"
+        ></mat-error>
       </mat-form-field>
 
       <div

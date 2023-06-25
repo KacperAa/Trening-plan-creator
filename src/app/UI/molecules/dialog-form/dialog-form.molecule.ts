@@ -2,6 +2,7 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { MatDialogData } from 'src/app/Interfaces/mat-dialog-data.interface';
+import { FormsErrorsService } from 'src/app/Services/forms-errors.service';
 
 @Component({
   selector: 'ui-dialog-form',
@@ -11,6 +12,7 @@ import { MatDialogData } from 'src/app/Interfaces/mat-dialog-data.interface';
 export class DialogFormComponent implements OnInit, OnDestroy {
   private _subs: Subscription = new Subscription();
   constructor(
+    private _errorService: FormsErrorsService,
     private _dialogRef: MatDialogRef<DialogFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: MatDialogData
   ) {}
@@ -29,14 +31,7 @@ export class DialogFormComponent implements OnInit, OnDestroy {
   }
 
   public getErrorMessage(): string {
-    if (this.data.formControl.hasError('required')) {
-      return this._getRequiredError();
-    }
-
-    if (this.data.formControl.hasError('pattern')) {
-      return this._getPatternError();
-    }
-    return '';
+    return this._errorService.setErrorMessage(this.data.formControl);
   }
 
   private _trackFormStatus(): void {
@@ -51,17 +46,5 @@ export class DialogFormComponent implements OnInit, OnDestroy {
     this.data.formControl.invalid
       ? this.data.formControl.markAsTouched()
       : null;
-  }
-
-  private _getRequiredError(): string {
-    return 'The field is required!';
-  }
-
-  private _getPatternError(): string {
-    const patternError = this.data.formControl.getError('pattern');
-
-    return patternError.requiredPattern === '/^[0-9]+$/'
-      ? 'Only numbers can be entered'
-      : 'Only letters can be entered';
   }
 }

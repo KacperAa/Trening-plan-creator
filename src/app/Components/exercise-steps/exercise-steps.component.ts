@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { DecoratedInputsGroup } from 'src/app/Interfaces/decorated-inputs-group.interface';
 import { MatStepProperties } from 'src/app/Interfaces/mat-step-properties.interface';
 import { FormsErrorsService } from 'src/app/Services/forms-errors.service';
 
@@ -20,8 +21,16 @@ export class ExerciseStepsComponent {
     }
   }
 
-  public setErrorsMessages(formControl: FormControl): string {
-    return this._setErrorsServie.setErrorMessage(formControl);
+  public createDecoratedInputs(
+    step: MatStepProperties
+  ): DecoratedInputsGroup<undefined> {
+    const decoratedInputs = {
+      title: '',
+      inputs: step.inputsData,
+      customDecoration: '|',
+    };
+
+    return decoratedInputs;
   }
 
   private _markControlsAsTouched(formGroup: FormGroup): void {
