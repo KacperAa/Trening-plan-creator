@@ -26,18 +26,37 @@ export class ExercisePerformedComponent implements OnInit {
   }
 
   private _setFormGroup(): void {
+    const numberPatter: RegExp = /^[0-9]*$/;
     this.performSeriesFormGroup = this._formBuilder.group({
       firstStep: this._formBuilder.group({
-        repsControl: ['', Validators.required],
-        rpeControl: ['', Validators.required],
+        repsControl: [
+          '',
+          [Validators.required, Validators.pattern(numberPatter)],
+        ],
+        rpeControl: [
+          '',
+          [Validators.required, Validators.pattern(numberPatter)],
+        ],
       }),
       secondStep: this._formBuilder.group({
-        repsControl: ['', Validators.required],
-        rpeControl: ['', Validators.required],
+        repsControl: [
+          '',
+          [Validators.required, Validators.pattern(numberPatter)],
+        ],
+        rpeControl: [
+          '',
+          [Validators.required, Validators.pattern(numberPatter)],
+        ],
       }),
       thirdStep: this._formBuilder.group({
-        repsControl: ['', Validators.required],
-        rpeControl: ['', Validators.required],
+        repsControl: [
+          '',
+          [Validators.required, Validators.pattern(numberPatter)],
+        ],
+        rpeControl: [
+          '',
+          [Validators.required, Validators.pattern(numberPatter)],
+        ],
       }),
     });
   }

@@ -14,10 +14,22 @@
             [formControl]="input.formControl!"
             [placeholder]="input.placeholder"
           />
+
+          <mat-error
+            class="error-message"
+            [innerHTML]="setErrorsMessages(input.formControl!)"
+          ></mat-error>
         </mat-form-field>
       </div>
+
       <ui-timer></ui-timer>
-      <button mat-raised-button matStepperNext>Next</button>
+      <button
+        (click)="onSubmit(step.formGroup)"
+        mat-raised-button
+        matStepperNext
+      >
+        Next
+      </button>
     </div>
   </mat-step>
 </mat-stepper>
