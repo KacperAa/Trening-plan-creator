@@ -21,6 +21,7 @@ export class TrackWinWidthDirective implements OnInit {
 
   public ngOnInit(): void {
     this._trackWindowWidth();
+    this._checkActualElementStatus();
   }
 
   public ngOnDestroy(): void {
@@ -43,6 +44,14 @@ export class TrackWinWidthDirective implements OnInit {
     } else {
       this._renderer.removeClass(this._elRef.nativeElement, this.className);
     }
+  }
+
+  private _checkActualElementStatus(): void {
+    this._subs.add(
+      fromEvent(window, 'DOMContentLoaded').subscribe(() => {
+        this._addOrRemoveClass();
+      })
+    );
   }
 
   private _checkSmallDevice(): boolean {

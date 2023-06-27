@@ -14,8 +14,7 @@ export class NavigationComponent {
   public isHamburgerNav!: boolean;
   @Input()
   public hamburgerMenuState!: string;
-  @Input()
-  public isSmallDevice!: boolean;
+
   public navigationButtons: TitleAndMenu[] = [
     {
       title: 'Trening plan',
