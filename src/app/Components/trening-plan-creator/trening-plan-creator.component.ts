@@ -57,6 +57,8 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
   public checkIsMainFormValid(): void {
     this._getFirstStepValue();
     this._getSecondStepValue();
+
+    /*     jutro musze stworzyć ten obiekt do interfejsu trening day na podstawie danych w formsa */
   }
 
   public chooseCheckboxesScenario(scenario: string): void {

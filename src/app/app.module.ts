@@ -93,6 +93,7 @@ import { CheckboxAndAgreementComponent } from './Components/checkbox-and-agreeme
 import { DialogWithDateFieldComponent } from './Components/dialog-with-date-field/dialog-with-date-field.component';
 import { DynamicFormControlComponent } from './Components/dynamic-form-control/dynamic-form-control.component';
 import { DynamicFormComponent } from './Components/dynamic-form/dynamic-form.component';
+import { TrackWinWidthDirective } from './Directives/window-size-class.directive';
 
 @NgModule({
   declarations: [
@@ -157,6 +158,7 @@ import { DynamicFormComponent } from './Components/dynamic-form/dynamic-form.com
     DialogWithDateFieldComponent,
     DynamicFormControlComponent,
     DynamicFormComponent,
+    TrackWinWidthDirective,
   ],
   imports: [
     BrowserModule,

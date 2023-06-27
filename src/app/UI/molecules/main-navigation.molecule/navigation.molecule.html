@@ -1,6 +1,7 @@
 <nav>
   <div
-    [ngStyle]="isSmallDevice ? { top: '56px' } : { top: '63px' }"
+    [appWindowSizeClass]="'small-device'"
+    [windowWidthToAddClass]="597"
     [@hamburgerMenuAnimation]="isHamburgerNav ? hamburgerMenuState : null"
     [ngClass]="{ 'hamburger-nav-container': isHamburgerNav }"
   >
