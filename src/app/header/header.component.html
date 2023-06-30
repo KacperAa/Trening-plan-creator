@@ -6,7 +6,7 @@
       [routerLinkText]="routerLinkText"
       (openNav)="openHamburgerNav()"
     ></app-hamburger-logo>
-    <ui-navigation *appShowIfWindowWidth></ui-navigation>
+    <ui-navigation *ngIf="!isSmallDevice"></ui-navigation>
     <app-user-panel [data]="userPanelData"></app-user-panel>
   </mat-toolbar>
 </header>

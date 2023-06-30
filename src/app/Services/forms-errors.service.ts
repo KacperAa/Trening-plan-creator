@@ -45,7 +45,7 @@ export class FormsErrorsService {
       return 'Only <strong>numbers</strong> can be entered';
     } else if (
       patternError.requiredPattern ===
-      '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.])(?=S+$).{6,}$/'
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.])(?=\\S+$).{6,}$'
     ) {
       return '<strong>Capital letter</strong>, one <strong>special character</strong> and number required';
     } else if (patternError.requiredPattern === '/^[0-9]+$/') {

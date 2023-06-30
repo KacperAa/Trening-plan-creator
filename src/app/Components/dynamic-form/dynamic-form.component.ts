@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBase } from 'src/app/Classes/form-base';
 import { FormControlService } from 'src/app/Services/form-control.service';
@@ -14,6 +14,8 @@ export class DynamicFormComponent implements OnInit {
   public controlsDirection: ControlsDirection<string>[] | null = [];
   @Input()
   public buttonText!: string;
+  @Output()
+  public sumbit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   public form!: FormGroup;
   private get _controls(): FormBase<string>[] {
     return this.controlsDirection?.flatMap(
@@ -28,6 +30,4 @@ export class DynamicFormComponent implements OnInit {
       this._controls as FormBase<string>[]
     );
   }
-
-  public onSubmit(): void {}
 }

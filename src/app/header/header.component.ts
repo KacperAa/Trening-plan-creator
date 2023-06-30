@@ -1,3 +1,4 @@
+import { ViewportRuler } from '@angular/cdk/scrolling';
 import {
   Component,
   ElementRef,
@@ -16,7 +17,7 @@ import { UserPanelData } from 'src/app/Interfaces/user-panel-data.interface';
 export class HeaderComponent implements OnDestroy, OnInit {
   public logoPath: string = 'assets/logo.png';
   public routerLinkText: string = '/home';
-
+  public isSmallDevice: boolean = this._checkSmallDevice();
   public hamburgerMenuState: string = 'closed';
   public userPanelData: UserPanelData = {
     imgAdress: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
@@ -28,9 +29,13 @@ export class HeaderComponent implements OnDestroy, OnInit {
   };
   private _subs = new Subscription();
 
-  constructor(private _elementRef: ElementRef) {}
+  constructor(
+    private _elementRef: ElementRef,
+    private _viewportRuler: ViewportRuler
+  ) {}
 
   public ngOnInit(): void {
+    this._trackWindowWidth();
     this._trackScrolling();
   }
 
@@ -59,6 +64,19 @@ export class HeaderComponent implements OnDestroy, OnInit {
         if (this.hamburgerMenuState === 'open') {
           this.hamburgerMenuState = 'closed';
         }
+      })
+    );
+  }
+
+  private _checkSmallDevice(): boolean {
+    const windowWidth: number = this._viewportRuler.getViewportSize().width;
+    return windowWidth < 820;
+  }
+
+  private _trackWindowWidth(): void {
+    this._subs.add(
+      fromEvent(window, 'resize').subscribe(() => {
+        this.isSmallDevice = this._checkSmallDevice();
       })
     );
   }

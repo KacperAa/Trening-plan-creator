@@ -94,7 +94,7 @@ import { DialogWithDateFieldComponent } from './Components/dialog-with-date-fiel
 import { DynamicFormControlComponent } from './Components/dynamic-form-control/dynamic-form-control.component';
 import { DynamicFormComponent } from './Components/dynamic-form/dynamic-form.component';
 import { TrackWinWidthDirective } from './Directives/window-size-class.directive';
-import { ShowIfWindowWidthDirective } from './Directives/show-if-window-width.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -160,7 +160,6 @@ import { ShowIfWindowWidthDirective } from './Directives/show-if-window-width.di
     DynamicFormControlComponent,
     DynamicFormComponent,
     TrackWinWidthDirective,
-    ShowIfWindowWidthDirective,
   ],
   imports: [
     BrowserModule,
@@ -196,6 +195,7 @@ import { ShowIfWindowWidthDirective } from './Directives/show-if-window-width.di
     MatBottomSheetModule,
     FullCalendarModule,
     MatTooltipModule,
+    HttpClientModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

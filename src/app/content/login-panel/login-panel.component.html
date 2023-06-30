@@ -4,6 +4,7 @@
     <app-dynamic-form
       [controlsDirection]="inputsData$ | async"
       [buttonText]="'Login'"
+      (sumbit)="sendForm($event)"
     ></app-dynamic-form>
 
     <div class="register-and-remind-password">

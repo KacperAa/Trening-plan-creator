@@ -4,6 +4,7 @@
     <app-dynamic-form
       [controlsDirection]="registerFormControls$ | async"
       [buttonText]="'Register'"
+      (sumbit)="sendForm($event)"
     ></app-dynamic-form>
   </div>
 </div>
