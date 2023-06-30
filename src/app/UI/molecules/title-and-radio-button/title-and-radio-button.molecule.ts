@@ -71,12 +71,9 @@ export class TitleAndRadioButtonComponent
 
     this._subs.add(
       dialogRef.afterClosed().subscribe((inputValue: string) => {
-<<<<<<< HEAD
-=======
         if (button.dialogData?.formControl.invalid) {
           button.dialogData?.formControl.setValue('2');
         }
->>>>>>> plan-creator-forms
         this._convertAndAssingInputValue(button, inputValue);
       })
     );
