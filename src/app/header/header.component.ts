@@ -6,7 +6,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Subscription, debounceTime, fromEvent } from 'rxjs';
+import { Subscription, fromEvent } from 'rxjs';
 import { UserPanelData } from 'src/app/Interfaces/user-panel-data.interface';
 
 @Component({
@@ -30,8 +30,8 @@ export class HeaderComponent implements OnDestroy, OnInit {
   private _subs = new Subscription();
 
   constructor(
-    private _viewportRuler: ViewportRuler,
-    private _elementRef: ElementRef
+    private _elementRef: ElementRef,
+    private _viewportRuler: ViewportRuler
   ) {}
 
   public ngOnInit(): void {
@@ -69,17 +69,15 @@ export class HeaderComponent implements OnDestroy, OnInit {
   }
 
   private _checkSmallDevice(): boolean {
-    const windowWidth = this._viewportRuler.getViewportSize().width;
+    const windowWidth: number = this._viewportRuler.getViewportSize().width;
     return windowWidth < 820;
   }
 
   private _trackWindowWidth(): void {
     this._subs.add(
-      fromEvent(window, 'resize')
-        .pipe(debounceTime(0))
-        .subscribe(() => {
-          this.isSmallDevice = this._checkSmallDevice();
-        })
+      fromEvent(window, 'resize').subscribe(() => {
+        this.isSmallDevice = this._checkSmallDevice();
+      })
     );
   }
 }

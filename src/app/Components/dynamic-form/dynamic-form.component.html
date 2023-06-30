@@ -1,5 +1,5 @@
 <div>
-  <form class="form-styles" (ngSubmit)="onSubmit()" [formGroup]="form">
+  <form class="form-styles" (ngSubmit)="sumbit.emit(form)" [formGroup]="form">
     <ng-container *ngFor="let controlsDirection of controlsDirection">
       <div
         [ngClass]="{

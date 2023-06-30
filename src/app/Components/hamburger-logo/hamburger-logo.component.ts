@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-hamburger-logo[logoPath][isSmallDevice][hamburgerMenuState]',
+  selector: 'app-hamburger-logo[logoPath][hamburgerMenuState]',
   templateUrl: './hamburger-logo.component.html',
   styleUrls: ['./hamburger-logo.component.scss'],
 })
@@ -10,8 +10,6 @@ export class HamburgerLogoComponent {
   public logoPath!: string;
   @Input()
   public routerLinkText!: string;
-  @Input()
-  public isSmallDevice!: boolean;
   @Input()
   public hamburgerMenuState!: string;
   @Output()

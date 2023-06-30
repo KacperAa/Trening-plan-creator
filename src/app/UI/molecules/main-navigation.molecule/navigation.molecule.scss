@@ -9,6 +9,7 @@
   flex-direction: column;
   position: fixed;
   left: 0;
+  top: 63px;
 
   .sub-point {
     font-size: 11px;
@@ -21,4 +22,7 @@
     display: flex;
     flex-wrap: wrap;
   }
+}
+.small-device {
+  top: 56px;
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ControlsDirection } from 'src/app/Interfaces/controls-direction.interface';
-import { InputFormField } from 'src/app/Interfaces/input-form-field.interface';
 import { PathAndText } from 'src/app/Interfaces/path-and-text.interface';
 import { LoginService } from 'src/app/Services/login.service';
 
@@ -21,4 +21,8 @@ export class LoginPanelComponent {
   ];
 
   constructor(private _loginService: LoginService) {}
+
+  public sendForm(form: FormGroup): void {
+    console.log(form.value);
+  }
 }

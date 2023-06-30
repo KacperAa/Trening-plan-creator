@@ -4,9 +4,7 @@ import {
   AbstractControlOptions,
   FormBuilder,
   FormControl,
-  FormControlOptions,
   FormGroup,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { StepperOrientation } from '@angular/material/stepper';
@@ -15,15 +13,6 @@ import { ChipsWithTitle } from 'src/app/Interfaces/chips-with-title.interface';
 import { oneRequiredField } from 'src/app/Validators/validators';
 import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interface';
 import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-dialog-with-title.interace';
-
-const atLeastOneValidControl = (
-  formGroup: FormGroup
-): ValidationErrors | null => {
-  const controls = Object.values(formGroup.controls);
-  const isValid = controls.some((control) => control.valid);
-
-  return isValid ? null : { atLeastOneValidControl: true };
-};
 
 @Component({
   selector: 'app-trening-plan-creator',
@@ -66,7 +55,10 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
   }
 
   public checkIsMainFormValid(): void {
-    console.log(this.planCreatorForm.valid);
+    this._getFirstStepValue();
+    this._getSecondStepValue();
+
+    /*     jutro musze stworzyć ten obiekt do interfejsu trening day na podstawie danych w formsa */
   }
 
   public chooseCheckboxesScenario(scenario: string): void {
@@ -79,15 +71,10 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
 
   private _setFormGroup(): void {
     this.planCreatorForm = this._formBuilder.group({
-      tableGenerationForm: this._formBuilder.group(
-        {
-          firstControl: new FormControl('Single week'),
-          matDialogControl: new FormControl(2, [
-            Validators.pattern(/^[0-9]+$/),
-          ]),
-        },
-        { validators: atLeastOneValidControl } as FormControlOptions
-      ),
+      tableGenerationForm: this._formBuilder.group({
+        firstControl: new FormControl('Single week'),
+        matDialogControl: new FormControl(2, [Validators.pattern(/^[0-9]+$/)]),
+      }),
       checkboxesScenariosForms: this._formBuilder.group({
         firstWeek: this._formBuilder.group(
           {
@@ -193,6 +180,49 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
 
   private _setRegularScenario(): void {
     this.checkboxsData.pop();
+  }
+
+  private _getSecondStepValue(): string[] {
+    const daysOfTreningsTwoScenarios: string[] = [
+      ...this._getFirstScenarioValue(),
+    ];
+    if (this.getCheckboxesScenariosFormGroup.get('secondWeek') !== null) {
+      daysOfTreningsTwoScenarios.push(...this._getSecondScenarioValue());
+    }
+
+    return daysOfTreningsTwoScenarios;
+  }
+
+  private _getFirstScenarioValue(): string[] {
+    const firstScenario: { [key: string]: boolean } =
+      this.getCheckboxesScenariosFormGroup.get('firstWeek')?.value;
+
+    const firstScenarioKeys = Object.keys(firstScenario).filter(
+      (key: string) => {
+        return firstScenario[key] === true;
+      }
+    );
+    return firstScenarioKeys;
+  }
+
+  private _getSecondScenarioValue(): string[] {
+    const firstScenario: { [key: string]: boolean } =
+      this.getCheckboxesScenariosFormGroup.get('secondWeek')?.value;
+
+    const secondScenarioKeys = Object.keys(firstScenario).filter(
+      (key: string) => {
+        return firstScenario[key] === true;
+      }
+    );
+    return secondScenarioKeys;
+  }
+
+  private _getFirstStepValue(): number {
+    const getValues = this.planCreatorForm.value.tableGenerationForm;
+    if (getValues.firstControl === 'Single week') {
+      return 1;
+    }
+    return Number(getValues.matDialogControl);
   }
 
   private _checkSmallDevice(): StepperOrientation {

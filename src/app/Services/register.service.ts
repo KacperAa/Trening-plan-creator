@@ -4,8 +4,10 @@ import {
   InputControl,
   PasswordControl,
 } from '../Classes/form-base';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { ControlsDirection } from '../Interfaces/controls-direction.interface';
+import { RegisteredUser } from '../Interfaces/registered-user.interface';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -62,5 +64,32 @@ export class RegisterService {
     ];
 
     return of(controlsCollection.sort((a, b) => a.order - b.order));
+  }
+
+  private _httpAdress: string =
+    'https://login-7397c-default-rtdb.firebaseio.com/register.json';
+
+  constructor(private _http: HttpClient) {}
+
+  public registerUser(newUser: RegisteredUser): void {
+    this._http
+      .post<{ name: string }>(this._httpAdress, newUser)
+      .subscribe((request) => {
+        console.log(request);
+      });
+  }
+
+  public getUsers() {
+    return this._http.get<RegisteredUser[]>(this._httpAdress).pipe(
+      map((responseData: RegisteredUser[]) => {
+        const registeredUsers = [];
+        for (const key in responseData) {
+          if (responseData.hasOwnProperty(key)) {
+            registeredUsers.push({ ...responseData[key], key });
+          }
+        }
+        return registeredUsers;
+      })
+    );
   }
 }

@@ -5,12 +5,6 @@
       [value]="button.title"
       (click)="button.hasDialog ? openDialog(button) : null; setValue(button.title)"
       >{{ button.title }}
-      <mat-error
-        class="error-message"
-        *ngIf="button.dialogData?.formControl?.invalid  && value === button.title 
-        "
-        ><strong>Incorrect</strong> data in dialog</mat-error
-      >
     </mat-radio-button>
   </ng-container>
 </mat-radio-group>
