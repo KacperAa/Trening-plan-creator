@@ -1,5 +1,11 @@
 import { ViewportRuler } from '@angular/cdk/scrolling';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   AbstractControlOptions,
   FormBuilder,
@@ -13,6 +19,7 @@ import { ChipsWithTitle } from 'src/app/Interfaces/chips-with-title.interface';
 import { oneRequiredField } from 'src/app/Validators/validators';
 import { CheckboxsAndTitle } from 'src/app/Interfaces/checkboxs-and-title.interface';
 import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-dialog-with-title.interace';
+import { TreningPlanTemplate } from 'src/app/Interfaces/plan-creator-form-data';
 
 @Component({
   selector: 'app-trening-plan-creator',
@@ -20,6 +27,11 @@ import { RadioButtonsDialogWithTitle } from 'src/app/Interfaces/radio-buttons-di
   styleUrls: ['./trening-plan-creator.component.scss'],
 })
 export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
+  @Output()
+  public createPlanData: EventEmitter<TreningPlanTemplate[]> = new EventEmitter<
+    TreningPlanTemplate[]
+  >();
+
   public stepperOrientation: StepperOrientation = this._checkSmallDevice();
   public planCreatorForm!: FormGroup;
   public checkboxsData!: CheckboxsAndTitle[];
@@ -54,11 +66,36 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     formGroup.markAsTouched();
   }
 
-  public checkIsMainFormValid(): void {
-    this._getFirstStepValue();
-    this._getSecondStepValue();
+  public createTreningPlanScheme(): void {
+    const daysOfTwoWeeks: string[][] = this._getSecondStepValue();
 
-    /*     jutro musze stworzyć ten obiekt do interfejsu trening day na podstawie danych w formsa */
+    const treningPlanTemplate: TreningPlanTemplate[] = [];
+
+    /*    When checkboxses has first scenario and return one array  */
+
+    if (daysOfTwoWeeks.length === 1) {
+      for (let i = 0; i < this._getFirstStepValue(); i++) {
+        const treningPlanTemplateData: TreningPlanTemplate = {
+          weekName: `Week ${i + 1}`,
+          treningDays: [...daysOfTwoWeeks].flat(),
+        };
+        treningPlanTemplate.push(treningPlanTemplateData);
+      }
+      /*    When checkboxses has second scenario and return two arrays */
+    } else if (daysOfTwoWeeks.length === 2) {
+      for (let i = 0; i < this._getFirstStepValue(); i++) {
+        const weekName = `Week ${i + 1}`;
+        const weeks = daysOfTwoWeeks[i % 2]; // Use modulo in for to change array
+
+        const treningPlanTemplateData: TreningPlanTemplate = {
+          weekName: weekName,
+          treningDays: weeks,
+        };
+        treningPlanTemplate.push(treningPlanTemplateData);
+      }
+    }
+
+    this.createPlanData.emit(treningPlanTemplate);
   }
 
   public chooseCheckboxesScenario(scenario: string): void {
@@ -182,12 +219,13 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     this.checkboxsData.pop();
   }
 
-  private _getSecondStepValue(): string[] {
-    const daysOfTreningsTwoScenarios: string[] = [
-      ...this._getFirstScenarioValue(),
+  private _getSecondStepValue(): string[][] {
+    /*  Create array from second step scenarios */
+    const daysOfTreningsTwoScenarios: string[][] = [
+      this._getFirstScenarioValue(),
     ];
     if (this.getCheckboxesScenariosFormGroup.get('secondWeek') !== null) {
-      daysOfTreningsTwoScenarios.push(...this._getSecondScenarioValue());
+      daysOfTreningsTwoScenarios.push(this._getSecondScenarioValue());
     }
 
     return daysOfTreningsTwoScenarios;

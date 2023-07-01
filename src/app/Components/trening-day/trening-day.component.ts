@@ -11,15 +11,16 @@ import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-for
 import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.interface';
 import { FormControl, Validators } from '@angular/forms';
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
+import { TreningPlanTemplate } from 'src/app/Interfaces/plan-creator-form-data';
 
 @Component({
-  selector: 'app-trening-day[dayOfWeek]',
+  selector: 'app-trening-day[treningWeekData]',
   templateUrl: './trening-day.component.html',
   styleUrls: ['./trening-day.component.scss'],
 })
 export class TreningDayComponent implements OnDestroy {
   @Input()
-  public dayOfWeek!: string;
+  public treningWeekData!: TreningPlanTemplate;
   @Output()
   public emitOpen = new EventEmitter<never>();
   public dataSource = ELEMENT_DATA;
@@ -59,7 +60,6 @@ export class TreningDayComponent implements OnDestroy {
     });
 
     this._subs.add(
-      /*  take on destroy */
       dialogRef.afterClosed().subscribe((inputValue) => {
         if (inputValue)
           this._convertAndAssignDialogValue(cellValue, inputValue);
