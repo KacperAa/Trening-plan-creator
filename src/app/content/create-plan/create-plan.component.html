@@ -1,12 +1,14 @@
 <div class="container">
   <ui-page-information-bar [header]="'Create Plan'"></ui-page-information-bar>
   <div class="stepper-form">
-    <app-trening-plan-creator />
+    <app-trening-plan-creator
+      (createPlanData)="captureTreningTemplateData($event)"
+    />
   </div>
   <div class="tables-box">
     <app-trening-day
-      *ngFor="let day of daysOfWeek"
-      [dayOfWeek]="day"
+      *ngFor="let templateData of treningTemplatesData"
+      [treningWeekData]="templateData"
       (emitOpen)="openAddExercise()"
     ></app-trening-day>
   </div>

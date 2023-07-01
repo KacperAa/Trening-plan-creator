@@ -1,3 +1,21 @@
-.add-ex-button {
-  width: 100%;
+.trening-week-box {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .title-and-trening-week {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+
+    .trening-day-box {
+    }
+  }
+
+  .add-ex-button {
+    width: 100%;
+  }
 }

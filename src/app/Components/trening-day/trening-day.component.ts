@@ -11,15 +11,18 @@ import { DialogFormComponent } from 'src/app/UI/molecules/dialog-form/dialog-for
 import { TableRowAndCellKey } from 'src/app/Interfaces/table-row-and-cell-key.interface';
 import { FormControl, Validators } from '@angular/forms';
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
+import { TreningPlanTemplate } from 'src/app/Interfaces/plan-creator-form-data';
 
 @Component({
-  selector: 'app-trening-day[dayOfWeek]',
+  selector: 'app-trening-day[treningWeekData]',
   templateUrl: './trening-day.component.html',
   styleUrls: ['./trening-day.component.scss'],
 })
 export class TreningDayComponent implements OnDestroy {
   @Input()
-  public dayOfWeek!: string;
+  public treningWeekData!: TreningPlanTemplate;
+  /*   @Input()
+  public dayOfWeek!: string; */
   @Output()
   public emitOpen = new EventEmitter<never>();
   public dataSource = ELEMENT_DATA;
@@ -33,7 +36,11 @@ export class TreningDayComponent implements OnDestroy {
   constructor(
     private _dialog: MatDialog,
     private _scrollStrategyOptions: ScrollStrategyOptions
-  ) {}
+  ) {
+    setTimeout(() => {
+      console.log(this.treningWeekData);
+    }, 10000);
+  }
   public ngOnDestroy(): void {
     this._subs.unsubscribe();
   }
