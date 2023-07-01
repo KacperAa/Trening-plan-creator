@@ -1,11 +1,10 @@
 <ng-container>
   <div class="trening-week-box">
-    {{ treningWeekData.weekName }}
-    <div class="title-and-trening-week">
-      <div
-        class="trening-day-box"
-        *ngFor="let day of treningWeekData.treningDays"
-      >
+    <h3 class="trening-week-box__trening-week-title">
+      {{ treningWeekData.weekName }}
+    </h3>
+    <div class="trening-week-box__trening-day-box">
+      <div *ngFor="let day of treningWeekData.treningDays">
         <ui-title-on-bar [title]="day"></ui-title-on-bar>
         <app-table
           [columns]="tableColumns"

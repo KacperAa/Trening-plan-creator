@@ -21,8 +21,6 @@ import { TreningPlanTemplate } from 'src/app/Interfaces/plan-creator-form-data';
 export class TreningDayComponent implements OnDestroy {
   @Input()
   public treningWeekData!: TreningPlanTemplate;
-  /*   @Input()
-  public dayOfWeek!: string; */
   @Output()
   public emitOpen = new EventEmitter<never>();
   public dataSource = ELEMENT_DATA;
@@ -36,11 +34,7 @@ export class TreningDayComponent implements OnDestroy {
   constructor(
     private _dialog: MatDialog,
     private _scrollStrategyOptions: ScrollStrategyOptions
-  ) {
-    setTimeout(() => {
-      console.log(this.treningWeekData);
-    }, 10000);
-  }
+  ) {}
   public ngOnDestroy(): void {
     this._subs.unsubscribe();
   }
@@ -66,7 +60,6 @@ export class TreningDayComponent implements OnDestroy {
     });
 
     this._subs.add(
-      /*  take on destroy */
       dialogRef.afterClosed().subscribe((inputValue) => {
         if (inputValue)
           this._convertAndAssignDialogValue(cellValue, inputValue);

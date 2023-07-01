@@ -76,7 +76,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
     if (daysOfTwoWeeks.length === 1) {
       for (let i = 0; i < this._getFirstStepValue(); i++) {
         const treningPlanTemplateData: TreningPlanTemplate = {
-          weekName: `Trening ${i + 1}`,
+          weekName: `Week ${i + 1}`,
           treningDays: [...daysOfTwoWeeks].flat(),
         };
         treningPlanTemplate.push(treningPlanTemplateData);
@@ -84,7 +84,7 @@ export class TreningPlanCreatorComponent implements OnInit, OnDestroy {
       /*    When checkboxses has second scenario and return two arrays */
     } else if (daysOfTwoWeeks.length === 2) {
       for (let i = 0; i < this._getFirstStepValue(); i++) {
-        const weekName = `Tydzień ${i + 1}`;
+        const weekName = `Week ${i + 1}`;
         const weeks = daysOfTwoWeeks[i % 2]; // Use modulo in for to change array
 
         const treningPlanTemplateData: TreningPlanTemplate = {

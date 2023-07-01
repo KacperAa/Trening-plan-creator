@@ -1,6 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
+  min-height: 95vh;
+  justify-content: space-between;
   .stepper-form {
     padding: 50px;
   }
